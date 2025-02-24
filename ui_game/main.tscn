@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=3 uid="uid://dywe0euewuoiq"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_baba4"]
+[ext_resource type="LabelSettings" uid="uid://dqybrw5bixgux" path="res://style/main_title.tres" id="1_j5grn"]
+[ext_resource type="Theme" uid="uid://d305yra51d2bj" path="res://style/margin_theme.tres" id="2_44f3y"]
+[ext_resource type="PackedScene" uid="uid://dckjid1a5yqee" path="res://worker.tscn" id="3_180d1"]
+[ext_resource type="Texture2D" uid="uid://bv3dpsj7ghggo" path="res://icon.svg" id="5_isk0p"]
+[ext_resource type="LabelSettings" uid="uid://dgcogd1ny3nq2" path="res://style/job_title.tres" id="6_8sue5"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_baba4")
+
+[node name="margin" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_44f3y")
+
+[node name="gui" type="HBoxContainer" parent="margin"]
+layout_mode = 2
+alignment = 1
+
+[node name="left" type="VBoxContainer" parent="margin/gui"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="worker_title" type="Label" parent="margin/gui/left"]
+layout_mode = 2
+text = "Workers:"
+label_settings = ExtResource("1_j5grn")
+
+[node name="workers" type="VBoxContainer" parent="margin/gui/left"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="worker_1" parent="margin/gui/left/workers" instance=ExtResource("3_180d1")]
+layout_mode = 2
+worker_name = "Perpetual Worker"
+durability_maximum = -1
+
+[node name="worker_2" parent="margin/gui/left/workers" instance=ExtResource("3_180d1")]
+layout_mode = 2
+worker_name = "Basic Worker"
+
+[node name="middle" type="VBoxContainer" parent="margin/gui"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="job_title" type="Label" parent="margin/gui/middle"]
+layout_mode = 2
+text = "Jobs:"
+label_settings = ExtResource("1_j5grn")
+horizontal_alignment = 1
+
+[node name="jobs" type="VBoxContainer" parent="margin/gui/middle"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="job_1" type="PanelContainer" parent="margin/gui/middle/jobs"]
+layout_mode = 2
+
+[node name="margin" type="MarginContainer" parent="margin/gui/middle/jobs/job_1"]
+layout_mode = 2
+
+[node name="flow" type="HBoxContainer" parent="margin/gui/middle/jobs/job_1/margin"]
+layout_mode = 2
+
+[node name="icon" type="TextureRect" parent="margin/gui/middle/jobs/job_1/margin/flow"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("5_isk0p")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="content" type="VBoxContainer" parent="margin/gui/middle/jobs/job_1/margin/flow"]
+layout_mode = 2
+
+[node name="title" type="Label" parent="margin/gui/middle/jobs/job_1/margin/flow/content"]
+layout_mode = 2
+text = "Digging Dirt"
+label_settings = ExtResource("6_8sue5")
+
+[node name="right" type="VBoxContainer" parent="margin/gui"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="resource_title" type="Label" parent="margin/gui/right"]
+layout_mode = 2
+text = "Resources:"
+label_settings = ExtResource("1_j5grn")
+horizontal_alignment = 2
+
+[node name="resources" type="VBoxContainer" parent="margin/gui/right"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
