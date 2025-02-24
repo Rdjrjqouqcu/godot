@@ -7,7 +7,7 @@ const MOVE_SPEED = 10
 
 var last_velocity = Vector2.RIGHT * MOVE_SPEED
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var vect = Input.get_vector("left", "right", "up", "down") * INPUT_SPEED
 	velocity = (last_velocity + vect).normalized() * MOVE_SPEED
 	last_velocity = velocity
