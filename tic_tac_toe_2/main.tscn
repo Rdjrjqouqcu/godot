@@ -1,0 +1,162 @@
+[gd_scene load_steps=3 format=3 uid="uid://btepfhe0cmmhg"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_igit4"]
+[ext_resource type="PackedScene" uid="uid://b7iuhunh3a6jo" path="res://score_highlight.tscn" id="2_1m7mc"]
+
+[node name="main" type="Node"]
+script = ExtResource("1_igit4")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VFlowContainer" type="VFlowContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="newGame" type="HFlowContainer" parent="MarginContainer/VFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VFlowContainer/newGame"]
+layout_mode = 2
+text = "New Game"
+
+[node name="radiusOption" type="OptionButton" parent="MarginContainer/VFlowContainer/newGame"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 5
+popup/item_0/text = "7x7"
+popup/item_1/text = "9x9"
+popup/item_1/id = 1
+popup/item_2/text = "11x11"
+popup/item_2/id = 2
+popup/item_3/text = "13x13"
+popup/item_3/id = 3
+popup/item_4/text = "15x15"
+popup/item_4/id = 4
+
+[node name="expandOption" type="OptionButton" parent="MarginContainer/VFlowContainer/newGame"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 2
+item_count = 8
+popup/item_0/text = "30%"
+popup/item_1/text = "40%"
+popup/item_1/id = 1
+popup/item_2/text = "50%"
+popup/item_2/id = 2
+popup/item_3/text = "60%"
+popup/item_3/id = 3
+popup/item_4/text = "70%"
+popup/item_4/id = 4
+popup/item_5/text = "80%"
+popup/item_5/id = 5
+popup/item_6/text = "90%"
+popup/item_6/id = 6
+popup/item_7/text = "100%"
+popup/item_7/id = 7
+
+[node name="Button" type="Button" parent="MarginContainer/VFlowContainer/newGame"]
+layout_mode = 2
+text = "Restart"
+
+[node name="p1" type="HFlowContainer" parent="MarginContainer/VFlowContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VFlowContainer/p1"]
+layout_mode = 2
+text = "Player 1"
+
+[node name="shape1" type="OptionButton" parent="MarginContainer/VFlowContainer/p1"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "triangle"
+popup/item_1/text = "circle"
+popup/item_1/id = 1
+popup/item_2/text = "diamond"
+popup/item_2/id = 2
+
+[node name="color1" type="OptionButton" parent="MarginContainer/VFlowContainer/p1"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "red"
+popup/item_1/text = "green"
+popup/item_1/id = 1
+popup/item_2/text = "blue"
+popup/item_2/id = 2
+
+[node name="p2" type="HFlowContainer" parent="MarginContainer/VFlowContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VFlowContainer/p2"]
+layout_mode = 2
+text = "Player 2"
+
+[node name="shape2" type="OptionButton" parent="MarginContainer/VFlowContainer/p2"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 1
+item_count = 3
+popup/item_0/text = "triangle"
+popup/item_1/text = "circle"
+popup/item_1/id = 1
+popup/item_2/text = "diamond"
+popup/item_2/id = 2
+
+[node name="color2" type="OptionButton" parent="MarginContainer/VFlowContainer/p2"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 1
+item_count = 3
+popup/item_0/text = "red"
+popup/item_1/text = "green"
+popup/item_1/id = 1
+popup/item_2/text = "blue"
+popup/item_2/id = 2
+
+[node name="p3" type="HFlowContainer" parent="MarginContainer/VFlowContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VFlowContainer/p3"]
+layout_mode = 2
+text = "Player 3"
+
+[node name="shape3" type="OptionButton" parent="MarginContainer/VFlowContainer/p3"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 2
+item_count = 3
+popup/item_0/text = "triangle"
+popup/item_1/text = "circle"
+popup/item_1/id = 1
+popup/item_2/text = "diamond"
+popup/item_2/id = 2
+
+[node name="color3" type="OptionButton" parent="MarginContainer/VFlowContainer/p3"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 2
+item_count = 3
+popup/item_0/text = "red"
+popup/item_1/text = "green"
+popup/item_1/id = 1
+popup/item_2/text = "blue"
+popup/item_2/id = 2
+
+[node name="debug" type="Label" parent="MarginContainer/VFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="slots" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="score_highlight" parent="." instance=ExtResource("2_1m7mc")]
+modulate = Color(1, 0, 0, 0.501961)
+
+[connection signal="pressed" from="MarginContainer/VFlowContainer/newGame/Button" to="." method="_on_restart_pressed"]

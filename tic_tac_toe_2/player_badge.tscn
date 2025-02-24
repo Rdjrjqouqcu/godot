@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bl88sclg0tcw7"]
+
+[ext_resource type="Texture2D" uid="uid://t57ex1g46bhh" path="res://Triangle 2.png" id="1_6j32f"]
+[ext_resource type="Script" path="res://player_badge.gd" id="1_hyd2y"]
+[ext_resource type="Texture2D" uid="uid://c5715hpndqeyo" path="res://Circle 2.png" id="2_jisak"]
+[ext_resource type="Texture2D" uid="uid://dlerku74i1gcw" path="res://Square2.png" id="3_a54a2"]
+
+[node name="player_badge" type="Node2D"]
+script = ExtResource("1_hyd2y")
+
+[node name="triangle" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 1, 1)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("1_6j32f")
+
+[node name="circle" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("2_jisak")
+
+[node name="diamond" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+rotation = 0.785398
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_a54a2")

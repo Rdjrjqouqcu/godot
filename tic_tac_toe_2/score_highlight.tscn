@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7iuhunh3a6jo"]
+
+[ext_resource type="Texture2D" uid="uid://dcunswphm5pny" path="res://Semicircle.png" id="1_bc00w"]
+[ext_resource type="Script" path="res://score_highlight.gd" id="1_omodu"]
+[ext_resource type="Texture2D" uid="uid://b44uu0avt2pvb" path="res://Square.png" id="2_2bqx8"]
+
+[node name="score_highlight" type="Node2D"]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_omodu")
+
+[node name="slant3" type="Node2D" parent="."]
+visible = false
+
+[node name="left" type="Sprite2D" parent="slant3"]
+position = Vector2(-106, 256)
+rotation = -0.785398
+texture = ExtResource("1_bc00w")
+centered = false
+
+[node name="middle" type="Sprite2D" parent="slant3"]
+position = Vector2(437, 75)
+rotation = 0.785398
+scale = Vector2(2.828, 1)
+texture = ExtResource("2_2bqx8")
+centered = false
+
+[node name="right" type="Sprite2D" parent="slant3"]
+position = Vector2(618, 256)
+rotation = 2.35619
+texture = ExtResource("1_bc00w")
+centered = false
