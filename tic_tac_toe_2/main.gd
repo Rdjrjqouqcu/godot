@@ -34,10 +34,42 @@ var p1_move: Variant = null
 var p2_move: Variant = null
 var p3_move: Variant = null
 
+var p1_score: int = 0
+var p2_score: int = 0
+var p3_score: int = 0
+
+
+func _do_score(player: int, move: Vector2i) -> void:
+	#var tween = get_tree().create_tween()
+	
+	
+	if (slots[move] as Slot).is_overloaded():
+		return
+	
+	# horizontal
+	if true:
+		var left = move.x
+		for i in range(move.x, -radius, -1):
+			if not (slots[Vector2i(i, move.y)] as Slot).has_player(player):
+				break
+			left = i
+		var right = move.x
+		for i in range(move.x, radius, 1):
+			if not (slots[Vector2i(i, move.y)] as Slot).has_player(player):
+				break
+			right = i
+		print(left, " ", right)
+
+	pass
+
 func _do_moves() -> void:
 	for i in [p1_move, p2_move, p3_move]:
 		var s: Slot = slots[i]
 		s.play(p1_move == i, p2_move == i, p3_move == i, p1_selected, p2_selected, p3_selected)
+	_do_score(1, p1_move)
+	_do_score(2, p2_move)
+	_do_score(3, p3_move)
+	#sh.display(p1_move, p3_move, Constants.colors[p1_selected.y])
 	var enabled_count = 0
 	var playable_count = 0
 	for s: Slot in slots.values():
@@ -77,7 +109,6 @@ func _on_slot_clicked(loc: Vector2i) -> void:
 		turn += 1
 	if turn == 3:
 		turn = 0
-		sh.display(p1_move, p3_move, Constants.colors[p1_selected.y])
 		_do_moves()
 	_update_debug()
 
@@ -87,9 +118,9 @@ func _update_debug() -> void:
 		"radius: ", enabled_radius, "/", radius, "\n",
 		"expand: ", board_available, "/", expand_pct, "\n",
 		"moves(", turn, "): ", p1_move, " ", p2_move, " ", p3_move, "\n",
-		"score: ", 0, " ", 0, " ", 0, "\n",
+		"score: ", p1_score, " ", p2_score, " ", p3_score, "\n",
 	)
-	
+
 func _enable_radius() -> void:
 	for i in range(-enabled_radius, enabled_radius + 1):
 		for j in range(-enabled_radius, enabled_radius + 1):

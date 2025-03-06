@@ -42,10 +42,19 @@ func play(p1_here: bool, p2_here: bool, p3_here: bool, p1s: Vector2i, p2s: Vecto
 	else:
 		badge.set_first(p1, p2, p3, p1s, p2s, p3s)
 	_update_debug()
-	
+
 func player_count() -> int:
 	return ((1 if p1 else 0) + (1 if p2 else 0) + (1 if p3 else 0))
-	
+
+func has_player(player: int) -> bool:
+	if player == 1:
+		return p1
+	if player == 2:
+		return p2
+	if player == 3:
+		return p3
+	return false
+
 func is_overloaded() -> bool:
 	return player_count() >= 3
 
