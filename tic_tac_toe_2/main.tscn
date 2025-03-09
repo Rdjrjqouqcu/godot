@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://btepfhe0cmmhg"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_igit4"]
+[ext_resource type="Script" uid="uid://b8x87u7y3iwti" path="res://main.gd" id="1_igit4"]
 [ext_resource type="PackedScene" uid="uid://b7iuhunh3a6jo" path="res://score_highlight.tscn" id="2_1m7mc"]
 
 [node name="main" type="Node"]
