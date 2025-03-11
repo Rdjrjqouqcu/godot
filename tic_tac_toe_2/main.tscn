@@ -28,6 +28,7 @@ layout_mode = 2
 selected = 0
 item_count = 5
 popup/item_0/text = "7x7"
+popup/item_0/id = 0
 popup/item_1/text = "9x9"
 popup/item_1/id = 1
 popup/item_2/text = "11x11"
@@ -43,6 +44,7 @@ layout_mode = 2
 selected = 2
 item_count = 8
 popup/item_0/text = "30%"
+popup/item_0/id = 0
 popup/item_1/text = "40%"
 popup/item_1/id = 1
 popup/item_2/text = "50%"
@@ -75,6 +77,7 @@ layout_mode = 2
 selected = 0
 item_count = 3
 popup/item_0/text = "triangle"
+popup/item_0/id = 0
 popup/item_1/text = "circle"
 popup/item_1/id = 1
 popup/item_2/text = "diamond"
@@ -86,6 +89,7 @@ layout_mode = 2
 selected = 0
 item_count = 3
 popup/item_0/text = "red"
+popup/item_0/id = 0
 popup/item_1/text = "green"
 popup/item_1/id = 1
 popup/item_2/text = "blue"
@@ -98,6 +102,7 @@ disabled = true
 selected = 0
 item_count = 1
 popup/item_0/text = "player"
+popup/item_0/id = 0
 
 [node name="p2" type="HFlowContainer" parent="MarginContainer/VFlowContainer"]
 layout_mode = 2
@@ -112,6 +117,7 @@ layout_mode = 2
 selected = 1
 item_count = 3
 popup/item_0/text = "triangle"
+popup/item_0/id = 0
 popup/item_1/text = "circle"
 popup/item_1/id = 1
 popup/item_2/text = "diamond"
@@ -123,6 +129,7 @@ layout_mode = 2
 selected = 1
 item_count = 3
 popup/item_0/text = "red"
+popup/item_0/id = 0
 popup/item_1/text = "green"
 popup/item_1/id = 1
 popup/item_2/text = "blue"
@@ -134,6 +141,7 @@ layout_mode = 2
 selected = 0
 item_count = 1
 popup/item_0/text = "player"
+popup/item_0/id = 0
 
 [node name="p3" type="HFlowContainer" parent="MarginContainer/VFlowContainer"]
 layout_mode = 2
@@ -148,6 +156,7 @@ layout_mode = 2
 selected = 2
 item_count = 3
 popup/item_0/text = "triangle"
+popup/item_0/id = 0
 popup/item_1/text = "circle"
 popup/item_1/id = 1
 popup/item_2/text = "diamond"
@@ -159,6 +168,7 @@ layout_mode = 2
 selected = 2
 item_count = 3
 popup/item_0/text = "red"
+popup/item_0/id = 0
 popup/item_1/text = "green"
 popup/item_1/id = 1
 popup/item_2/text = "blue"
@@ -170,6 +180,7 @@ layout_mode = 2
 selected = 0
 item_count = 1
 popup/item_0/text = "player"
+popup/item_0/id = 0
 
 [node name="debug" type="Label" parent="MarginContainer/VFlowContainer"]
 unique_name_in_owner = true
@@ -181,4 +192,8 @@ unique_name_in_owner = true
 [node name="score_highlight" parent="." instance=ExtResource("2_1m7mc")]
 modulate = Color(1, 0, 0, 0.501961)
 
+[node name="score_timer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="pressed" from="MarginContainer/VFlowContainer/newGame/Button" to="." method="_on_restart_pressed"]
+[connection signal="timeout" from="score_timer" to="." method="_score_queue_pop"]
