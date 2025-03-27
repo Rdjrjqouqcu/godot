@@ -1,18 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://btepfhe0cmmhg"]
+[gd_scene load_steps=4 format=3 uid="uid://btepfhe0cmmhg"]
 
 [ext_resource type="Script" uid="uid://b8x87u7y3iwti" path="res://main.gd" id="1_igit4"]
 [ext_resource type="PackedScene" uid="uid://b7iuhunh3a6jo" path="res://score_highlight.tscn" id="2_1m7mc"]
+[ext_resource type="PackedScene" uid="uid://bb7xw2i644bcc" path="res://score_display.tscn" id="2_h2yge"]
 
 [node name="main" type="Node"]
 script = ExtResource("1_igit4")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 128.0
+grow_horizontal = 2
 
 [node name="VFlowContainer" type="VFlowContainer" parent="MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
 
 [node name="newGame" type="HFlowContainer" parent="MarginContainer/VFlowContainer"]
 layout_mode = 2
@@ -181,6 +183,18 @@ selected = 0
 item_count = 1
 popup/item_0/text = "player"
 popup/item_0/id = 0
+
+[node name="sd1" parent="MarginContainer/VFlowContainer" instance=ExtResource("2_h2yge")]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+
+[node name="sd2" parent="MarginContainer/VFlowContainer" instance=ExtResource("2_h2yge")]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+
+[node name="sd3" parent="MarginContainer/VFlowContainer" instance=ExtResource("2_h2yge")]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
 
 [node name="debug" type="Label" parent="MarginContainer/VFlowContainer"]
 unique_name_in_owner = true
