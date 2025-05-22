@@ -1,48 +1,58 @@
-[gd_scene format=3 uid="uid://t0v4u8rahv0k"]
+[gd_scene load_steps=4 format=3 uid="uid://t0v4u8rahv0k"]
 
-[node name="main" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[ext_resource type="Script" uid="uid://ccpy0g44tv6rx" path="res://script/inventory.gd" id="1_itxqv"]
+[ext_resource type="Script" uid="uid://lf76578nssvb" path="res://script/main.gd" id="1_v0l8b"]
+[ext_resource type="PackedScene" uid="uid://nw3gv6bwma16" path="res://scene/plot.tscn" id="2_wp4xf"]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="main" type="Node2D"]
+script = ExtResource("1_v0l8b")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="field" type="HFlowContainer" parent="PanelContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-offset_right = 1152.0
+size_flags_horizontal = 3
+
+[node name="Plot" parent="PanelContainer/field" instance=ExtResource("2_wp4xf")]
+
+[node name="Plot2" parent="PanelContainer/field" instance=ExtResource("2_wp4xf")]
+
+[node name="Plot3" parent="PanelContainer/field" instance=ExtResource("2_wp4xf")]
+
+[node name="Plot4" parent="PanelContainer/field" instance=ExtResource("2_wp4xf")]
+
+[node name="Plot5" parent="PanelContainer/field" instance=ExtResource("2_wp4xf")]
+
+[node name="Plot6" parent="PanelContainer/field" instance=ExtResource("2_wp4xf")]
+
+[node name="Plot7" parent="PanelContainer/field" instance=ExtResource("2_wp4xf")]
+
+[node name="Plot8" parent="PanelContainer/field" instance=ExtResource("2_wp4xf")]
+
+[node name="Plot9" parent="PanelContainer/field" instance=ExtResource("2_wp4xf")]
+
+[node name="Plot10" parent="PanelContainer/field" instance=ExtResource("2_wp4xf")]
+
+[node name="inv" type="PanelContainer" parent="."]
+visible = false
+offset_right = 200.0
 offset_bottom = 648.0
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="field" type="HFlowContainer" parent="HBoxContainer/PanelContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer"]
-layout_mode = 2
-
-[node name="actions" type="VBoxContainer" parent="HBoxContainer/PanelContainer2"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-
-[node name="PanelContainer3" type="PanelContainer" parent="HBoxContainer"]
-layout_mode = 2
-
-[node name="inventoryBox" type="VBoxContainer" parent="HBoxContainer/PanelContainer3"]
+[node name="inventoryBox" type="VBoxContainer" parent="inv"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer3/inventoryBox"]
+[node name="Label" type="Label" parent="inv/inventoryBox"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Inventory"
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer3/inventoryBox"]
+[node name="MarginContainer" type="MarginContainer" parent="inv/inventoryBox"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 10
@@ -50,29 +60,92 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/PanelContainer3/inventoryBox/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="inv/inventoryBox/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="inventory" type="VBoxContainer" parent="HBoxContainer/PanelContainer3/inventoryBox/MarginContainer/ScrollContainer"]
+[node name="inventory" type="VBoxContainer" parent="inv/inventoryBox/MarginContainer/ScrollContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+script = ExtResource("1_itxqv")
 
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer3/inventoryBox/MarginContainer/ScrollContainer/inventory"]
+[node name="Label" type="Label" parent="inv/inventoryBox/MarginContainer/ScrollContainer/inventory"]
 layout_mode = 2
 text = "A"
 
-[node name="Label2" type="Label" parent="HBoxContainer/PanelContainer3/inventoryBox/MarginContainer/ScrollContainer/inventory"]
+[node name="Label2" type="Label" parent="inv/inventoryBox/MarginContainer/ScrollContainer/inventory"]
 layout_mode = 2
 text = "B"
 
-[node name="Label3" type="Label" parent="HBoxContainer/PanelContainer3/inventoryBox/MarginContainer/ScrollContainer/inventory"]
+[node name="Label3" type="Label" parent="inv/inventoryBox/MarginContainer/ScrollContainer/inventory"]
 layout_mode = 2
 text = "C"
 
-[node name="Label4" type="Label" parent="HBoxContainer/PanelContainer3/inventoryBox/MarginContainer/ScrollContainer/inventory"]
+[node name="Label4" type="Label" parent="inv/inventoryBox/MarginContainer/ScrollContainer/inventory"]
 layout_mode = 2
 text = "D"
 
-[node name="Label5" type="Label" parent="HBoxContainer/PanelContainer3/inventoryBox/MarginContainer/ScrollContainer/inventory"]
+[node name="Label5" type="Label" parent="inv/inventoryBox/MarginContainer/ScrollContainer/inventory"]
 layout_mode = 2
 text = "E"
+
+[node name="selected_actions" type="VBoxContainer" parent="."]
+visible = false
+offset_right = 200.0
+offset_bottom = 648.0
+
+[node name="PanelContainer2" type="PanelContainer" parent="selected_actions"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="actions" type="VBoxContainer" parent="selected_actions/PanelContainer2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="selected_actions/PanelContainer2/actions"]
+layout_mode = 2
+text = "Selected"
+horizontal_alignment = 1
+
+[node name="info" type="Label" parent="selected_actions/PanelContainer2/actions"]
+layout_mode = 2
+
+[node name="debug" type="Label" parent="selected_actions/PanelContainer2/actions"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PanelContainer3" type="PanelContainer" parent="selected_actions"]
+layout_mode = 2
+
+[node name="buttons" type="VBoxContainer" parent="selected_actions/PanelContainer3"]
+custom_minimum_size = Vector2(200, 240)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="selected_actions/PanelContainer3/buttons"]
+layout_mode = 2
+text = "Actions"
+horizontal_alignment = 1
+
+[node name="ButtonA" type="Button" parent="selected_actions/PanelContainer3/buttons"]
+layout_mode = 2
+text = "Button A"
+
+[node name="ButtonB" type="Button" parent="selected_actions/PanelContainer3/buttons"]
+layout_mode = 2
+text = "Button B"
+
+[node name="ButtonC" type="Button" parent="selected_actions/PanelContainer3/buttons"]
+layout_mode = 2
+text = "Button C"
+
+[node name="ButtonD" type="Button" parent="selected_actions/PanelContainer3/buttons"]
+layout_mode = 2
+text = "Button D"
+
+[node name="ButtonE" type="Button" parent="selected_actions/PanelContainer3/buttons"]
+layout_mode = 2
+text = "Button E"
+
+[node name="ButtonF" type="Button" parent="selected_actions/PanelContainer3/buttons"]
+layout_mode = 2
+text = "Button F"
