@@ -11,8 +11,21 @@ config_version=5
 [application]
 
 config/name="brick_break"
+run/main_scene="uid://d2s0nj8jnqiu3"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Loggie="*res://addons/loggie/loggie.gd"
+
+[display]
+
+window/size/viewport_height=1152
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/loggie/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [physics]
 
