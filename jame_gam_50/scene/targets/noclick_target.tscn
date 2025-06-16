@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://67olx2npa7st"]
+
+[ext_resource type="Texture2D" uid="uid://1lx5588w0857" path="res://art/personal/square.032.png" id="1_j6xyo"]
+[ext_resource type="Script" uid="uid://mi57m4wb0geu" path="res://scene/targets/noclick_target.gd" id="2_j6xyo"]
+
+[node name="noclick_target" type="TextureRect"]
+self_modulate = Color(1, 0, 0, 0.501961)
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("1_j6xyo")
+script = ExtResource("2_j6xyo")
+
+[node name="count" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "1/4"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

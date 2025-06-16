@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://r7b4ykm6jufi"]
 
-[ext_resource type="Texture2D" uid="uid://cmegh1nubynga" path="res://art/square.016.png" id="1_m7nv7"]
+[ext_resource type="Texture2D" uid="uid://cmegh1nubynga" path="res://art/personal/square.016.png" id="1_m7nv7"]
 
 [node name="frame" type="Node2D"]
 modulate = Color(0.501961, 0.501961, 0.501961, 1)

@@ -1,0 +1,106 @@
+[gd_scene load_steps=6 format=3 uid="uid://duon3fpniyk4u"]
+
+[ext_resource type="Script" uid="uid://bk8i4cfqakccs" path="res://scene/puzzles/circuit_2x_1.gd" id="1_hjvwf"]
+[ext_resource type="PackedScene" uid="uid://r7b4ykm6jufi" path="res://scene/meta/frame.tscn" id="1_kfo6q"]
+[ext_resource type="Texture2D" uid="uid://ddo2blxhm6txp" path="res://art/openGameArt/printed_circuit_board_texture.png" id="2_hjvwf"]
+[ext_resource type="Script" uid="uid://7hhp7pob4eg6" path="res://scene/meta/interactable.gd" id="5_acb45"]
+[ext_resource type="PackedScene" uid="uid://dvibv018xsueg" path="res://scene/meta/indicator.tscn" id="6_ke28u"]
+
+[node name="circuit_2x1" type="Node2D"]
+script = ExtResource("1_hjvwf")
+
+[node name="frames" type="Node2D" parent="."]
+
+[node name="left" parent="frames" instance=ExtResource("1_kfo6q")]
+
+[node name="right" parent="frames" instance=ExtResource("1_kfo6q")]
+position = Vector2(120, 0)
+
+[node name="board" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_hjvwf")
+centered = false
+offset = Vector2(151, 40)
+
+[node name="interactable" type="Node2D" parent="."]
+script = ExtResource("5_acb45")
+
+[node name="indicator1" parent="interactable" instance=ExtResource("6_ke28u")]
+position = Vector2(37, 11)
+click_weight = 3
+mouse_motion_count = 100
+
+[node name="indicator2" parent="interactable" instance=ExtResource("6_ke28u")]
+position = Vector2(70, 11)
+click_weight = 3
+mouse_motion_count = 100
+
+[node name="indicator3" parent="interactable" instance=ExtResource("6_ke28u")]
+position = Vector2(103, 11)
+click_weight = 3
+mouse_motion_count = 100
+
+[node name="indicator4" parent="interactable" instance=ExtResource("6_ke28u")]
+position = Vector2(136, 11)
+click_weight = 3
+mouse_motion_count = 100
+
+[node name="indicator5" parent="interactable" instance=ExtResource("6_ke28u")]
+position = Vector2(169, 11)
+click_weight = 3
+mouse_motion_count = 100
+
+[node name="indicator6" parent="interactable" instance=ExtResource("6_ke28u")]
+position = Vector2(37, 44)
+click_weight = 3
+mouse_motion_count = 100
+
+[node name="indicator7" parent="interactable" instance=ExtResource("6_ke28u")]
+position = Vector2(70, 44)
+click_weight = 3
+mouse_motion_count = 100
+
+[node name="indicator8" parent="interactable" instance=ExtResource("6_ke28u")]
+position = Vector2(103, 44)
+click_weight = 3
+mouse_motion_count = 100
+mouse_motion_weight = 4
+
+[node name="indicator9" parent="interactable" instance=ExtResource("6_ke28u")]
+position = Vector2(136, 44)
+click_weight = 3
+mouse_motion_count = 100
+
+[node name="indicator10" parent="interactable" instance=ExtResource("6_ke28u")]
+position = Vector2(169, 44)
+click_weight = 3
+mouse_motion_count = 100
+
+[node name="indicator11" parent="interactable" instance=ExtResource("6_ke28u")]
+position = Vector2(37, 77)
+click_weight = 3
+mouse_motion_count = 100
+
+[node name="indicator12" parent="interactable" instance=ExtResource("6_ke28u")]
+position = Vector2(70, 77)
+click_weight = 3
+mouse_motion_count = 100
+mouse_motion_weight = 2
+
+[node name="indicator13" parent="interactable" instance=ExtResource("6_ke28u")]
+position = Vector2(103, 77)
+click_weight = 3
+mouse_motion_count = 100
+mouse_motion_weight = 2
+
+[node name="indicator14" parent="interactable" instance=ExtResource("6_ke28u")]
+position = Vector2(136, 77)
+click_weight = 3
+mouse_motion_count = 100
+mouse_motion_weight = 2
+
+[node name="indicator15" parent="interactable" instance=ExtResource("6_ke28u")]
+position = Vector2(169, 77)
+click_weight = 3
+mouse_motion_count = 100
+mouse_motion_weight = 2
