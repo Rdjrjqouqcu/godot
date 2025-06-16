@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://r7b4ykm6jufi"]
+
+[ext_resource type="Texture2D" uid="uid://cmegh1nubynga" path="res://art/square.016.png" id="1_m7nv7"]
+
+[node name="frame" type="Node2D"]
+modulate = Color(0.501961, 0.501961, 0.501961, 1)
+
+[node name="left" type="Sprite2D" parent="."]
+position = Vector2(0, 60)
+scale = Vector2(0.125, 7.5)
+texture = ExtResource("1_m7nv7")
+
+[node name="top" type="Sprite2D" parent="."]
+position = Vector2(60, 0)
+scale = Vector2(7.5, 0.125)
+texture = ExtResource("1_m7nv7")
+
+[node name="right" type="Sprite2D" parent="."]
+position = Vector2(120, 60)
+scale = Vector2(0.125, 7.5)
+texture = ExtResource("1_m7nv7")
+
+[node name="bottom" type="Sprite2D" parent="."]
+position = Vector2(60, 120)
+scale = Vector2(7.5, 0.125)
+texture = ExtResource("1_m7nv7")
