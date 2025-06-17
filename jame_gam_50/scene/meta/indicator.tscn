@@ -8,5 +8,3 @@ modulate = Color(1, 1, 1, 0.501961)
 texture = ExtResource("1_bg6gx")
 centered = false
 script = ExtResource("2_u2b24")
-click_weight = 1
-dont_click_weight = 1

@@ -10,7 +10,7 @@ class_name InteractionIndicator
 @export var dont_click_weight: int = 0
 
 @export_category("mouse_motion")
-@export var mouse_motion_count: int = 10
+@export var mouse_motion_count: int = 100
 @export var mouse_motion_weight: int = 0
 
 
