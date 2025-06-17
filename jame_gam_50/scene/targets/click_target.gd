@@ -3,6 +3,7 @@ class_name TargetClick
 
 const CLICK_TARGET = preload("res://scene/targets/click_target.tscn")
 @onready var count: Label = $count
+@onready var progress: ProgressBar = $progress
 
 @export var target_count: int = 0
 @export var click_count: int = 0
@@ -21,11 +22,16 @@ static func create_target(location: Vector2i, tscale: Vector2i, difficulty: int,
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	count.text = str(click_count) + "/" + str(target_count)
+	progress.set_max(target_count)
+	progress.set_value(click_count)
+	if target_count == 1:
+		progress.visible = false
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 			click_count += 1
+			progress.set_value(click_count)
 			count.text = str(click_count) + "/" + str(target_count)
 			if click_count >= target_count:
 				complete.emit()

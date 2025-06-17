@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bfwcfwdtyv60q" path="res://scene/meta/indicator.gd" id="2_u2b24"]
 
 [node name="indicator" type="Sprite2D"]
-modulate = Color(1, 1, 1, 0.501961)
+self_modulate = Color(1, 1, 1, 0.501961)
 texture = ExtResource("1_bg6gx")
 centered = false
 script = ExtResource("2_u2b24")

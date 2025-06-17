@@ -3,6 +3,7 @@ class_name TargetMove
 
 const MOVE_TARGET = preload("res://scene/targets/move_target.tscn")
 @onready var count: Label = $count
+@onready var progress: ProgressBar = $progress
 
 @export var target_count: int = 0
 @export var move_count: float = 0
@@ -21,11 +22,16 @@ static func create_target(location: Vector2i, tscale: Vector2i, difficulty: int,
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	count.text = str(move_count) + "/" + str(target_count)
+	progress.set_max(target_count)
+	progress.set_value(move_count)
+	if target_count == 1:
+		progress.visible = false
 
 func _on_gui_input(event: InputEvent) -> void:\
 	if event is InputEventMouseMotion:
 		move_count += abs(event.relative.x)
 		move_count += abs(event.relative.y)
+		progress.set_value(move_count)
 		count.text = str(int(move_count)) + "/" + str(target_count)
 		if move_count >= target_count:
 			complete.emit()

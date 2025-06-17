@@ -24,6 +24,7 @@ offset = Vector2(151, 40)
 
 [node name="interactable" type="Node2D" parent="."]
 script = ExtResource("5_acb45")
+odds = 0.75
 
 [node name="indicator1" parent="interactable" instance=ExtResource("6_ke28u")]
 position = Vector2(37, 11)
