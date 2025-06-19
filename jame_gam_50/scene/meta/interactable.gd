@@ -53,7 +53,7 @@ func _ready() -> void:
 		# Loggie.info(data)
 		if randf() <= odds:
 			var weight = randi_range(0,data.interaction_weight - 1)
-			Loggie.info(weight, data.interactions, get_parent().position)
+			#Loggie.info(weight, data.interactions, get_parent().position)
 			for interaction: InteractionData in data.interactions:
 				weight -= interaction.weight
 				if weight < 0:

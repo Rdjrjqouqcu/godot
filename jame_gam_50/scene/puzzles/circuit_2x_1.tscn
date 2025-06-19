@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://duon3fpniyk4u"]
+[gd_scene load_steps=7 format=3 uid="uid://duon3fpniyk4u"]
 
 [ext_resource type="Script" uid="uid://bk8i4cfqakccs" path="res://scene/puzzles/circuit_2x_1.gd" id="1_hjvwf"]
 [ext_resource type="PackedScene" uid="uid://r7b4ykm6jufi" path="res://scene/meta/frame.tscn" id="1_kfo6q"]
 [ext_resource type="Texture2D" uid="uid://ddo2blxhm6txp" path="res://art/openGameArt/printed_circuit_board_texture.png" id="2_hjvwf"]
+[ext_resource type="PackedScene" uid="uid://fpnp36yqbj4i" path="res://scene/meta/fail_timer.tscn" id="4_5usod"]
 [ext_resource type="Script" uid="uid://7hhp7pob4eg6" path="res://scene/meta/interactable.gd" id="5_acb45"]
 [ext_resource type="PackedScene" uid="uid://dvibv018xsueg" path="res://scene/meta/indicator.tscn" id="6_ke28u"]
 
@@ -21,6 +22,9 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_hjvwf")
 centered = false
 offset = Vector2(151, 40)
+
+[node name="failTimer" parent="." instance=ExtResource("4_5usod")]
+offset_right = 240.0
 
 [node name="interactable" type="Node2D" parent="."]
 script = ExtResource("5_acb45")

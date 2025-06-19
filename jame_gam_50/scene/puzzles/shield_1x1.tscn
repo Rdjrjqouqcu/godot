@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0cstody6c5aj"]
+[gd_scene load_steps=8 format=3 uid="uid://d0cstody6c5aj"]
 
 [ext_resource type="Script" uid="uid://b0x6atvc3fxer" path="res://scene/puzzles/shield_1x_1.gd" id="1_lpx6g"]
 [ext_resource type="PackedScene" uid="uid://r7b4ykm6jufi" path="res://scene/meta/frame.tscn" id="2_i1fd0"]
 [ext_resource type="Texture2D" uid="uid://bxc0vvyk23wko" path="res://art/lpc Farming tilesets/turtleshell_front.png" id="3_lpx6g"]
 [ext_resource type="Script" uid="uid://7hhp7pob4eg6" path="res://scene/meta/interactable.gd" id="4_or1de"]
 [ext_resource type="PackedScene" uid="uid://dvibv018xsueg" path="res://scene/meta/indicator.tscn" id="5_utto8"]
+[ext_resource type="PackedScene" uid="uid://fpnp36yqbj4i" path="res://scene/meta/fail_timer.tscn" id="6_i1fd0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i1fd0"]
 atlas = ExtResource("3_lpx6g")
@@ -16,6 +17,8 @@ script = ExtResource("1_lpx6g")
 [node name="frames" type="Node2D" parent="."]
 
 [node name="left" parent="frames" instance=ExtResource("2_i1fd0")]
+
+[node name="failTimer" parent="." instance=ExtResource("6_i1fd0")]
 
 [node name="shield" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_i1fd0")

@@ -2,6 +2,7 @@ extends PuzzleBase
 class_name PuzzleCircuit2x1
 
 const CIRCUIT_2X_1 = preload("res://scene/puzzles/circuit_2x_1.tscn")
+@onready var fail_timer: FailTimer = $failTimer
 
 static func create_circuit_2x1(location: Vector2i) -> PuzzleCircuit2x1:
 	var puzzle = CIRCUIT_2X_1.instantiate()
