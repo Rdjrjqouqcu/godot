@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://r7b4ykm6jufi"]
+[gd_scene load_steps=3 format=3 uid="uid://r7b4ykm6jufi"]
 
 [ext_resource type="Texture2D" uid="uid://cmegh1nubynga" path="res://art/personal/square.016.png" id="1_m7nv7"]
+[ext_resource type="Script" uid="uid://44wtiv7yg1la" path="res://scene/meta/frame.gd" id="1_mweoa"]
 
 [node name="frame" type="Node2D"]
 modulate = Color(0.501961, 0.501961, 0.501961, 1)
+script = ExtResource("1_mweoa")
 
 [node name="left" type="Sprite2D" parent="."]
 position = Vector2(0, 60)
@@ -24,3 +26,8 @@ texture = ExtResource("1_m7nv7")
 position = Vector2(60, 120)
 scale = Vector2(7.5, 0.125)
 texture = ExtResource("1_m7nv7")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0

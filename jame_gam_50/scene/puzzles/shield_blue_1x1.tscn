@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://c2ks62ord7bwi"]
+
+[ext_resource type="Script" uid="uid://b0x6atvc3fxer" path="res://scene/puzzles/shield.gd" id="1_otw4j"]
+[ext_resource type="PackedScene" uid="uid://r7b4ykm6jufi" path="res://scene/meta/frame.tscn" id="2_c4o2u"]
+[ext_resource type="PackedScene" uid="uid://fpnp36yqbj4i" path="res://scene/meta/fail_timer.tscn" id="3_xcbos"]
+[ext_resource type="Texture2D" uid="uid://cn35ibyj6plmm" path="res://art/lpc Farming tilesets/magic_iceshield_sheet.png" id="4_otw4j"]
+[ext_resource type="Script" uid="uid://7hhp7pob4eg6" path="res://scene/meta/interactable.gd" id="5_qsreu"]
+[ext_resource type="PackedScene" uid="uid://dvibv018xsueg" path="res://scene/meta/indicator.tscn" id="6_sfmbg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4o2u"]
+atlas = ExtResource("4_otw4j")
+region = Rect2(404, 280, 76, 75)
+
+[node name="shield_blue_1x1" type="Node2D"]
+script = ExtResource("1_otw4j")
+
+[node name="frames" type="Node2D" parent="."]
+
+[node name="left" parent="frames" instance=ExtResource("2_c4o2u")]
+
+[node name="failTimer" parent="." instance=ExtResource("3_xcbos")]
+time_remaining = 4.0
+
+[node name="shield" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_c4o2u")
+offset = Vector2(60, 60)
+
+[node name="interactable" type="Node2D" parent="."]
+script = ExtResource("5_qsreu")
+odds = 1.0
+
+[node name="indicator1" parent="interactable" instance=ExtResource("6_sfmbg")]
+position = Vector2(12, 12)
+scale = Vector2(3, 3)
+mouse_motion_weight = 1

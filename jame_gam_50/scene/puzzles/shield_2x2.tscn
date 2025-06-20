@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://pw6vds1kyitm"]
+
+[ext_resource type="Script" uid="uid://b0x6atvc3fxer" path="res://scene/puzzles/shield.gd" id="1_858du"]
+[ext_resource type="PackedScene" uid="uid://r7b4ykm6jufi" path="res://scene/meta/frame.tscn" id="2_r30o8"]
+[ext_resource type="PackedScene" uid="uid://fpnp36yqbj4i" path="res://scene/meta/fail_timer.tscn" id="3_amqgj"]
+[ext_resource type="Texture2D" uid="uid://bxc0vvyk23wko" path="res://art/lpc Farming tilesets/turtleshell_front.png" id="4_mi72q"]
+[ext_resource type="Script" uid="uid://7hhp7pob4eg6" path="res://scene/meta/interactable.gd" id="5_hwwti"]
+[ext_resource type="PackedScene" uid="uid://dvibv018xsueg" path="res://scene/meta/indicator.tscn" id="6_rli1a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1fd0"]
+atlas = ExtResource("4_mi72q")
+region = Rect2(408, 280, 68, 76)
+
+[node name="shield_2x2" type="Node2D"]
+script = ExtResource("1_858du")
+
+[node name="frames" type="Node2D" parent="."]
+
+[node name="left" parent="frames" instance=ExtResource("2_r30o8")]
+
+[node name="right" parent="frames" instance=ExtResource("2_r30o8")]
+position = Vector2(120, 0)
+
+[node name="left2" parent="frames" instance=ExtResource("2_r30o8")]
+position = Vector2(0, 120)
+
+[node name="right2" parent="frames" instance=ExtResource("2_r30o8")]
+position = Vector2(120, 120)
+
+[node name="failTimer" parent="." instance=ExtResource("3_amqgj")]
+offset_top = 232.0
+offset_right = 240.0
+offset_bottom = 240.0
+
+[node name="shield" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_i1fd0")
+offset = Vector2(60, 60)
+
+[node name="interactable" type="Node2D" parent="."]
+script = ExtResource("5_hwwti")
+odds = 1.0
+
+[node name="indicator1" parent="interactable" instance=ExtResource("6_rli1a")]
+position = Vector2(24, 24)
+scale = Vector2(6, 6)
+click_count = 5
+click_weight = 1
