@@ -13,11 +13,8 @@ var root: Main
 
 func can_fit(loc: Vector2i, board: Dictionary[Vector2i, bool]) -> bool:
 	var ret = true
-	#Loggie.info("start ", loc)
 	for off in offsets:
-		#Loggie.info(ret, !board.get(Vector2i(loc.x + off.x, loc.y + off.y), true))
 		ret = ret && !board.get(Vector2i(loc.x + off.x, loc.y + off.y), true)
-	#Loggie.info("end ", ret)
 	return ret
 
 static func get_new() -> PuzzleBase:

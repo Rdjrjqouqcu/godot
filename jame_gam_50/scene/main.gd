@@ -8,12 +8,15 @@ class_name Main
 const FRAME = preload("res://scene/meta/frame.tscn")
 @onready var frames: Node2D = $frames
 
+var started: bool = false
+var start_delay = 50
 var collected_chips = 0
 var total_chips = 10
 var remaining_population = 1_000_000_000
 var time_elapsed_ms = 0
 var circuit_cooldown_ms = 500
 var puzzle_cooldown_ms = 0
+const spawn_fail_cooldown_ms = 10
 
 func add_circuit() -> void:
 	collected_chips += 1
@@ -122,8 +125,19 @@ func _ready() -> void:
 	board.set(Vector2i(0, 0), true)
 	board.set(Vector2i(1, 0), true)
 	board.set(Vector2i(2, 0), true)
+	redraw_text()
+
+func _on_start_pressed() -> void:
+	started = true
+	$startMenu.queue_free()
 
 func _process(delta: float) -> void:
+	if !started:
+		return
+	if start_delay >= 0:
+		start_delay -= delta * 100
+		return
+
 	var prev_ms = time_elapsed_ms
 	time_elapsed_ms += delta * 100
 	circuit_cooldown_ms -= delta * 100
@@ -134,5 +148,10 @@ func _process(delta: float) -> void:
 		if !is_circuit_active:
 			if _spawn_circuit_puzzle():
 				return
+			circuit_cooldown_ms = spawn_fail_cooldown_ms
+			#Loggie.info("circuit spawn failed")
 	if puzzle_cooldown_ms <= 0:
-		_spawn_noncirc_puzzle()
+		if _spawn_noncirc_puzzle():
+			return
+		puzzle_cooldown_ms = spawn_fail_cooldown_ms
+		#Loggie.info("puzzle spawn failed")
