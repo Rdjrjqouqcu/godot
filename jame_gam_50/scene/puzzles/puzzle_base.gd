@@ -9,6 +9,9 @@ var spawn_cooldown_max: int = 100
 var complete_cooldown_min: int = -1
 var complete_cooldown_max: int = -1
 
+var pop_loss_min: int = 1_000
+var pop_loss_max: int = 10_000
+
 var root: Main
 
 func can_fit(loc: Vector2i, board: Dictionary[Vector2i, bool]) -> bool:
@@ -39,4 +42,5 @@ func pass_puzzle() -> void:
 func fail_puzzle() -> void:
 	#Loggie.info("fail", self.position / 120)
 	root.mark_free_puzzle(locations, is_circuit, randi_range(complete_cooldown_min, complete_cooldown_max))
+	root.lose_population(randi_range(pop_loss_min, pop_loss_max))
 	queue_free()

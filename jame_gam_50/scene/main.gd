@@ -12,7 +12,7 @@ var started: bool = false
 var start_delay = 50
 var collected_chips = 0
 var total_chips = 10
-var remaining_population = 1_000_000_000
+var remaining_population = 100_000_000
 var time_elapsed_ms = 0
 var circuit_cooldown_ms = 500
 var puzzle_cooldown_ms = 0
@@ -66,6 +66,9 @@ func mark_free_puzzle(locs: Array[Vector2i], is_circuit: bool, spawn_cooldown: i
 	for loc in locs:
 		board.set(loc, false)
 
+func lose_population(amount: int):
+	remaining_population -= amount
+
 func _rand_coords() -> Vector2i:
 	return Vector2i(randi_range(0,15), randi_range(0,8))
 func _spawn_circuit_puzzle() -> bool:
@@ -79,23 +82,30 @@ func _spawn_circuit_puzzle() -> bool:
 		p.init(c, self)
 		return true
 	return false
+const total_puzzles = 18
 func _get_noncirc_puzzle() -> PuzzleBase:
-	const total = 12
-	var r = randi_range(0, total - 1)
+	#return PuzzleInit.get_new_red()
+	var r = randi_range(0, total_puzzles - 1)
 	r -= 6
 	if r < 0:
-		return PuzzleShield.get_new_green()
+		return PuzzleInit.get_new_green()
 	r -= 2
 	if r < 0:
-		return PuzzleShield.get_new_green2()
+		return PuzzleInit.get_new_green2()
 	r -= 3
 	if r < 0:
-		return PuzzleShield.get_new_blue()
+		return PuzzleInit.get_new_blue()
 	r -= 1
 	if r < 0:
-		return PuzzleShield.get_new_blue2()
+		return PuzzleInit.get_new_blue2()
+	r -= 3
+	if r < 0:
+		return PuzzleInit.get_new_red()
+	r -= 3
+	if r < 0:
+		return PuzzleInit.get_new_meteor()
 	Loggie.error("Random Puzzle selection failed using default: ", r)
-	return PuzzleShield.get_new_green()
+	return PuzzleInit.get_new_green()
 func _spawn_noncirc_puzzle() -> bool:
 	var c = _rand_coords()
 	var p = _get_noncirc_puzzle()
@@ -138,7 +148,6 @@ func _process(delta: float) -> void:
 		start_delay -= delta * 100
 		return
 
-	var prev_ms = time_elapsed_ms
 	time_elapsed_ms += delta * 100
 	circuit_cooldown_ms -= delta * 100
 	puzzle_cooldown_ms -= delta * 100
