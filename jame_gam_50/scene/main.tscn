@@ -308,7 +308,7 @@ text = "1 / 1"
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 4
-disabled = true
-text = "Restart (NotYetImplemented, refresh instead)"
+text = "Restart"
 
 [connection signal="pressed" from="startMenu/VBoxContainer/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="endScreen/VBoxContainer/restart" to="." method="_on_restart_pressed"]
