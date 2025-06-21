@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://d0cstody6c5aj"]
 
-[ext_resource type="Script" uid="uid://b0x6atvc3fxer" path="res://scene/puzzles/basic_init.gd" id="1_lpx6g"]
+[ext_resource type="Script" uid="uid://b0x6atvc3fxer" path="res://scene/puzzles/basic.gd" id="1_lpx6g"]
 [ext_resource type="PackedScene" uid="uid://r7b4ykm6jufi" path="res://scene/meta/frame.tscn" id="2_i1fd0"]
 [ext_resource type="Texture2D" uid="uid://bxc0vvyk23wko" path="res://art/lpc Farming tilesets/turtleshell_front.png" id="3_lpx6g"]
 [ext_resource type="Script" uid="uid://7hhp7pob4eg6" path="res://scene/meta/interactable.gd" id="4_or1de"]

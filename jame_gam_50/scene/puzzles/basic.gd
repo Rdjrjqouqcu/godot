@@ -22,15 +22,15 @@ static func get_new_blue() -> PuzzleBase:
 	puzzle.spawn_cooldown_min = 25
 	puzzle.spawn_cooldown_max = 50
 	puzzle.pop_loss_min = 1_000
-	puzzle.pop_loss_max = 10_000
+	puzzle.pop_loss_max = 5_000
 	return puzzle
 
 static func get_new_red() -> PuzzleBase:
 	var puzzle = RED.instantiate()
 	puzzle.spawn_cooldown_min = 25
 	puzzle.spawn_cooldown_max = 50
-	puzzle.pop_loss_min = 5_000
-	puzzle.pop_loss_max = 10_000
+	puzzle.pop_loss_min = 1_000
+	puzzle.pop_loss_max = 5_000
 	return puzzle
 
 static func get_new_green2() -> PuzzleBase:
@@ -56,6 +56,6 @@ static func get_new_meteor() -> PuzzleBase:
 	puzzle.offsets = [Vector2i.ZERO, Vector2i(0,1)] as Array[Vector2i]
 	puzzle.spawn_cooldown_min = 75
 	puzzle.spawn_cooldown_max = 150
-	puzzle.pop_loss_min = 200_000
-	puzzle.pop_loss_max = 1_000_000
+	puzzle.pop_loss_min = 50_000
+	puzzle.pop_loss_max = 250_000
 	return puzzle

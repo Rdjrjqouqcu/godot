@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://pw6vds1kyitm"]
 
-[ext_resource type="Script" uid="uid://b0x6atvc3fxer" path="res://scene/puzzles/basic_init.gd" id="1_858du"]
+[ext_resource type="Script" uid="uid://b0x6atvc3fxer" path="res://scene/puzzles/basic.gd" id="1_858du"]
 [ext_resource type="PackedScene" uid="uid://r7b4ykm6jufi" path="res://scene/meta/frame.tscn" id="2_r30o8"]
 [ext_resource type="PackedScene" uid="uid://fpnp36yqbj4i" path="res://scene/meta/fail_timer.tscn" id="3_amqgj"]
 [ext_resource type="Texture2D" uid="uid://bxc0vvyk23wko" path="res://art/lpc Farming tilesets/turtleshell_front.png" id="4_mi72q"]
@@ -44,5 +44,5 @@ odds = 1.0
 [node name="indicator1" parent="interactable" instance=ExtResource("6_rli1a")]
 position = Vector2(24, 24)
 scale = Vector2(6, 6)
-click_count = 5
+click_count = 3
 click_weight = 1

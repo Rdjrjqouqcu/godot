@@ -5,10 +5,10 @@
 
 [node name="click_target" type="TextureRect"]
 self_modulate = Color(0, 1, 0, 0.25098)
-custom_minimum_size = Vector2(32, 32)
 offset_right = 32.0
 offset_bottom = 32.0
 texture = ExtResource("1_2scma")
+expand_mode = 1
 script = ExtResource("2_0e0hu")
 
 [node name="count" type="Label" parent="."]

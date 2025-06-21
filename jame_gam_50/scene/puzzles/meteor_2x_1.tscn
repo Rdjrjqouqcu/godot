@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bh5yxqyj1oitx"]
 
-[ext_resource type="Script" uid="uid://b0x6atvc3fxer" path="res://scene/puzzles/basic_init.gd" id="1_ddmrm"]
+[ext_resource type="Script" uid="uid://b0x6atvc3fxer" path="res://scene/puzzles/basic.gd" id="1_ddmrm"]
 [ext_resource type="PackedScene" uid="uid://r7b4ykm6jufi" path="res://scene/meta/frame.tscn" id="2_ddmrm"]
 [ext_resource type="Texture2D" uid="uid://5005cc6qcxq6" path="res://art/openGameArt/Turret01.png" id="3_i67dm"]
 [ext_resource type="PackedScene" uid="uid://fpnp36yqbj4i" path="res://scene/meta/fail_timer.tscn" id="3_o4upr"]
