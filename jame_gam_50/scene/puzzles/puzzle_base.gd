@@ -46,7 +46,7 @@ func pass_puzzle() -> void:
 	queue_free()
 	if is_circuit:
 		root.add_circuit()
-		toast_text = "constructed circuit"
+		toast_text = "circuit constructed"
 	if is_mega_circuit:
 		root.add_mega_circuit()
 	if toast_text != "":
@@ -60,9 +60,14 @@ func fail_puzzle() -> void:
 	root.mark_free_puzzle(locations, is_circuit or is_mega_circuit, complete_cooldown_min, complete_cooldown_max)
 	var pop = root.modify_population_loss(randi_range(pop_loss_min, pop_loss_max))
 	root.lose_population(pop)
+	var toast_text = ""
 	if pop != 0:
+		toast_text = "lost " + root.comma_format(pop)
+	if is_circuit or is_mega_circuit:
+		toast_text = "circuit broken"
+	if toast_text != "":
 		var toast = TOAST.instantiate()
 		toast.position = position + 120 * center_offset
-		toast.text = "lost " + root.comma_format(pop)
+		toast.text = toast_text
 		root.add_child(toast)
 	queue_free()

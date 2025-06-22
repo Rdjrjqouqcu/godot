@@ -105,40 +105,47 @@ click_weight = 1
 position = Vector2(140, 177)
 scale = Vector2(0.625, 0.625)
 click_count = 2
-click_weight = 1
+click_weight = 3
+dont_click_weight = 1
 
 [node name="indicator12" parent="interactable" instance=ExtResource("6_mlj7q")]
 position = Vector2(140, 153)
 scale = Vector2(0.625, 0.625)
 click_count = 2
-click_weight = 1
+click_weight = 3
+dont_click_weight = 1
 
 [node name="indicator13" parent="interactable" instance=ExtResource("6_mlj7q")]
 position = Vector2(141, 128)
 scale = Vector2(0.625, 0.625)
 click_count = 2
-click_weight = 1
+click_weight = 3
+dont_click_weight = 1
 
 [node name="indicator14" parent="interactable" instance=ExtResource("6_mlj7q")]
 position = Vector2(106, 175)
 scale = Vector2(0.78125, 0.78125)
 click_count = 3
-click_weight = 1
+click_weight = 3
+dont_click_weight = 1
 
 [node name="indicator15" parent="interactable" instance=ExtResource("6_mlj7q")]
 position = Vector2(106, 143)
 scale = Vector2(0.78125, 0.78125)
 click_count = 3
-click_weight = 1
+click_weight = 3
+dont_click_weight = 1
 
 [node name="indicator16" parent="interactable" instance=ExtResource("6_mlj7q")]
 position = Vector2(110, 69)
 scale = Vector2(0.78125, 0.78125)
 click_count = 3
-click_weight = 1
+click_weight = 3
+dont_click_weight = 1
 
 [node name="indicator17" parent="interactable" instance=ExtResource("6_mlj7q")]
 position = Vector2(110, 38)
 scale = Vector2(0.78125, 0.78125)
 click_count = 3
-click_weight = 1
+click_weight = 3
+dont_click_weight = 1
