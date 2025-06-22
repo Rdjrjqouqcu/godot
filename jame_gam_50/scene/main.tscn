@@ -179,14 +179,9 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 text = "GREEN boxes need to be clicked
 RED boxes should never be clicked
-BLUE boxes need to be charged by moving the mouse inside the box
+BLUE boxes need to be charged by moving the mouse around inside the box
 
-Clicking on boxes depends on the color you get
-If Green, Click Immediately
-If Blue, keep moving mouse around until charge complete
-If Red, never click
-
-Boxes without charge levels will interact by moving the mouse while holding left click"
+Boxes without charge levels can be cleared by holding left click"
 label_settings = SubResource("LabelSettings_tqoya")
 autowrap_mode = 2
 
