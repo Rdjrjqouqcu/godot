@@ -1,0 +1,86 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfpsxxhbjv0rs"]
+
+[ext_resource type="Script" uid="uid://c151s31xwj044" path="res://main.gd" id="1_ig7tw"]
+
+[sub_resource type="SystemFont" id="SystemFont_ig7tw"]
+allow_system_fallback = false
+
+[sub_resource type="Theme" id="Theme_0xm2m"]
+default_font = SubResource("SystemFont_ig7tw")
+
+[node name="main" type="MarginContainer"]
+offset_right = 512.0
+offset_bottom = 512.0
+theme = SubResource("Theme_0xm2m")
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("1_ig7tw")
+
+[node name="cols" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(496, 496)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="header" type="HBoxContainer" parent="cols"]
+layout_mode = 2
+
+[node name="dateEntry" type="TextEdit" parent="cols/header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+placeholder_text = "2025-01-01"
+
+[node name="show" type="Button" parent="cols/header"]
+layout_mode = 2
+text = "Update"
+
+[node name="err" type="Label" parent="cols/header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "error string"
+
+[node name="container" type="GridContainer" parent="cols"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 3
+
+[node name="date" type="Label" parent="cols/container"]
+layout_mode = 2
+text = "2025-01-01"
+
+[node name="roll" type="Label" parent="cols/container"]
+layout_mode = 2
+text = "3"
+
+[node name="info" type="Label" parent="cols/container"]
+layout_mode = 2
+text = "After 3:00 PM"
+
+[node name="date2" type="Label" parent="cols/container"]
+layout_mode = 2
+text = "2025-01-01"
+
+[node name="roll2" type="Label" parent="cols/container"]
+layout_mode = 2
+text = "3"
+
+[node name="info2" type="Label" parent="cols/container"]
+layout_mode = 2
+text = "Anytime"
+
+[node name="date3" type="Label" parent="cols/container"]
+layout_mode = 2
+text = "2025-01-01"
+
+[node name="roll3" type="Label" parent="cols/container"]
+layout_mode = 2
+text = "3"
+
+[node name="info3" type="Label" parent="cols/container"]
+layout_mode = 2
+text = "After 7:00 PM"
+
+[connection signal="pressed" from="cols/header/show" to="." method="_update"]
