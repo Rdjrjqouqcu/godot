@@ -13,7 +13,7 @@ config_version=5
 config/name="brick_break"
 run/main_scene="uid://d2s0nj8jnqiu3"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://sprites/icon.svg"
 
 [autoload]
 
@@ -21,7 +21,9 @@ Loggie="*res://addons/loggie/loggie.gd"
 
 [display]
 
-window/size/viewport_height=1152
+window/size/viewport_width=576
+window/size/viewport_height=576
+window/stretch/scale=0.5
 
 [editor_plugins]
 

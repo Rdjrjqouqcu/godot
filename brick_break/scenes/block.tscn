@@ -1,22 +1,19 @@
 [gd_scene load_steps=6 format=3 uid="uid://cswslxt63it58"]
 
-[ext_resource type="Texture2D" uid="uid://b37257523kw2t" path="res://sprites/shapes/square.064.png" id="1_aslfd"]
-[ext_resource type="Script" uid="uid://1kbjn2411unu" path="res://block/basic_block.gd" id="1_qwyoj"]
-[ext_resource type="Texture2D" uid="uid://tywrdm5ruquv" path="res://sprites/shapes/square.032.png" id="3_5p3r3"]
+[ext_resource type="Script" uid="uid://1kbjn2411unu" path="res://scripts/block.gd" id="1_ojgcc"]
+[ext_resource type="Texture2D" uid="uid://b37257523kw2t" path="res://sprites/shapes/square.064.png" id="2_1bw7o"]
+[ext_resource type="Texture2D" uid="uid://tywrdm5ruquv" path="res://sprites/shapes/square.032.png" id="3_bk4tb"]
+[ext_resource type="Curve" uid="uid://d1qumfen3h1qm" path="res://sprites/scale_down_curve.tres" id="4_kfh62"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwyoj"]
 size = Vector2(64, 64)
 
-[sub_resource type="Curve" id="Curve_3x3gr"]
-_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
-point_count = 2
-
-[node name="basic_block" type="RigidBody2D"]
-script = ExtResource("1_qwyoj")
+[node name="block" type="RigidBody2D"]
+script = ExtResource("1_ojgcc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.95, 0.95)
-texture = ExtResource("1_aslfd")
+texture = ExtResource("2_1bw7o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qwyoj")
@@ -24,13 +21,13 @@ shape = SubResource("RectangleShape2D_qwyoj")
 [node name="BreakAnimation" type="CPUParticles2D" parent="."]
 emitting = false
 amount = 16
-texture = ExtResource("3_5p3r3")
+texture = ExtResource("3_bk4tb")
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 emission_shape = 3
 emission_rect_extents = Vector2(24, 24)
 gravity = Vector2(0, 0)
-scale_amount_curve = SubResource("Curve_3x3gr")
+scale_amount_curve = ExtResource("4_kfh62")
 
 [connection signal="finished" from="BreakAnimation" to="." method="_on_break_animation_finished"]
