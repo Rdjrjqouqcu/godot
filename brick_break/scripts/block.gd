@@ -5,16 +5,25 @@ class_name Block
 @export var indestructible: bool = false
 @export var log_hit: bool = false
 
+var root:Main
+
 const BASIC_BLOCK = preload("res://scenes/block.tscn")
 
-static func new_border_block(pos:Vector2i) -> Block:
+static func new_border_block(pos:Vector2i, aroot:Main) -> Block:
 	var block = BASIC_BLOCK.instantiate()
 	block.variance_degrees = 0
 	block.indestructible = true
 	block.modulate = Globals.COLOR_BLACK
 	block.position = Globals.map_position(pos)
+	block.root = aroot
 	return block
 
+static func new_basic_block(pos:Vector2i, aroot:Main) -> Block:
+	var block = BASIC_BLOCK.instantiate()
+	block.modulate = Globals.COLOR_BLUE
+	block.position = Globals.map_position(pos)
+	block.root = aroot
+	return block
 
 func break_block() -> void:
 	$BreakAnimation.restart()
@@ -26,7 +35,6 @@ func on_ball_hit() -> void:
 		Loggie.info("ball hit")
 	if indestructible:
 		return
-	#if randi() % 4 == 0:
 	break_block()
 
 func get_bounce_degree_offset() -> float:

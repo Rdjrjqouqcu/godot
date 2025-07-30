@@ -11,7 +11,7 @@ _data = [Vector2(0, 1), nan, -1.0, 1, 1, Vector2(1, 0), -1.0, 1.0, 1, 1]
 point_count = 2
 
 [node name="ball" type="CharacterBody2D"]
-modulate = Color(0.780392, 0.984314, 0.345098, 1)
+modulate = Color(0.705882, 0.835294, 0.145098, 1)
 script = ExtResource("1_tnpjk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
