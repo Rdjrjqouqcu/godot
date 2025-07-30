@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c5to7j3uiis8p"]
 
 [ext_resource type="Texture2D" uid="uid://g0e5amhy6rcb" path="res://sprites/shapes/circle.064.png" id="1_574wn"]
-[ext_resource type="Script" uid="uid://begk6glm4uy54" path="res://ball/basic_ball.gd" id="1_tnpjk"]
+[ext_resource type="Script" uid="uid://begk6glm4uy54" path="res://scripts/ball.gd" id="1_tnpjk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tnpjk"]
 radius = 32.0
@@ -10,7 +10,8 @@ radius = 32.0
 _data = [Vector2(0, 1), nan, -1.0, 1, 1, Vector2(1, 0), -1.0, 1.0, 1, 1]
 point_count = 2
 
-[node name="basic_ball" type="CharacterBody2D"]
+[node name="ball" type="CharacterBody2D"]
+modulate = Color(0.780392, 0.984314, 0.345098, 1)
 script = ExtResource("1_tnpjk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -25,3 +26,5 @@ texture = ExtResource("1_574wn")
 lifetime = 0.5
 gravity = Vector2(0, 0)
 scale_amount_curve = SubResource("Curve_miqrp")
+
+[node name="splashes" type="Node" parent="."]
