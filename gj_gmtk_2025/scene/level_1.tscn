@@ -1,6 +1,97 @@
-[gd_scene load_steps=2 format=3 uid="uid://cf6v66ilvyovd"]
+[gd_scene load_steps=8 format=3 uid="uid://cf6v66ilvyovd"]
 
 [ext_resource type="Script" uid="uid://bo46xcisisakq" path="res://scripts/level.gd" id="1_tw77e"]
+[ext_resource type="PackedScene" uid="uid://gokyouu26dua" path="res://scene/anvil.tscn" id="2_3flxk"]
+[ext_resource type="PackedScene" uid="uid://bogyc6f8t1l3n" path="res://scene/glass_block.tscn" id="3_xesoj"]
+[ext_resource type="PackedScene" uid="uid://dof0ieoia08j4" path="res://scene/dirt_block.tscn" id="4_70cbr"]
+[ext_resource type="PackedScene" uid="uid://dpexhmxaas4kw" path="res://scene/block_wood.tscn" id="5_lsoxn"]
+[ext_resource type="PackedScene" uid="uid://c0gd2tyeyrgp" path="res://scene/stone_block.tscn" id="6_x17xt"]
+[ext_resource type="PackedScene" uid="uid://c1n6c2kukciua" path="res://scene/target.tscn" id="7_lsoxn"]
 
 [node name="level_1" type="Node2D"]
 script = ExtResource("1_tw77e")
+
+[node name="blocks" type="Node2D" parent="."]
+
+[node name="dirt_block" parent="blocks" instance=ExtResource("4_70cbr")]
+position = Vector2(48, 272)
+
+[node name="dirt_block2" parent="blocks" instance=ExtResource("4_70cbr")]
+position = Vector2(80, 272)
+
+[node name="dirt_block3" parent="blocks" instance=ExtResource("4_70cbr")]
+position = Vector2(112, 272)
+
+[node name="dirt_block4" parent="blocks" instance=ExtResource("4_70cbr")]
+position = Vector2(144, 272)
+
+[node name="block_wood" parent="blocks" instance=ExtResource("5_lsoxn")]
+position = Vector2(176, 272)
+
+[node name="block_wood2" parent="blocks" instance=ExtResource("5_lsoxn")]
+position = Vector2(208, 272)
+
+[node name="block_wood3" parent="blocks" instance=ExtResource("5_lsoxn")]
+position = Vector2(240, 272)
+
+[node name="block_wood4" parent="blocks" instance=ExtResource("5_lsoxn")]
+position = Vector2(272, 272)
+
+[node name="stone_block" parent="blocks" instance=ExtResource("6_x17xt")]
+position = Vector2(304, 272)
+
+[node name="stone_block2" parent="blocks" instance=ExtResource("6_x17xt")]
+position = Vector2(336, 272)
+
+[node name="stone_block3" parent="blocks" instance=ExtResource("6_x17xt")]
+position = Vector2(368, 272)
+
+[node name="stone_block4" parent="blocks" instance=ExtResource("6_x17xt")]
+position = Vector2(400, 272)
+
+[node name="anvil" parent="." node_paths=PackedStringArray("level") instance=ExtResource("2_3flxk")]
+position = Vector2(240, 240)
+level = NodePath("..")
+
+[node name="debug" type="CheckBox" parent="."]
+offset_right = 24.0
+offset_bottom = 24.0
+text = "debug"
+
+[node name="starting_area" type="Node2D" parent="."]
+
+[node name="glass_block" parent="starting_area" instance=ExtResource("3_xesoj")]
+position = Vector2(16, 48)
+
+[node name="glass_block2" parent="starting_area" instance=ExtResource("3_xesoj")]
+position = Vector2(16, 80)
+
+[node name="glass_block3" parent="starting_area" instance=ExtResource("3_xesoj")]
+position = Vector2(48, 80)
+
+[node name="glass_block4" parent="starting_area" instance=ExtResource("3_xesoj")]
+position = Vector2(80, 80)
+
+[node name="glass_block5" parent="starting_area" instance=ExtResource("3_xesoj")]
+position = Vector2(80, 112)
+
+[node name="glass_block6" parent="starting_area" instance=ExtResource("3_xesoj")]
+position = Vector2(80, 144)
+
+[node name="glass_block7" parent="starting_area" instance=ExtResource("3_xesoj")]
+position = Vector2(112, 144)
+
+[node name="glass_block8" parent="starting_area" instance=ExtResource("3_xesoj")]
+position = Vector2(144, 144)
+
+[node name="glass_block9" parent="starting_area" instance=ExtResource("3_xesoj")]
+position = Vector2(144, 176)
+
+[node name="glass_block10" parent="starting_area" instance=ExtResource("3_xesoj")]
+position = Vector2(176, 176)
+
+[node name="target" parent="starting_area" instance=ExtResource("7_lsoxn")]
+position = Vector2(112, 112)
+
+[node name="target2" parent="starting_area" instance=ExtResource("7_lsoxn")]
+position = Vector2(176, 144)

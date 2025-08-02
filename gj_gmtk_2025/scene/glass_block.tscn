@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bogyc6f8t1l3n"]
+
+[ext_resource type="Script" uid="uid://b2m1q3m4tdwio" path="res://scripts/block.gd" id="1_jg43r"]
+[ext_resource type="Texture2D" uid="uid://dasfv11rsar11" path="res://assets/openGameArt/material_tileset.png" id="1_wukot"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0pxab"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jg43r"]
+atlas = ExtResource("1_wukot")
+region = Rect2(368, 0, 16, 16)
+
+[node name="glass_block" type="StaticBody2D"]
+script = ExtResource("1_jg43r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0pxab")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_jg43r")
