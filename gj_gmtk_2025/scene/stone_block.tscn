@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0gd2tyeyrgp"]
+[gd_scene load_steps=6 format=3 uid="uid://c0gd2tyeyrgp"]
 
 [ext_resource type="Script" uid="uid://b2m1q3m4tdwio" path="res://scripts/block.gd" id="1_2kggo"]
 [ext_resource type="Texture2D" uid="uid://dasfv11rsar11" path="res://assets/openGameArt/material_tileset.png" id="2_yiwb5"]
-[ext_resource type="Texture2D" uid="uid://cevol8heatfeb" path="res://assets/square.016.png" id="3_yiwb5"]
+[ext_resource type="Texture2D" uid="uid://cevol8heatfeb" path="res://assets/simpleShapes/square.016.png" id="3_yiwb5"]
+[ext_resource type="AudioStream" uid="uid://dvcnuifbflfp7" path="res://assets/sounds/block_hit_stone.wav" id="4_naaht"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jg43r"]
 atlas = ExtResource("2_yiwb5")
@@ -30,3 +31,6 @@ initial_velocity_min = 100.0
 initial_velocity_max = 100.0
 scale_amount_min = 0.13
 scale_amount_max = 0.25
+
+[node name="break_audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_naaht")
