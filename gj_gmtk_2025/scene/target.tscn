@@ -1,23 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1n6c2kukciua"]
+[gd_scene load_steps=4 format=3 uid="uid://c1n6c2kukciua"]
 
 [ext_resource type="Script" uid="uid://b2m1q3m4tdwio" path="res://scripts/block.gd" id="1_1lp6e"]
 [ext_resource type="Texture2D" uid="uid://b1kkbm5e6m82m" path="res://assets/openGameArt/target.png" id="1_5ajp5"]
 [ext_resource type="Texture2D" uid="uid://cevol8heatfeb" path="res://assets/square.016.png" id="3_1lp6e"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x63a3"]
-size = Vector2(32, 32)
-
-[node name="target" type="StaticBody2D"]
-script = ExtResource("1_1lp6e")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_x63a3")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D"]
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("1_5ajp5")
+script = ExtResource("1_1lp6e")
 
 [node name="white_fin" type="CPUParticles2D" parent="."]
+scale = Vector2(1, 1)
 emitting = false
 amount = 16
 texture = ExtResource("3_1lp6e")
@@ -35,6 +28,7 @@ scale_amount_max = 0.25
 
 [node name="red_fin" type="CPUParticles2D" parent="."]
 modulate = Color(1, 0, 0, 1)
+scale = Vector2(1, 1)
 emitting = false
 amount = 16
 texture = ExtResource("3_1lp6e")
