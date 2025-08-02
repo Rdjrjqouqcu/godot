@@ -4,13 +4,15 @@ class_name Globals
 const TILE_SIZE: int = 32
 
 const BOARD_WIDTH: int = 20
-const BOARD_HEIGHT: int = 30
+const BOARD_HEIGHT: int = 20
 
 const SCREEN_WIDTH: int = TILE_SIZE * BOARD_WIDTH # 640
-const SCREEN_HEIGHT: int = TILE_SIZE * BOARD_HEIGHT # 960
+const SCREEN_HEIGHT: int = TILE_SIZE * BOARD_HEIGHT # 640
 
 const GROUP_BLOCKS: String = "blocks"
 const GROUP_TARGETS: String = "targets"
+
+const HEIGHT_LEVELS: Array[int] = [0, 2, 4, 6, 8]
 
 static func map_coord_to_pos(coord: Vector2i) -> Vector2:
 	return Vector2(coord) * TILE_SIZE + Vector2(TILE_SIZE / 2.0, TILE_SIZE / 2.0)

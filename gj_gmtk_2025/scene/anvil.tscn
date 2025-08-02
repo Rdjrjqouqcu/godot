@@ -35,8 +35,67 @@ script = ExtResource("1_tr4vl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tr4vl")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_qojh1")
+
+[node name="speed1" type="CPUParticles2D" parent="sprite"]
+position = Vector2(0, -48)
+amount = 24
+lifetime = 0.25
+emission_shape = 3
+emission_rect_extents = Vector2(16, 1)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+scale_amount_min = 1.5
+scale_amount_max = 1.5
+color = Color(0.713726, 0.133333, 0.0117647, 1)
+
+[node name="speed2" type="CPUParticles2D" parent="sprite"]
+position = Vector2(0, -16)
+amount = 16
+lifetime = 0.38
+emission_shape = 3
+emission_rect_extents = Vector2(16, 1)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color = Color(1, 0.458824, 0, 1)
+
+[node name="speed3" type="CPUParticles2D" parent="sprite"]
+position = Vector2(0, -16)
+lifetime = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(16, 1)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+scale_amount_min = 4.0
+scale_amount_max = 4.0
+color = Color(0.843137, 0.207843, 0.00784314, 1)
+
+[node name="speed4" type="CPUParticles2D" parent="sprite"]
+position = Vector2(0, -16)
+amount = 4
+lifetime = 0.63
+emission_shape = 3
+emission_rect_extents = Vector2(16, 1)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+scale_amount_min = 8.0
+scale_amount_max = 8.0
+color = Color(0.501961, 0.0666667, 0, 1)
 
 [node name="down" type="AnimationPlayer" parent="."]
 libraries = {

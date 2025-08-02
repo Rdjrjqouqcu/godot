@@ -50,7 +50,7 @@ position = Vector2(368, 272)
 position = Vector2(400, 272)
 
 [node name="anvil" parent="." node_paths=PackedStringArray("level") instance=ExtResource("2_3flxk")]
-position = Vector2(240, 240)
+position = Vector2(48, 48)
 level = NodePath("..")
 
 [node name="debug" type="CheckBox" parent="."]
@@ -61,10 +61,10 @@ text = "debug"
 [node name="starting_area" type="Node2D" parent="."]
 
 [node name="glass_block" parent="starting_area" instance=ExtResource("3_xesoj")]
-position = Vector2(16, 48)
+position = Vector2(176, 144)
 
 [node name="glass_block2" parent="starting_area" instance=ExtResource("3_xesoj")]
-position = Vector2(16, 80)
+position = Vector2(176, 112)
 
 [node name="glass_block3" parent="starting_area" instance=ExtResource("3_xesoj")]
 position = Vector2(48, 80)
@@ -76,13 +76,13 @@ position = Vector2(80, 80)
 position = Vector2(80, 112)
 
 [node name="glass_block6" parent="starting_area" instance=ExtResource("3_xesoj")]
-position = Vector2(80, 144)
+position = Vector2(112, 112)
 
 [node name="glass_block7" parent="starting_area" instance=ExtResource("3_xesoj")]
 position = Vector2(112, 144)
 
 [node name="glass_block8" parent="starting_area" instance=ExtResource("3_xesoj")]
-position = Vector2(144, 144)
+position = Vector2(112, 176)
 
 [node name="glass_block9" parent="starting_area" instance=ExtResource("3_xesoj")]
 position = Vector2(144, 176)
@@ -91,7 +91,10 @@ position = Vector2(144, 176)
 position = Vector2(176, 176)
 
 [node name="target" parent="starting_area" instance=ExtResource("7_lsoxn")]
-position = Vector2(112, 112)
+position = Vector2(16, 48)
 
 [node name="target2" parent="starting_area" instance=ExtResource("7_lsoxn")]
-position = Vector2(176, 144)
+position = Vector2(112, 80)
+
+[node name="target3" parent="starting_area" instance=ExtResource("7_lsoxn")]
+position = Vector2(144, 144)
