@@ -124,6 +124,7 @@ size_flags_horizontal = 10
 
 [node name="debug" type="CheckBox" parent="ui/MarginContainer/HBoxContainer2/right"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "debug"
 
@@ -147,9 +148,9 @@ vertical_alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 30)
 layout_mode = 2
-max_value = 1.0
-step = 0.25
-value = 0.5
+focus_mode = 0
+max_value = 4.0
+value = 2.0
 scrollable = false
 tick_count = 5
 ticks_on_borders = true
@@ -473,13 +474,10 @@ position = Vector2(432, 336)
 position = Vector2(432, 304)
 
 [node name="glass" parent="hi" instance=ExtResource("3_xesoj")]
-position = Vector2(496, 368)
-
-[node name="glass2" parent="hi" instance=ExtResource("3_xesoj")]
-position = Vector2(496, 336)
+position = Vector2(496, 304)
 
 [node name="stone18" parent="hi" instance=ExtResource("6_x17xt")]
-position = Vector2(496, 304)
+position = Vector2(496, 368)
 
 [node name="stone19" parent="hi" instance=ExtResource("6_x17xt")]
 position = Vector2(560, 400)
@@ -496,6 +494,9 @@ position = Vector2(592, 464)
 [node name="stone23" parent="hi" instance=ExtResource("6_x17xt")]
 position = Vector2(624, 464)
 
+[node name="stone24" parent="hi" instance=ExtResource("6_x17xt")]
+position = Vector2(496, 336)
+
 [node name="right" type="Node2D" parent="."]
 metadata/_edit_group_ = true
 
@@ -506,7 +507,7 @@ position = Vector2(272, 400)
 position = Vector2(176, 368)
 
 [node name="glass2" parent="right" instance=ExtResource("3_xesoj")]
-position = Vector2(208, 400)
+position = Vector2(208, 432)
 
 [node name="target3" parent="right" instance=ExtResource("7_lsoxn")]
 position = Vector2(304, 400)
@@ -560,7 +561,6 @@ position = Vector2(304, 496)
 position = Vector2(336, 496)
 
 [node name="left" type="Node2D" parent="."]
-metadata/_edit_group_ = true
 
 [node name="target" parent="left" instance=ExtResource("7_lsoxn")]
 position = Vector2(48, 464)
@@ -607,17 +607,16 @@ position = Vector2(112, 368)
 [node name="wood9" parent="left" instance=ExtResource("5_lsoxn")]
 position = Vector2(48, 368)
 
-[node name="wood10" parent="left" instance=ExtResource("5_lsoxn")]
-position = Vector2(16, 368)
-
 [node name="target3" parent="left" instance=ExtResource("7_lsoxn")]
 position = Vector2(16, 336)
 
 [node name="wood11" parent="left" instance=ExtResource("5_lsoxn")]
 position = Vector2(144, 368)
 
+[node name="stone5" parent="left" instance=ExtResource("6_x17xt")]
+position = Vector2(16, 368)
+
 [node name="intro" type="Node2D" parent="."]
-metadata/_edit_group_ = true
 
 [node name="target" parent="intro" instance=ExtResource("7_lsoxn")]
 position = Vector2(80, 272)
@@ -640,9 +639,6 @@ position = Vector2(112, 208)
 [node name="glass" parent="intro" instance=ExtResource("3_xesoj")]
 position = Vector2(48, 272)
 
-[node name="dirt5" parent="intro" instance=ExtResource("4_70cbr")]
-position = Vector2(16, 272)
-
 [node name="stone" parent="intro" instance=ExtResource("6_x17xt")]
 position = Vector2(592, 272)
 
@@ -654,5 +650,8 @@ position = Vector2(592, 336)
 
 [node name="stone5" parent="intro" instance=ExtResource("6_x17xt")]
 position = Vector2(624, 336)
+
+[node name="dirt5" parent="intro" instance=ExtResource("4_70cbr")]
+position = Vector2(16, 272)
 
 [connection signal="pressed" from="ui/MarginContainer/HBoxContainer2/right/restart" to="." method="_restart"]

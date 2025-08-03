@@ -26,6 +26,7 @@ func _has_neighbor_block(off: Vector2i) -> bool:
 	return _get_neighbor_block(off) != null
 
 func _land() -> void:
+	#Loggie.info("land", Globals.map_pos_to_coord(position))
 	if fall_distance != 0:
 		%land_audio.volume_linear = level.get_volume()
 		%land_audio.play()
@@ -48,6 +49,7 @@ func _move_right() -> void:
 func _move_down() -> void:
 	fall_distance += 1
 	block_already_hit = false
+	wait_for_fall = false
 	position = Globals.wrap_pos(position + (Vector2.DOWN * Globals.TILE_SIZE))
 	_change_speed()
 	%down.play(ANIMATION_DOWN)
@@ -55,6 +57,7 @@ func _move_down() -> void:
 func _move_down_left() -> void:
 	fall_distance += 1
 	block_already_hit = false
+	wait_for_fall = false
 	position = Globals.wrap_pos(position + ((Vector2.DOWN + Vector2.LEFT) * Globals.TILE_SIZE))
 	_change_speed()
 	%down.play(ANIMATION_DOWN)
@@ -63,6 +66,7 @@ func _move_down_left() -> void:
 func _move_down_right() -> void:
 	fall_distance += 1
 	block_already_hit = false
+	wait_for_fall = false
 	position = Globals.wrap_pos(position + ((Vector2.DOWN + Vector2.RIGHT) * Globals.TILE_SIZE))
 	_change_speed()
 	%down.play(ANIMATION_DOWN)
@@ -98,15 +102,16 @@ func _try_move_down() -> void:
 		return
 	if block_already_hit:
 		return
+	if wait_for_fall:
+		if _is_moving_horizontally():
+			return
 	var left = queue_left
 	var right = queue_right
 	queue_left = false
 	queue_right = false
-	if wait_for_fall:
-		if _is_moving_horizontally():
-			return
 	var down = _get_neighbor_block(Vector2i.DOWN)
 	if down != null:
+		# handle landing
 		var broken = down.hit(fall_distance)
 		if not broken:
 			_land()
@@ -189,4 +194,3 @@ func _ready() -> void:
 	level = parent as Level
 	wait_for_fall = _has_neighbor_block(Vector2i.DOWN)
 	_change_speed()
-	Loggie.info("anvil ready", wait_for_fall)

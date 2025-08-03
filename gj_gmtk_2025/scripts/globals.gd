@@ -19,7 +19,9 @@ const COLOR_BRONZE: Color = Color("c79b56")
 const COLOR_SILVER: Color = Color("c0c0c0")
 const COLOR_GOLD: Color = Color("d4af37")
 
-const HEIGHT_LEVELS: Array[int] = [0, 2, 4, 6, 8]
+const HEIGHT_LEVELS: Array[int] = [0, 2, 4, 6, 9]
+
+const VOLUME_LEVELS: Array[float] = [0, 0.02, 0.15, 0.4, 1.0]
 
 static func map_coord_to_pos(coord: Vector2i) -> Vector2:
 	return Vector2(coord) * TILE_SIZE + Vector2(TILE_SIZE / 2.0, TILE_SIZE / 2.0)

@@ -25,7 +25,7 @@ func _break() -> void:
 	self_modulate.a = 0 # hide sprite
 
 func hit(height: int) -> bool:
-	Loggie.info("block hit", height, break_height)
+	#Loggie.info("block hit", height, break_height)
 	if height >= break_height:
 		_break()
 		return true
