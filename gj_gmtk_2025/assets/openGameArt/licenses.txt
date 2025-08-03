@@ -1,0 +1,21 @@
+
+anvil
+
+https://opengameart.org/content/anvil
+License(s): CC0
+Author: xxgicoxx
+
+
+material tileset
+
+https://opengameart.org/content/platformer-tileset
+License(s): CC-BY 3.0
+Author: Bleddyuffles
+Link: https://www.bleddy.xyz/
+
+
+target
+
+https://opengameart.org/content/target
+License(s): CC0
+Author: Kyzerole

@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1n6c2kukciua"]
+
+[ext_resource type="Script" uid="uid://b2m1q3m4tdwio" path="res://scripts/block.gd" id="1_1lp6e"]
+[ext_resource type="Texture2D" uid="uid://b1kkbm5e6m82m" path="res://assets/openGameArt/target.png" id="1_5ajp5"]
+[ext_resource type="Texture2D" uid="uid://cevol8heatfeb" path="res://assets/simpleShapes/square.016.png" id="3_1lp6e"]
+[ext_resource type="AudioStream" uid="uid://dcowlh80n0jst" path="res://assets/sounds/block_hit_target.wav" id="4_17kq5"]
+
+[node name="target" type="Sprite2D"]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_5ajp5")
+script = ExtResource("1_1lp6e")
+is_target = true
+
+[node name="white_fin" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+texture = ExtResource("3_1lp6e")
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 16.0
+spread = 180.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+scale_amount_min = 0.13
+scale_amount_max = 0.25
+
+[node name="red_fin" type="CPUParticles2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+emitting = false
+amount = 16
+texture = ExtResource("3_1lp6e")
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 16.0
+spread = 180.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+scale_amount_min = 0.13
+scale_amount_max = 0.25
+
+[node name="break_audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_17kq5")
