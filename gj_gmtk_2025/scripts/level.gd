@@ -21,7 +21,7 @@ func _restart() -> void:
 func cell_get_block(coord: Vector2i) -> Block:
 	var pos = Globals.map_coord_to_pos(coord)
 	for child in get_tree().get_nodes_in_group(Globals.GROUP_BLOCKS):
-		if pos == (child as Block).position:
+		if pos == (child as Block).global_position:
 			return child
 	return null
 func cell_contains_block(coord: Vector2i) -> bool:

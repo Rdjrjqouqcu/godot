@@ -16,7 +16,7 @@ func _break_finished() -> void:
 		queue_free()
 func _break() -> void:
 	is_breaking = true
-	if $break_audio:
+	if get_node_or_null("break_audio") != null:
 		$break_audio.volume_linear = level.get_volume()
 		$break_audio.play()
 	level.update_score()
@@ -32,6 +32,8 @@ func hit(height: int) -> bool:
 	return false
 
 func _ready() -> void:
+	if get_node_or_null("guide") != null:
+		$guide.queue_free()
 	break_height = Globals.HEIGHT_LEVELS[durability]
 	break_particles = find_children("*", "CPUParticles2D")
 	for part in break_particles:

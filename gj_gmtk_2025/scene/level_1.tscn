@@ -18,88 +18,6 @@ region = Rect2(0, 0, 16, 16)
 [node name="level_1" type="Node2D"]
 script = ExtResource("1_tw77e")
 
-[node name="blocks" type="Node2D" parent="."]
-
-[node name="dirt_block" parent="blocks" instance=ExtResource("4_70cbr")]
-position = Vector2(48, 272)
-
-[node name="dirt_block2" parent="blocks" instance=ExtResource("4_70cbr")]
-position = Vector2(80, 272)
-
-[node name="dirt_block3" parent="blocks" instance=ExtResource("4_70cbr")]
-position = Vector2(112, 272)
-
-[node name="dirt_block4" parent="blocks" instance=ExtResource("4_70cbr")]
-position = Vector2(144, 272)
-
-[node name="block_wood" parent="blocks" instance=ExtResource("5_lsoxn")]
-position = Vector2(176, 272)
-
-[node name="block_wood2" parent="blocks" instance=ExtResource("5_lsoxn")]
-position = Vector2(208, 272)
-
-[node name="block_wood3" parent="blocks" instance=ExtResource("5_lsoxn")]
-position = Vector2(240, 272)
-
-[node name="block_wood4" parent="blocks" instance=ExtResource("5_lsoxn")]
-position = Vector2(272, 272)
-
-[node name="stone_block" parent="blocks" instance=ExtResource("6_x17xt")]
-position = Vector2(368, 272)
-
-[node name="stone_block2" parent="blocks" instance=ExtResource("6_x17xt")]
-position = Vector2(144, 16)
-
-[node name="stone_block3" parent="blocks" instance=ExtResource("6_x17xt")]
-position = Vector2(336, 272)
-
-[node name="stone_block4" parent="blocks" instance=ExtResource("6_x17xt")]
-position = Vector2(304, 272)
-
-[node name="anvil" parent="." instance=ExtResource("2_3flxk")]
-position = Vector2(48, 48)
-
-[node name="starting_area" type="Node2D" parent="."]
-
-[node name="glass_block" parent="starting_area" instance=ExtResource("3_xesoj")]
-position = Vector2(176, 144)
-
-[node name="glass_block2" parent="starting_area" instance=ExtResource("3_xesoj")]
-position = Vector2(176, 112)
-
-[node name="glass_block3" parent="starting_area" instance=ExtResource("3_xesoj")]
-position = Vector2(48, 80)
-
-[node name="glass_block4" parent="starting_area" instance=ExtResource("3_xesoj")]
-position = Vector2(80, 80)
-
-[node name="glass_block5" parent="starting_area" instance=ExtResource("3_xesoj")]
-position = Vector2(80, 112)
-
-[node name="glass_block6" parent="starting_area" instance=ExtResource("3_xesoj")]
-position = Vector2(112, 112)
-
-[node name="glass_block7" parent="starting_area" instance=ExtResource("3_xesoj")]
-position = Vector2(112, 144)
-
-[node name="glass_block8" parent="starting_area" instance=ExtResource("3_xesoj")]
-position = Vector2(112, 176)
-
-[node name="glass_block9" parent="starting_area" instance=ExtResource("3_xesoj")]
-position = Vector2(144, 176)
-
-[node name="glass_block10" parent="starting_area" instance=ExtResource("3_xesoj")]
-position = Vector2(176, 176)
-
-[node name="target" parent="starting_area" instance=ExtResource("7_lsoxn")]
-position = Vector2(16, 48)
-
-[node name="target2" parent="starting_area" instance=ExtResource("7_lsoxn")]
-position = Vector2(112, 80)
-
-[node name="target3" parent="starting_area" instance=ExtResource("7_lsoxn")]
-position = Vector2(144, 144)
-
 [node name="ui" type="PanelContainer" parent="."]
 offset_top = 512.0
 offset_right = 640.0
@@ -242,5 +160,499 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Restart"
+
+[node name="anvil" parent="." instance=ExtResource("2_3flxk")]
+position = Vector2(208, 48)
+
+[node name="ACME_Anvil" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="A" type="Node2D" parent="ACME_Anvil"]
+
+[node name="stone_block" parent="ACME_Anvil/A" instance=ExtResource("6_x17xt")]
+position = Vector2(272, 16)
+
+[node name="stone_block2" parent="ACME_Anvil/A" instance=ExtResource("6_x17xt")]
+position = Vector2(304, 16)
+
+[node name="stone_block3" parent="ACME_Anvil/A" instance=ExtResource("6_x17xt")]
+position = Vector2(336, 16)
+
+[node name="stone_block4" parent="ACME_Anvil/A" instance=ExtResource("6_x17xt")]
+position = Vector2(272, 48)
+
+[node name="stone_block5" parent="ACME_Anvil/A" instance=ExtResource("6_x17xt")]
+position = Vector2(336, 48)
+
+[node name="stone_block6" parent="ACME_Anvil/A" instance=ExtResource("6_x17xt")]
+position = Vector2(272, 80)
+
+[node name="stone_block7" parent="ACME_Anvil/A" instance=ExtResource("6_x17xt")]
+position = Vector2(304, 80)
+
+[node name="stone_block8" parent="ACME_Anvil/A" instance=ExtResource("6_x17xt")]
+position = Vector2(336, 80)
+
+[node name="stone_block9" parent="ACME_Anvil/A" instance=ExtResource("6_x17xt")]
+position = Vector2(272, 112)
+
+[node name="stone_block10" parent="ACME_Anvil/A" instance=ExtResource("6_x17xt")]
+position = Vector2(336, 112)
+
+[node name="C" type="Node2D" parent="ACME_Anvil"]
+
+[node name="block_wood" parent="ACME_Anvil/C" instance=ExtResource("5_lsoxn")]
+position = Vector2(368, 16)
+
+[node name="block_wood2" parent="ACME_Anvil/C" instance=ExtResource("5_lsoxn")]
+position = Vector2(400, 16)
+
+[node name="block_wood3" parent="ACME_Anvil/C" instance=ExtResource("5_lsoxn")]
+position = Vector2(432, 16)
+
+[node name="block_wood4" parent="ACME_Anvil/C" instance=ExtResource("5_lsoxn")]
+position = Vector2(368, 48)
+
+[node name="block_wood5" parent="ACME_Anvil/C" instance=ExtResource("5_lsoxn")]
+position = Vector2(368, 80)
+
+[node name="block_wood6" parent="ACME_Anvil/C" instance=ExtResource("5_lsoxn")]
+position = Vector2(368, 112)
+
+[node name="block_wood7" parent="ACME_Anvil/C" instance=ExtResource("5_lsoxn")]
+position = Vector2(400, 112)
+
+[node name="block_wood8" parent="ACME_Anvil/C" instance=ExtResource("5_lsoxn")]
+position = Vector2(432, 112)
+
+[node name="M" type="Node2D" parent="ACME_Anvil"]
+
+[node name="stone_block" parent="ACME_Anvil/M" instance=ExtResource("6_x17xt")]
+position = Vector2(464, 16)
+
+[node name="stone_block2" parent="ACME_Anvil/M" instance=ExtResource("6_x17xt")]
+position = Vector2(496, 16)
+
+[node name="stone_block3" parent="ACME_Anvil/M" instance=ExtResource("6_x17xt")]
+position = Vector2(528, 16)
+
+[node name="stone_block4" parent="ACME_Anvil/M" instance=ExtResource("6_x17xt")]
+position = Vector2(464, 48)
+
+[node name="stone_block5" parent="ACME_Anvil/M" instance=ExtResource("6_x17xt")]
+position = Vector2(496, 48)
+
+[node name="stone_block6" parent="ACME_Anvil/M" instance=ExtResource("6_x17xt")]
+position = Vector2(528, 48)
+
+[node name="stone_block7" parent="ACME_Anvil/M" instance=ExtResource("6_x17xt")]
+position = Vector2(464, 80)
+
+[node name="stone_block8" parent="ACME_Anvil/M" instance=ExtResource("6_x17xt")]
+position = Vector2(496, 80)
+
+[node name="stone_block9" parent="ACME_Anvil/M" instance=ExtResource("6_x17xt")]
+position = Vector2(528, 80)
+
+[node name="stone_block10" parent="ACME_Anvil/M" instance=ExtResource("6_x17xt")]
+position = Vector2(464, 112)
+
+[node name="stone_block11" parent="ACME_Anvil/M" instance=ExtResource("6_x17xt")]
+position = Vector2(528, 112)
+
+[node name="E" type="Node2D" parent="ACME_Anvil"]
+
+[node name="block_wood" parent="ACME_Anvil/E" instance=ExtResource("5_lsoxn")]
+position = Vector2(560, 16)
+
+[node name="block_wood2" parent="ACME_Anvil/E" instance=ExtResource("5_lsoxn")]
+position = Vector2(592, 16)
+
+[node name="block_wood3" parent="ACME_Anvil/E" instance=ExtResource("5_lsoxn")]
+position = Vector2(624, 16)
+
+[node name="block_wood4" parent="ACME_Anvil/E" instance=ExtResource("5_lsoxn")]
+position = Vector2(560, 48)
+
+[node name="block_wood5" parent="ACME_Anvil/E" instance=ExtResource("5_lsoxn")]
+position = Vector2(560, 80)
+
+[node name="block_wood6" parent="ACME_Anvil/E" instance=ExtResource("5_lsoxn")]
+position = Vector2(560, 112)
+
+[node name="block_wood7" parent="ACME_Anvil/E" instance=ExtResource("5_lsoxn")]
+position = Vector2(592, 112)
+
+[node name="block_wood8" parent="ACME_Anvil/E" instance=ExtResource("5_lsoxn")]
+position = Vector2(624, 112)
+
+[node name="block_wood9" parent="ACME_Anvil/E" instance=ExtResource("5_lsoxn")]
+position = Vector2(592, 48)
+
+[node name="A2" type="Node2D" parent="ACME_Anvil"]
+
+[node name="stone_block" parent="ACME_Anvil/A2" instance=ExtResource("6_x17xt")]
+position = Vector2(176, 144)
+
+[node name="stone_block2" parent="ACME_Anvil/A2" instance=ExtResource("6_x17xt")]
+position = Vector2(208, 144)
+
+[node name="stone_block3" parent="ACME_Anvil/A2" instance=ExtResource("6_x17xt")]
+position = Vector2(240, 144)
+
+[node name="stone_block4" parent="ACME_Anvil/A2" instance=ExtResource("6_x17xt")]
+position = Vector2(176, 176)
+
+[node name="stone_block5" parent="ACME_Anvil/A2" instance=ExtResource("6_x17xt")]
+position = Vector2(240, 176)
+
+[node name="stone_block6" parent="ACME_Anvil/A2" instance=ExtResource("6_x17xt")]
+position = Vector2(176, 208)
+
+[node name="stone_block7" parent="ACME_Anvil/A2" instance=ExtResource("6_x17xt")]
+position = Vector2(208, 208)
+
+[node name="stone_block8" parent="ACME_Anvil/A2" instance=ExtResource("6_x17xt")]
+position = Vector2(240, 208)
+
+[node name="stone_block9" parent="ACME_Anvil/A2" instance=ExtResource("6_x17xt")]
+position = Vector2(176, 240)
+
+[node name="stone_block10" parent="ACME_Anvil/A2" instance=ExtResource("6_x17xt")]
+position = Vector2(240, 240)
+
+[node name="N" type="Node2D" parent="ACME_Anvil"]
+
+[node name="block_wood" parent="ACME_Anvil/N" instance=ExtResource("5_lsoxn")]
+position = Vector2(272, 144)
+
+[node name="block_wood2" parent="ACME_Anvil/N" instance=ExtResource("5_lsoxn")]
+position = Vector2(304, 144)
+
+[node name="block_wood3" parent="ACME_Anvil/N" instance=ExtResource("5_lsoxn")]
+position = Vector2(336, 144)
+
+[node name="block_wood4" parent="ACME_Anvil/N" instance=ExtResource("5_lsoxn")]
+position = Vector2(272, 176)
+
+[node name="block_wood5" parent="ACME_Anvil/N" instance=ExtResource("5_lsoxn")]
+position = Vector2(272, 208)
+
+[node name="block_wood6" parent="ACME_Anvil/N" instance=ExtResource("5_lsoxn")]
+position = Vector2(336, 208)
+
+[node name="block_wood7" parent="ACME_Anvil/N" instance=ExtResource("5_lsoxn")]
+position = Vector2(272, 240)
+
+[node name="block_wood8" parent="ACME_Anvil/N" instance=ExtResource("5_lsoxn")]
+position = Vector2(336, 240)
+
+[node name="block_wood9" parent="ACME_Anvil/N" instance=ExtResource("5_lsoxn")]
+position = Vector2(336, 176)
+
+[node name="V" type="Node2D" parent="ACME_Anvil"]
+
+[node name="stone_block" parent="ACME_Anvil/V" instance=ExtResource("6_x17xt")]
+position = Vector2(368, 144)
+
+[node name="stone_block2" parent="ACME_Anvil/V" instance=ExtResource("6_x17xt")]
+position = Vector2(432, 144)
+
+[node name="stone_block3" parent="ACME_Anvil/V" instance=ExtResource("6_x17xt")]
+position = Vector2(368, 176)
+
+[node name="stone_block4" parent="ACME_Anvil/V" instance=ExtResource("6_x17xt")]
+position = Vector2(432, 176)
+
+[node name="stone_block5" parent="ACME_Anvil/V" instance=ExtResource("6_x17xt")]
+position = Vector2(368, 208)
+
+[node name="stone_block6" parent="ACME_Anvil/V" instance=ExtResource("6_x17xt")]
+position = Vector2(432, 208)
+
+[node name="stone_block7" parent="ACME_Anvil/V" instance=ExtResource("6_x17xt")]
+position = Vector2(400, 240)
+
+[node name="I" type="Node2D" parent="ACME_Anvil"]
+
+[node name="block_wood" parent="ACME_Anvil/I" instance=ExtResource("5_lsoxn")]
+position = Vector2(464, 144)
+
+[node name="block_wood2" parent="ACME_Anvil/I" instance=ExtResource("5_lsoxn")]
+position = Vector2(496, 144)
+
+[node name="block_wood3" parent="ACME_Anvil/I" instance=ExtResource("5_lsoxn")]
+position = Vector2(528, 144)
+
+[node name="block_wood4" parent="ACME_Anvil/I" instance=ExtResource("5_lsoxn")]
+position = Vector2(496, 176)
+
+[node name="block_wood5" parent="ACME_Anvil/I" instance=ExtResource("5_lsoxn")]
+position = Vector2(496, 208)
+
+[node name="block_wood6" parent="ACME_Anvil/I" instance=ExtResource("5_lsoxn")]
+position = Vector2(464, 240)
+
+[node name="block_wood7" parent="ACME_Anvil/I" instance=ExtResource("5_lsoxn")]
+position = Vector2(496, 240)
+
+[node name="block_wood8" parent="ACME_Anvil/I" instance=ExtResource("5_lsoxn")]
+position = Vector2(528, 240)
+
+[node name="L" type="Node2D" parent="ACME_Anvil"]
+
+[node name="stone_block" parent="ACME_Anvil/L" instance=ExtResource("6_x17xt")]
+position = Vector2(560, 144)
+
+[node name="stone_block2" parent="ACME_Anvil/L" instance=ExtResource("6_x17xt")]
+position = Vector2(560, 176)
+
+[node name="stone_block3" parent="ACME_Anvil/L" instance=ExtResource("6_x17xt")]
+position = Vector2(560, 208)
+
+[node name="stone_block4" parent="ACME_Anvil/L" instance=ExtResource("6_x17xt")]
+position = Vector2(560, 240)
+
+[node name="stone_block5" parent="ACME_Anvil/L" instance=ExtResource("6_x17xt")]
+position = Vector2(592, 240)
+
+[node name="stone_block6" parent="ACME_Anvil/L" instance=ExtResource("6_x17xt")]
+position = Vector2(624, 240)
+
+[node name="starting_area" type="Node2D" parent="."]
+position = Vector2(0, -32)
+metadata/_edit_group_ = true
+
+[node name="glass_block3" parent="starting_area" instance=ExtResource("3_xesoj")]
+position = Vector2(208, 112)
+
+[node name="glass_block4" parent="starting_area" instance=ExtResource("3_xesoj")]
+position = Vector2(176, 112)
+
+[node name="glass_block5" parent="starting_area" instance=ExtResource("3_xesoj")]
+position = Vector2(144, 144)
+
+[node name="glass_block8" parent="starting_area" instance=ExtResource("3_xesoj")]
+position = Vector2(112, 208)
+
+[node name="glass_block9" parent="starting_area" instance=ExtResource("3_xesoj")]
+position = Vector2(240, 112)
+
+[node name="target" parent="starting_area" instance=ExtResource("7_lsoxn")]
+position = Vector2(240, 80)
+
+[node name="target2" parent="starting_area" instance=ExtResource("7_lsoxn")]
+position = Vector2(144, 112)
+
+[node name="target3" parent="starting_area" instance=ExtResource("7_lsoxn")]
+position = Vector2(112, 176)
+
+[node name="hi" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="dirt" parent="hi" instance=ExtResource("4_70cbr")]
+position = Vector2(368, 304)
+
+[node name="dirt2" parent="hi" instance=ExtResource("4_70cbr")]
+position = Vector2(368, 336)
+
+[node name="dirt3" parent="hi" instance=ExtResource("4_70cbr")]
+position = Vector2(368, 368)
+
+[node name="dirt4" parent="hi" instance=ExtResource("4_70cbr")]
+position = Vector2(400, 336)
+
+[node name="dirt5" parent="hi" instance=ExtResource("4_70cbr")]
+position = Vector2(432, 368)
+
+[node name="dirt6" parent="hi" instance=ExtResource("4_70cbr")]
+position = Vector2(432, 336)
+
+[node name="dirt7" parent="hi" instance=ExtResource("4_70cbr")]
+position = Vector2(432, 304)
+
+[node name="glass" parent="hi" instance=ExtResource("3_xesoj")]
+position = Vector2(496, 368)
+
+[node name="glass2" parent="hi" instance=ExtResource("3_xesoj")]
+position = Vector2(496, 336)
+
+[node name="stone18" parent="hi" instance=ExtResource("6_x17xt")]
+position = Vector2(496, 304)
+
+[node name="stone19" parent="hi" instance=ExtResource("6_x17xt")]
+position = Vector2(560, 400)
+
+[node name="stone20" parent="hi" instance=ExtResource("6_x17xt")]
+position = Vector2(624, 400)
+
+[node name="stone21" parent="hi" instance=ExtResource("6_x17xt")]
+position = Vector2(560, 464)
+
+[node name="stone22" parent="hi" instance=ExtResource("6_x17xt")]
+position = Vector2(592, 464)
+
+[node name="stone23" parent="hi" instance=ExtResource("6_x17xt")]
+position = Vector2(624, 464)
+
+[node name="right" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="stone4" parent="right" instance=ExtResource("6_x17xt")]
+position = Vector2(272, 400)
+
+[node name="stone6" parent="right" instance=ExtResource("6_x17xt")]
+position = Vector2(176, 368)
+
+[node name="glass2" parent="right" instance=ExtResource("3_xesoj")]
+position = Vector2(208, 400)
+
+[node name="target3" parent="right" instance=ExtResource("7_lsoxn")]
+position = Vector2(304, 400)
+
+[node name="stone7" parent="right" instance=ExtResource("6_x17xt")]
+position = Vector2(304, 432)
+
+[node name="stone8" parent="right" instance=ExtResource("6_x17xt")]
+position = Vector2(368, 496)
+
+[node name="target4" parent="right" instance=ExtResource("7_lsoxn")]
+position = Vector2(432, 496)
+
+[node name="stone9" parent="right" instance=ExtResource("6_x17xt")]
+position = Vector2(400, 496)
+
+[node name="stone10" parent="right" instance=ExtResource("6_x17xt")]
+position = Vector2(336, 432)
+
+[node name="stone11" parent="right" instance=ExtResource("6_x17xt")]
+position = Vector2(368, 432)
+
+[node name="stone5" parent="right" instance=ExtResource("6_x17xt")]
+position = Vector2(240, 400)
+
+[node name="stone12" parent="right" instance=ExtResource("6_x17xt")]
+position = Vector2(176, 400)
+
+[node name="stone13" parent="right" instance=ExtResource("6_x17xt")]
+position = Vector2(176, 432)
+
+[node name="stone14" parent="right" instance=ExtResource("6_x17xt")]
+position = Vector2(176, 464)
+
+[node name="stone15" parent="right" instance=ExtResource("6_x17xt")]
+position = Vector2(176, 496)
+
+[node name="stone16" parent="right" instance=ExtResource("6_x17xt")]
+position = Vector2(208, 496)
+
+[node name="stone17" parent="right" instance=ExtResource("6_x17xt")]
+position = Vector2(240, 496)
+
+[node name="stone18" parent="right" instance=ExtResource("6_x17xt")]
+position = Vector2(272, 496)
+
+[node name="stone19" parent="right" instance=ExtResource("6_x17xt")]
+position = Vector2(304, 496)
+
+[node name="stone20" parent="right" instance=ExtResource("6_x17xt")]
+position = Vector2(336, 496)
+
+[node name="left" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="target" parent="left" instance=ExtResource("7_lsoxn")]
+position = Vector2(48, 464)
+
+[node name="stone" parent="left" instance=ExtResource("6_x17xt")]
+position = Vector2(16, 16)
+
+[node name="stone2" parent="left" instance=ExtResource("6_x17xt")]
+position = Vector2(48, 16)
+
+[node name="stone3" parent="left" instance=ExtResource("6_x17xt")]
+position = Vector2(80, 16)
+
+[node name="stone4" parent="left" instance=ExtResource("6_x17xt")]
+position = Vector2(112, 16)
+
+[node name="target2" parent="left" instance=ExtResource("7_lsoxn")]
+position = Vector2(112, 464)
+
+[node name="wood" parent="left" instance=ExtResource("5_lsoxn")]
+position = Vector2(16, 400)
+
+[node name="wood2" parent="left" instance=ExtResource("5_lsoxn")]
+position = Vector2(144, 432)
+
+[node name="wood3" parent="left" instance=ExtResource("5_lsoxn")]
+position = Vector2(16, 432)
+
+[node name="wood4" parent="left" instance=ExtResource("5_lsoxn")]
+position = Vector2(144, 464)
+
+[node name="wood5" parent="left" instance=ExtResource("5_lsoxn")]
+position = Vector2(112, 304)
+
+[node name="wood6" parent="left" instance=ExtResource("5_lsoxn")]
+position = Vector2(112, 336)
+
+[node name="wood7" parent="left" instance=ExtResource("5_lsoxn")]
+position = Vector2(144, 400)
+
+[node name="wood8" parent="left" instance=ExtResource("5_lsoxn")]
+position = Vector2(112, 368)
+
+[node name="wood9" parent="left" instance=ExtResource("5_lsoxn")]
+position = Vector2(48, 368)
+
+[node name="wood10" parent="left" instance=ExtResource("5_lsoxn")]
+position = Vector2(16, 368)
+
+[node name="target3" parent="left" instance=ExtResource("7_lsoxn")]
+position = Vector2(16, 336)
+
+[node name="wood11" parent="left" instance=ExtResource("5_lsoxn")]
+position = Vector2(144, 368)
+
+[node name="intro" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="target" parent="intro" instance=ExtResource("7_lsoxn")]
+position = Vector2(80, 272)
+
+[node name="dirt" parent="intro" instance=ExtResource("4_70cbr")]
+position = Vector2(80, 304)
+
+[node name="dirt2" parent="intro" instance=ExtResource("4_70cbr")]
+position = Vector2(48, 304)
+
+[node name="dirt3" parent="intro" instance=ExtResource("4_70cbr")]
+position = Vector2(112, 272)
+
+[node name="dirt4" parent="intro" instance=ExtResource("4_70cbr")]
+position = Vector2(144, 336)
+
+[node name="dirt6" parent="intro" instance=ExtResource("4_70cbr")]
+position = Vector2(112, 208)
+
+[node name="glass" parent="intro" instance=ExtResource("3_xesoj")]
+position = Vector2(48, 272)
+
+[node name="dirt5" parent="intro" instance=ExtResource("4_70cbr")]
+position = Vector2(16, 272)
+
+[node name="stone" parent="intro" instance=ExtResource("6_x17xt")]
+position = Vector2(592, 272)
+
+[node name="stone2" parent="intro" instance=ExtResource("6_x17xt")]
+position = Vector2(592, 304)
+
+[node name="stone3" parent="intro" instance=ExtResource("6_x17xt")]
+position = Vector2(592, 336)
+
+[node name="stone5" parent="intro" instance=ExtResource("6_x17xt")]
+position = Vector2(624, 336)
 
 [connection signal="pressed" from="ui/MarginContainer/HBoxContainer2/right/restart" to="." method="_restart"]

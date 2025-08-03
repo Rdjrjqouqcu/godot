@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cevol8heatfeb" path="res://assets/simpleShapes/square.016.png" id="3_1lp6e"]
 [ext_resource type="AudioStream" uid="uid://dcowlh80n0jst" path="res://assets/sounds/block_hit_target.wav" id="4_17kq5"]
 
-[node name="Sprite2D" type="Sprite2D"]
+[node name="target" type="Sprite2D"]
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("1_5ajp5")
 script = ExtResource("1_1lp6e")
