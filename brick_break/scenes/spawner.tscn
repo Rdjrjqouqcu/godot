@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://xkj6torlnf87"]
+[gd_scene load_steps=4 format=3 uid="uid://xkj6torlnf87"]
 
 [ext_resource type="Script" uid="uid://gjmh7ea2j8yj" path="res://scripts/spawner.gd" id="1_ik2nu"]
 [ext_resource type="Texture2D" uid="uid://b37257523kw2t" path="res://sprites/shapes/square.064.png" id="2_tx2ig"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ik2nu"]
+size = Vector2(64, 64)
 
 [node name="Spawner" type="Node2D"]
 script = ExtResource("1_ik2nu")
@@ -19,6 +22,13 @@ offset_right = 32.0
 offset_bottom = 32.0
 action_mode = 0
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ik2nu")
+
 [connection signal="mouse_entered" from="Button" to="." method="_on_mouse_on"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_mouse_off"]
 [connection signal="pressed" from="Button" to="." method="_on_mouse_click"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_ball_enter"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_ball_leave"]

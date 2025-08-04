@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Ball
 
 @export var speed: float = 300.0
 
@@ -9,7 +10,7 @@ func _play_collision_splash(location: Vector2) -> void:
 	var color_list = [Globals.COLOR_ORANGE, Globals.COLOR_PURPLE]
 	for color in color_list:
 		var splash: CPUParticles2D = CPUParticles2D.new()
-		splash.amount = 16.0 / color_list.size()
+		splash.amount = int(16.0 / color_list.size())
 		splash.texture = CIRCLE_032
 		splash.lifetime = 0.5
 		splash.one_shot = true
