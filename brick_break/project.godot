@@ -22,7 +22,7 @@ Loggie="*res://addons/loggie/loggie.gd"
 [display]
 
 window/size/viewport_width=576
-window/size/viewport_height=576
+window/size/viewport_height=736
 window/stretch/scale=0.5
 
 [editor_plugins]
