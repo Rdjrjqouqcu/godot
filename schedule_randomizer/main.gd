@@ -7,13 +7,27 @@ extends MarginContainer
 
 const format: String = "%Y-%m-%d"
 
-const results: Dictionary[int,String] = {
-	0: "❌ Not Today",
-	1: "🕖 After Dinner (7pm)",
-	2: "🕑 After Lunch (2pm)",
-	3: "🕑 After Lunch (2pm)",
-	4: "✅ Anytime",
-	5: "✅ Anytime",
+const CANCEL = preload("res://gameicons/cancel.png")
+const CHECK_MARK = preload("res://gameicons/check-mark.png")
+const STOPWATCH = preload("res://gameicons/stopwatch.png")
+
+
+class LineEntry:
+	var line: String
+	var icon: Resource
+	var color: Color
+	func _init(l: String, i: Resource, c: Color):
+		line = l
+		icon = i
+		color = c
+var result_error: LineEntry = LineEntry.new("Error", STOPWATCH, Color.PURPLE)
+var results: Dictionary[int, LineEntry] = {
+	0: LineEntry.new("Not Today", CANCEL, Color.RED),
+	1: LineEntry.new("After Dinner (7pm)", STOPWATCH, Color.ORANGE),
+	2: LineEntry.new("After Lunch (2pm)", STOPWATCH, Color.YELLOW),
+	3: LineEntry.new("After Lunch (2pm)", STOPWATCH, Color.YELLOW),
+	4: LineEntry.new("Anytime", CHECK_MARK, Color.GREEN),
+	5: LineEntry.new("Anytime", CHECK_MARK, Color.GREEN),
 }
 
 func _get_seed(dt: DateTime) -> int:
@@ -22,15 +36,24 @@ func _get_seed(dt: DateTime) -> int:
 func _add_row(dt: DateTime) -> void:
 	var date = Label.new()
 	var roll = Label.new()
+	var icon = TextureRect.new()
+	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	icon.custom_minimum_size = Vector2(20, 20)
+	icon.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	icon.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	var info = Label.new()
 	var val = rand_from_seed(_get_seed(dt))[0] % 6
+	var res: LineEntry = results.get(val, result_error)
 
 	date.text = dt.strftime(format + " %a")
 	roll.text = str("  ", val + 1, "  ")
-	info.text = results.get(val, "error")
+	info.text = res.line
+	icon.texture = res.icon
+	icon.modulate = res.color
 
 	container.add_child(date)
 	container.add_child(roll)
+	container.add_child(icon)
 	container.add_child(info)
 
 func _display_error(txt: String) -> void:
@@ -56,11 +79,14 @@ func _update() -> void:
 	for child in container.get_children():
 		child.queue_free()
 
-	for i in range(0, 14):
+	for i in range(0, 15):
 		_add_row(dt.add_days(i))
 
 
+const secondsPerDay = 24 * 60 * 60
 func _ready() -> void:
-	var dt = DateTime.now()
+	var dt = DateTime.from_timestamp(
+		Time.get_unix_time_from_system() - secondsPerDay,
+		Time.get_datetime_dict_from_system()["dst"])
 	date_entry.text = dt.strftime(format)
 	_update()
