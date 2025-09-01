@@ -20,7 +20,7 @@ Loggie="*res://addons/loggie/loggie.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/loggie/plugin.cfg", "res://addons/script-ide/plugin.cfg")
+enabled=PackedStringArray("res://addons/loggie/plugin.cfg", "res://addons/safe_resource_loader/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [rendering]
 
