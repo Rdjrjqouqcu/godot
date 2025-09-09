@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3g3cbnpfxjur"]
+
+[ext_resource type="PackedScene" uid="uid://dohmequdo00nt" path="res://ui.tscn" id="1_f3sb7"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gv5m4"]
+size = Vector2(128, 128)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_gv5m4")
+
+[node name="UI" parent="." instance=ExtResource("1_f3sb7")]
