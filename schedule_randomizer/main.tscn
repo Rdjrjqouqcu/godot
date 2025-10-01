@@ -35,9 +35,14 @@ custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 placeholder_text = "2025-01-01"
 
-[node name="show" type="Button" parent="cols/header"]
+[node name="update" type="Button" parent="cols/header"]
 layout_mode = 2
 text = "Update"
+
+[node name="show" type="CheckButton" parent="cols/header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Show Rolls"
 
 [node name="err" type="Label" parent="cols/header"]
 unique_name_in_owner = true
@@ -109,4 +114,5 @@ expand_mode = 1
 layout_mode = 2
 text = "After 7:00 PM"
 
+[connection signal="pressed" from="cols/header/update" to="." method="_update"]
 [connection signal="pressed" from="cols/header/show" to="." method="_update"]
