@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://jvnywib8rmyv"]
+
+[sub_resource type="GDScript" id="GDScript_qsit3"]
+script/source = "extends Node2D
+class_name DragCursor
+const DRAG_CURSOR = preload(\"uid://jvnywib8rmyv\")
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	pass
+"
+
+[node name="DragCursor" type="Node2D"]
+script = SubResource("GDScript_qsit3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

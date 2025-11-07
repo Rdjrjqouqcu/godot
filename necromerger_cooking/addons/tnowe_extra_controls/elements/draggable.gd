@@ -1,5 +1,5 @@
 @tool
-class_name Draggable
+class_name DraggableExample
 extends Container
 
 ## Draggable control. Can be resized by dragging the border, and constrained to only be movable within its parent Control.
@@ -157,14 +157,14 @@ func get_rect_after_drop() -> Rect2:
 	return Rect2(result_position, result_size)
 
 
-func _gui_input(event : InputEvent, called_by : Draggable = null):
+func _gui_input(event : InputEvent, called_by : DraggableExample = null):
 	if event is InputEventMouseMotion:
 		if _mouse_dragging:
 			_universal_input(_mouse_dragging_direction, event.relative)
 			if _affected_by_multi_selection != null:
 				var own_xform_inv := get_global_transform().affine_inverse()
 				for x in _affected_by_multi_selection._selected_nodes:
-					if !(x is Draggable) || x == self:
+					if !(x is DraggableExample) || x == self:
 						continue
 
 					if _mouse_dragging_direction == Vector2i.ZERO:
@@ -217,7 +217,7 @@ func _gui_input(event : InputEvent, called_by : Draggable = null):
 			return
 
 		for x in _affected_by_multi_selection._selected_nodes:
-			if !(x is Draggable):
+			if !(x is DraggableExample):
 				continue
 
 			x._handle_click(event.pressed)
