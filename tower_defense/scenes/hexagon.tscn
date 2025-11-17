@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsxi8ol43kexm"]
+
+[sub_resource type="GDScript" id="GDScript_533f2"]
+script/source = "extends Polygon2D
+class_name Hexagon
+
+@export var edge: int = 64
+@export var color_override: Color = Color.WHITE
+
+func _ready() -> void:
+	var length: float = edge / (1 + sqrt(2))
+	var left: int = int((edge - length) / 2)
+	var right: int = edge - left
+	self.polygon = PackedVector2Array([
+		Vector2(left,0),
+		Vector2(right,0),
+		Vector2(edge,left),
+		Vector2(edge,right),
+		Vector2(right,edge),
+		Vector2(left,edge),
+		Vector2(0,right),
+		Vector2(0,left),
+	])
+	self.color = color_override
+"
+
+[node name="hexagon" type="Polygon2D"]
+color = Color(0.49803922, 0.49803922, 0.49803922, 0.49803922)
+polygon = PackedVector2Array(0, 0, 0, 64, 64, 64, 64, 0)
+script = SubResource("GDScript_533f2")
