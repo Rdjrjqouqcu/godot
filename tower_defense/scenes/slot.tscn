@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://btxy6u16uicq1"]
+[gd_scene load_steps=6 format=3 uid="uid://btxy6u16uicq1"]
 
 [ext_resource type="PackedScene" path="res://scenes/frame.tscn" id="1_4v6ba"]
 [ext_resource type="Script" uid="uid://qybvgk43btf3" path="res://scenes/slot.gd" id="1_ic0fu"]
@@ -7,7 +7,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ic0fu"]
 size = Vector2(30, 30)
 
-[node name="slot" type="Node2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_vqyee"]
+font_size = 8
+
+[node name="slot" type="Node2D" groups=["slots"]]
 script = ExtResource("1_ic0fu")
 
 [node name="Frame" parent="." instance=ExtResource("1_4v6ba")]
@@ -22,5 +25,20 @@ shape = SubResource("RectangleShape2D_ic0fu")
 
 [node name="turret" parent="." instance=ExtResource("3_vqyee")]
 visible = false
+
+[node name="goal" type="Polygon2D" parent="."]
+visible = false
+color = Color(0, 1, 0, 0.49803922)
+polygon = PackedVector2Array(0, 0, 0, 32, 32, 32, 32, 0)
+
+[node name="spawner" type="Polygon2D" parent="."]
+visible = false
+color = Color(1, 0, 0, 0.49803922)
+polygon = PackedVector2Array(0, 0, 0, 32, 32, 32, 32, 0)
+
+[node name="debug" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_vqyee")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
