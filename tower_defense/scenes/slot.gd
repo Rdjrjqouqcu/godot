@@ -26,6 +26,12 @@ func remove_turret() -> void:
 	is_turret = false
 	$turret.visible = false
 
+#func turret_turn() -> void:
+	#pass
+#
+#func enemy_turn() -> void:
+	#pass
+
 static func instantiate(w: World, l: Vector2i, isGoal: bool, isSpawner: bool) -> Slot:
 	var s: Slot = SLOT.instantiate() as Slot
 	s.world = w
@@ -48,11 +54,10 @@ func is_buildable() -> bool:
 func _update_debug() -> void:
 	$debug.text = str(
 		"g: ", goal_distance, "\n",
-		"d: ", goal_direction, "\n",
+		#"d: ", goal_direction, "\n",
 	)
 
 # goal pathfinding
-
 var goal_distance: int = -1
 var goal_direction: Vector2i = Vector2i.ZERO
 static func update_all_paths() -> void:

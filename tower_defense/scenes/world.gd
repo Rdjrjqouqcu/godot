@@ -18,7 +18,9 @@ func _ready() -> void:
 	for r in range(Globals.ROWS):
 		for c in range(Globals.COLS):
 			is_spawn = r == 0 and c == 0
+			is_spawn = is_spawn or ( r == Globals.ROWS - 1 and c == 0)
 			is_goal = r == Globals.ROWS - 1 and c == Globals.COLS - 1
+			is_goal = is_goal or (r == 0 and c == Globals.COLS - 1)
 			var pos = Vector2i(c, r)
 			var s = Slot.instantiate(self, pos, is_goal, is_spawn)
 			slots.set(pos, s)
