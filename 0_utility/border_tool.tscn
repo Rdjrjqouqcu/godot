@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://6gfwycv1j2my"]
+
+[sub_resource type="GDScript" id="GDScript_dlfbb"]
+script/source = "@tool
+extends StaticBody2D
+
+@export var width: int = 100
+@export var height: int = 100
+@export_tool_button(\"Apply\") var apply_action = _move_border
+
+
+func _move_border():
+	$right.position.x = width
+	$right.notify_property_list_changed()
+	$bottom.position.y = height
+	$bottom.notify_property_list_changed()
+
+func _ready() -> void:
+	$right.position.x = width
+	$bottom.position.y = height
+"
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dlfbb"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yv8ol"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_srnjo"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lf28b"]
+
+[node name="border_tool" type="StaticBody2D"]
+script = SubResource("GDScript_dlfbb")
+
+[node name="left" type="CollisionShape2D" parent="."]
+shape = SubResource("WorldBoundaryShape2D_dlfbb")
+
+[node name="top" type="CollisionShape2D" parent="."]
+shape = SubResource("WorldBoundaryShape2D_yv8ol")
+
+[node name="right" type="CollisionShape2D" parent="."]
+position = Vector2(100, 0)
+shape = SubResource("WorldBoundaryShape2D_srnjo")
+
+[node name="bottom" type="CollisionShape2D" parent="."]
+position = Vector2(0, 100)
+shape = SubResource("WorldBoundaryShape2D_lf28b")
