@@ -23,6 +23,10 @@ Loggie="*res://addons/loggie/loggie.gd"
 
 enabled=PackedStringArray("res://addons/loggie/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
+[global_group]
+
+slots=""
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
