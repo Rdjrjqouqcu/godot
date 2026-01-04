@@ -23,7 +23,15 @@ class LineEntry:
 	var count: int
 	var color: Color
 	var lset: LabelSettings
-	func add_row(roll: int, container: GridContainer, show_roll: bool) -> void:
+	var weekly:bool = false
+	func add_row(roll: int, container: GridContainer, dt: DateTime, show_roll: bool) -> void:
+		if weekly:
+			if dt.weekday_name != "monday":
+				if show_roll:
+					container.add_child(Label.new())
+				container.add_child(Label.new())
+				container.add_child(Label.new())
+				return
 		if show_roll:
 			var r = Label.new()
 			r.text = str("r=", roll, "")
@@ -36,6 +44,10 @@ class LineEntry:
 				add_row_count(container)
 			LineEntryMode.TEXT:
 				add_row_text(container)
+
+	func set_weekly() -> LineEntry:
+		weekly = true
+		return self
 
 	static func new_icon(l: String, i: Resource, c: Color) -> LineEntry:
 		var n = LineEntry.new()
@@ -88,12 +100,6 @@ class LineEntry:
 		info.modulate = color
 		container.add_child(info)
 
-# WIP
-#class DataSource:
-	#var random: Callable
-	#func get_count() -> int:
-		#return 0
-
 var result_error: LineEntry = LineEntry.new_icon("Error", STOPWATCH, Color.PURPLE)
 var results_time: Array[LineEntry] = [
 	LineEntry.new_icon("Not Today", CANCEL, Color.RED),
@@ -115,12 +121,12 @@ var results_tasks: Array[LineEntry] = [
 	LineEntry.new_text("0 tasks", Color.GREEN),
 ]
 var results_restriction: Array[LineEntry] = [
-	LineEntry.new_text("Not Today", Color.RED),
-	LineEntry.new_text("At Night", Color.YELLOW),
-	LineEntry.new_text("At Night", Color.YELLOW),
-	LineEntry.new_text("Anytime", Color.GREEN),
-	LineEntry.new_text("Anytime", Color.GREEN),
-	LineEntry.new_text("Anytime", Color.GREEN),
+	LineEntry.new_text("Not Today", Color.RED).set_weekly(),
+	LineEntry.new_text("At Night", Color.YELLOW).set_weekly(),
+	LineEntry.new_text("At Night", Color.YELLOW).set_weekly(),
+	LineEntry.new_text("Anytime", Color.GREEN).set_weekly(),
+	LineEntry.new_text("Anytime", Color.GREEN).set_weekly(),
+	LineEntry.new_text("Anytime", Color.GREEN).set_weekly(),
 ]
 func random_raw(s: int, l: int) -> int:
 	return rand_from_seed(s)[0] % l
@@ -159,7 +165,7 @@ func _add_row(dt: DateTime) -> void:
 		var s: int = _get_seed(dt, i)
 		var val: int = data_randoms[i].call(s, l)
 		var res: LineEntry = get_or_error(source, val)
-		res.add_row(val, container, show_roll.button_pressed)
+		res.add_row(val, container, dt, show_roll.button_pressed)
 
 func _display_error(txt: String) -> void:
 	err.text = txt
