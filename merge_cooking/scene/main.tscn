@@ -1,6 +1,19 @@
 [gd_scene format=3 uid="uid://ceiusrne1jqnt"]
 
 [ext_resource type="Script" uid="uid://1fs1hdajorti" path="res://script/main.gd" id="1_itxqv"]
+[ext_resource type="PackedScene" uid="uid://d0sh6jdkqfigf" path="res://scene/grid_allocator.tscn" id="2_wp4xf"]
+[ext_resource type="PackedScene" uid="uid://b148ph4aclt74" path="res://scene/slot.tscn" id="3_brvut"]
 
 [node name="main" type="Node2D" unique_id=1473162115]
 script = ExtResource("1_itxqv")
+
+[node name="grid_allocator" parent="." unique_id=1985023743 instance=ExtResource("2_wp4xf")]
+TiledScene = ExtResource("3_brvut")
+cols = 8
+rows = 8
+row_padding = 5
+col_padding = 5
+border_top_padding = 10
+border_right_padding = 10
+border_bottom_padding = 10
+border_left_padding = 10
