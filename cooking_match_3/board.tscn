@@ -1,8 +1,46 @@
-[gd_scene load_steps=2 format=3 uid="uid://dg28e0y0watyp"]
+[gd_scene format=3 uid="uid://dg28e0y0watyp"]
 
 [ext_resource type="PackedScene" uid="uid://c0l4bs6wrgkpc" path="res://example/debug_scene.tscn" id="1_p0ybc"]
+[ext_resource type="Texture2D" uid="uid://c2fydcm0b5jgh" path="res://icon.svg" id="2_psm7c"]
 
-[node name="board" type="Node2D"]
+[sub_resource type="GDScript" id="GDScript_psm7c"]
+script/source = "@tool
+class_name Draggable2D extends Area2D
 
-[node name="DebugScene" parent="." instance=ExtResource("1_p0ybc")]
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	pass
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8l818"]
+
+[node name="board" type="Node2D" unique_id=1076610781]
+
+[node name="DebugScene" parent="." unique_id=1803993621 instance=ExtResource("1_p0ybc")]
 position = Vector2(89, 84)
+
+[node name="TestNode" type="Node2D" parent="." unique_id=387026508]
+
+[node name="Dragable" type="Area2D" parent="TestNode" unique_id=1739699138]
+script = SubResource("GDScript_psm7c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestNode/Dragable" unique_id=1191255896]
+shape = SubResource("RectangleShape2D_8l818")
+
+[node name="Sprite2D" type="Sprite2D" parent="TestNode/Dragable" unique_id=1102127256]
+position = Vector2(367, 194)
+texture = ExtResource("2_psm7c")
+
+[node name="Control" type="Control" parent="TestNode" unique_id=966834088]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DropArea1" type="Node2D" parent="." unique_id=655580844]
