@@ -13,7 +13,11 @@ config_version=5
 config/name="gj_gmtk_2025"
 run/main_scene="uid://cf6v66ilvyovd"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://assets/icon.svg"
+boot_splash/fullsize=false
+boot_splash/image="uid://byasejkfpq8mt"
+config/icon="uid://dymfxign781ab"
+boot_splash/minimum_display_time=2000
+boot_splash/icon="uid://6vpy3dhi73hu"
 
 [autoload]
 

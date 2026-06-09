@@ -27,14 +27,14 @@ func cell_get_block(coord: Vector2i) -> Block:
 func cell_contains_block(coord: Vector2i) -> bool:
 	return cell_get_block(coord) != null
 func get_volume() -> float:
-	return %volume.value
+	return Globals.VOLUME_LEVELS[%volume.value]
 
 var star_one: bool = true
 var star_two: bool = true
 var star_three: bool = true
 func update_score() -> void:
 	var targets = _remaining_targets()
-	Loggie.info("score", targets, half_targets, starting_targets)
+	#Loggie.info("score", targets, half_targets, starting_targets)
 	if targets <= half_targets and star_one:
 		star_one = false
 		%star1.texture = STAR
