@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://c1n6c2kukciua"]
 
+[ext_resource type="Script" uid="uid://b2m1q3m4tdwio" path="res://scripts/block.gd" id="1_1lp6e"]
 [ext_resource type="Texture2D" uid="uid://b1kkbm5e6m82m" path="res://assets/openGameArt/target.png" id="1_5ajp5"]
-[ext_resource type="Script" uid="uid://dbkenx8rsv38t" path="res://scripts/target.gd" id="1_x63a3"]
 [ext_resource type="Texture2D" uid="uid://cevol8heatfeb" path="res://assets/square.016.png" id="3_1lp6e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x63a3"]
 size = Vector2(32, 32)
 
 [node name="target" type="StaticBody2D"]
-script = ExtResource("1_x63a3")
+script = ExtResource("1_1lp6e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_x63a3")
@@ -49,6 +49,3 @@ initial_velocity_min = 100.0
 initial_velocity_max = 100.0
 scale_amount_min = 0.13
 scale_amount_max = 0.25
-
-[connection signal="finished" from="white_fin" to="." method="_break_finished"]
-[connection signal="finished" from="red_fin" to="." method="_break_finished"]
