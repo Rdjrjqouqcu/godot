@@ -8,7 +8,7 @@ extends MarginContainer
 const format: String = "%Y-%m-%d"
 
 const results: Dictionary[int,String] = {
-	0: "❌ No Games",
+	0: "❌ Not Today",
 	1: "🕖 After Dinner (7pm)",
 	2: "🕑 After Lunch (2pm)",
 	3: "🕑 After Lunch (2pm)",
@@ -25,7 +25,7 @@ func _add_row(dt: DateTime) -> void:
 	var info = Label.new()
 	var val = rand_from_seed(_get_seed(dt))[0] % 6
 
-	date.text = dt.strftime(format)
+	date.text = dt.strftime(format + " %a")
 	roll.text = str("  ", val + 1, "  ")
 	info.text = results.get(val, "error")
 
