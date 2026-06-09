@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://58v0qq84xeo0"]
+[gd_scene load_steps=17 format=3 uid="uid://58v0qq84xeo0"]
 
 [ext_resource type="Texture2D" uid="uid://dv4gitnto6mx1" path="res://art/Space Skybox Pack/common/jettelly_space_common_blue_BACK.png" id="1_4j5ol"]
 [ext_resource type="Script" uid="uid://ybt3hvlmw3b0" path="res://scene/main.gd" id="1_of57s"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://di87vo76ov63c" path="res://art/Space Skybox Pack/common/jettelly_space_common_blue_RIGHT.png" id="5_tqoya"]
 [ext_resource type="Texture2D" uid="uid://wtuh3oqlhpiv" path="res://art/Space Skybox Pack/common/jettelly_space_common_blue_UP.png" id="6_k65ib"]
 [ext_resource type="Texture2D" uid="uid://ddo2blxhm6txp" path="res://art/openGameArt/printed_circuit_board_texture.png" id="8_of57s"]
+[ext_resource type="PackedScene" uid="uid://duon3fpniyk4u" path="res://scene/puzzles/circuit_2x_1.tscn" id="9_b5f6u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_evhkr"]
 texture = ExtResource("1_4j5ol")
@@ -68,8 +69,9 @@ layout_mode = 2
 [node name="popLabel" type="RichTextLabel" parent="scores/pop"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Remaining Population:"
+text = "Remaining Population: "
 fit_content = true
+horizontal_alignment = 2
 
 [node name="popDisplay" type="RichTextLabel" parent="scores/pop"]
 unique_name_in_owner = true
@@ -84,18 +86,39 @@ layout_mode = 2
 [node name="chipLabel" type="RichTextLabel" parent="scores/chips"]
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
-text = "Circuit Chips:"
+text = "Circuit Chips: "
 fit_content = true
+horizontal_alignment = 2
 
 [node name="chipDisplay" type="RichTextLabel" parent="scores/chips"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
-text = "10 / 10 "
+text = "10 / 10"
 
 [node name="TextureRect" type="TextureRect" parent="scores/chips"]
 layout_mode = 2
 texture = ExtResource("8_of57s")
 expand_mode = 3
 
+[node name="time" type="HBoxContainer" parent="scores"]
+layout_mode = 2
+
+[node name="timeLabel" type="RichTextLabel" parent="scores/time"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Time Elapsed: "
+fit_content = true
+horizontal_alignment = 2
+
+[node name="timeDisplay" type="RichTextLabel" parent="scores/time"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "00:12.562"
+fit_content = true
+
 [node name="frames" type="Node2D" parent="."]
+
+[node name="circuit_2x1" parent="." instance=ExtResource("9_b5f6u")]
+position = Vector2(480, 480)
