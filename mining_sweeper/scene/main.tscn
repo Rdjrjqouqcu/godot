@@ -25,7 +25,6 @@ border_left_padding = 10
 
 [node name="rclick" parent="." unique_id=563911376 instance=ExtResource("4_brvut")]
 unique_name_in_owner = true
-visible = false
 
 [node name="frame" parent="." unique_id=1917218120 instance=ExtResource("5_0ha60")]
 modulate = Color(1, 0, 0, 1)

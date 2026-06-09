@@ -23,6 +23,12 @@ config/icon="res://icon.svg"
 
 Loggie="*res://addons/loggie/loggie.gd"
 
+[display]
+
+window/size/viewport_width=650
+window/size/viewport_height=575
+window/size/resizable=false
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/loggie/plugin.cfg", "res://addons/script-ide/plugin.cfg")

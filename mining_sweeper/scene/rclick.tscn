@@ -4,56 +4,10 @@
 
 [node name="rclick" type="PanelContainer" unique_id=1759098496]
 offset_top = 70.0
-offset_right = 126.0
 offset_bottom = 70.0
 script = ExtResource("1_4jut4")
 
-[node name="v" type="VBoxContainer" parent="." unique_id=1441826154]
-layout_mode = 2
-
-[node name="h" type="HBoxContainer" parent="v" unique_id=438739785]
-layout_mode = 2
-
-[node name="red" type="CheckBox" parent="v/h" unique_id=1723346201]
-unique_name_in_owner = true
-layout_mode = 2
-button_pressed = true
-text = "R"
-
-[node name="green" type="CheckBox" parent="v/h" unique_id=129670184]
-unique_name_in_owner = true
-layout_mode = 2
-text = "G"
-
-[node name="blue" type="CheckBox" parent="v/h" unique_id=2111725564]
-unique_name_in_owner = true
-layout_mode = 2
-text = "B"
-
-[node name="clear" type="Button" parent="v" unique_id=361797463]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Clear"
-
-[node name="tabs" type="TabContainer" parent="v" unique_id=1491387783]
-layout_mode = 2
-tab_alignment = 1
-current_tab = 0
-
-[node name="Hint" type="GridContainer" parent="v/tabs" unique_id=30299201]
+[node name="Flag" type="GridContainer" parent="." unique_id=1226560430]
 unique_name_in_owner = true
 layout_mode = 2
 columns = 3
-metadata/_tab_index = 0
-
-[node name="Flag" type="GridContainer" parent="v/tabs" unique_id=1226560430]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-columns = 3
-metadata/_tab_index = 1
-
-[connection signal="pressed" from="v/h/red" to="." method="_color_click" flags=18]
-[connection signal="pressed" from="v/h/green" to="." method="_color_click" flags=18]
-[connection signal="pressed" from="v/h/blue" to="." method="_color_click" flags=18]
-[connection signal="pressed" from="v/clear" to="." method="_clear_click"]

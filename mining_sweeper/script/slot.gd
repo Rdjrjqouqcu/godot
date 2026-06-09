@@ -13,30 +13,16 @@ var ore_blue: int = 0
 
 var revealed: bool = false
 
-var hint_red: int = 0
-var hint_green: int = 0
-var hint_blue: int = 0
-# TODO maybe remove hint for just flag?
-var hint_is_flag: bool = false
-
-#enum state {
-	#EXPOSED, # has ore and is revealed
-	#REVEALED, # does not have ore and is revealed
-	#FLAGGED, # marked as flagged
-	#HINTED, # marked as hinted
-	#HIDDEN, # unrevealed and unhinted and unflagged
-#}
+var flag_red: int = 0
+var flag_green: int = 0
+var flag_blue: int = 0
 
 func has_ore() -> bool:
 	return ore_red != 0 or ore_green != 0 or ore_blue != 0
 func is_revealed() -> bool:
 	return revealed
 func is_flagged() -> bool:
-	return is_hinted_or_flagged() and hint_is_flag
-func is_hinted() -> bool:
-	return is_hinted_or_flagged() and not hint_is_flag
-func is_hinted_or_flagged() -> bool:
-	return hint_red != 0 or hint_green != 0 or hint_blue != 0
+	return flag_red != 0 or flag_green != 0 or flag_blue != 0
 
 func init_main(m: Main) -> void:
 	main = m
@@ -52,20 +38,20 @@ func reset() -> void:
 	ore_green = 0
 	ore_blue = 0
 	revealed = false
-	hint_red = 0
-	hint_green = 0
-	hint_blue = 0
-	hint_is_flag = false
+	flag_red = 0
+	flag_green = 0
+	flag_blue = 0
 	$digit.visible = false
+	$cover.visible = true
 
-func _update_digit_color_hint() -> void:
-	$digit.text = str(hint_red + hint_green + hint_blue) + ("F" if hint_is_flag else "H")
+func _update_digit_color_flag() -> void:
+	$digit.text = str(flag_red + flag_green + flag_blue) + "F"
 	$digit.modulate = Color(
-		1.0 if hint_red > 0 else 0.0,
-		1.0 if hint_green > 0 else 0.0,
-		1.0 if hint_blue > 0 else 0.0,
+		1.0 if flag_red > 0 else 0.0,
+		1.0 if flag_green > 0 else 0.0,
+		1.0 if flag_blue > 0 else 0.0,
 	)
-	$digit.visible = is_hinted_or_flagged()
+	$digit.visible = is_flagged()
 
 func _update_digit_color(red_count: int, green_count: int, blue_count: int, exposed: bool) -> void:
 	$digit.text = str(red_count + green_count + blue_count) + ("X" if exposed else "")
@@ -74,7 +60,8 @@ func _update_digit_color(red_count: int, green_count: int, blue_count: int, expo
 		1.0 if green_count > 0 else 0.0,
 		1.0 if blue_count > 0 else 0.0,
 	)
-	$digit.visible = true
+	$digit.visible = red_count + green_count + blue_count != 0
+	$cover.visible = false
 
 func reveal_digit() -> Array[Slot]:
 	revealed = true
@@ -104,7 +91,7 @@ func reveal_area() -> void:
 	var queue = reveal_digit()
 	while not queue.is_empty():
 		var s = queue.pop_back()
-		if s.is_revealed() or s.is_hinted_or_flagged():
+		if s.is_revealed() or s.is_flagged():
 			continue
 		var dist = max(abs(s.loc.x - loc.x), abs(s.loc.y - loc.y))
 		if MAX_RADIUS <= dist:
@@ -113,14 +100,13 @@ func reveal_area() -> void:
 		if dist < MAX_RADIUS:
 			queue.append_array(n)
 
-func hint_slot(r: int, g: int, b: int, isFlag: bool) -> void:
+func flag_slot(r: int, g: int, b: int) -> void:
 	if is_revealed():
 		return
-	hint_red = r if r != -1 else hint_red
-	hint_green = g if g != -1 else hint_green
-	hint_blue = b if b != -1 else hint_blue
-	hint_is_flag = isFlag
-	_update_digit_color_hint()
+	flag_red = r if r != -1 else flag_red
+	flag_green = g if g != -1 else flag_green
+	flag_blue = b if b != -1 else flag_blue
+	_update_digit_color_flag()
 
 func _update_debug() -> void:
 	$debug.text = str(
@@ -132,7 +118,7 @@ func _input_event(_view, event, _shape) -> void:
 		event = event as InputEventMouseButton
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			if is_flagged():
-				if not main.is_flag_ready(hint_red, hint_green, hint_blue):
+				if not main.is_flag_ready(flag_red, flag_green, flag_blue):
 					return
 			reveal_area()
 			main.rclick(loc, self.position, true)

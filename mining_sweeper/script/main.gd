@@ -26,17 +26,24 @@ var target_red_failed: bool = false
 var target_green_failed: bool = false
 var target_blue_failed: bool = false
 
+
 func get_ore_map() -> Array[Dictionary]:
 	var red: Dictionary[Vector2i, int] = {}
 	var green: Dictionary[Vector2i, int] = {}
 	var blue: Dictionary[Vector2i, int] = {}
 
+	var coords = []
+	for i in range(0, COLS - 1):
+		for j in range(0, ROWS - 1):
+			coords.append(Vector2i(i, j))
+	coords.shuffle()
+
 	for i in range(1, 10):
-		red[Vector2i(randi_range(0, COLS - 1), randi_range(0, ROWS - 1))] = i
+		red[coords[i - 1]] = i
 	for i in range(1, 10):
-		green[Vector2i(randi_range(0, COLS - 1), randi_range(0, ROWS - 1))] = i
+		green[coords[i - 1 + 10]] = i
 	for i in range(1, 10):
-		blue[Vector2i(randi_range(0, COLS - 1), randi_range(0, ROWS - 1))] = i
+		blue[coords[i - 1 + 20]] = i
 
 	return [red, green, blue]
 
@@ -58,10 +65,10 @@ func rclick(loc:Vector2i, pos: Vector2, cantOpen: bool) -> void:
 	elif not cantOpen:
 		%rclick.open_menu(self, loc, pos + Vector2(26,26))
 
-func interact_with_slot(loc: Vector2i, r: int, g: int, b: int, flag: bool) -> void:
+func flag_slot(loc: Vector2i, r: int, g: int, b: int) -> void:
 	#Loggie.info(loc, r, g, b)
 	var s = slot_cache.get(loc) as Slot
-	s.hint_slot(r, g, b, flag)
+	s.flag_slot(r, g, b)
 
 func handle_revealed_ore(r: int, g: int, b: int) -> void:
 	#Loggie.info(r, g, b, target_red, target_green, target_blue)

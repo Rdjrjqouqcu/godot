@@ -20,6 +20,10 @@ width = 25
 height = 25
 thickness = 1
 
+[node name="cover" type="Polygon2D" parent="." unique_id=1654898125]
+color = Color(0.7529412, 0.7529412, 0.7529412, 1)
+polygon = PackedVector2Array(1, 1, 24, 1, 24, 24, 1, 24)
+
 [node name="debug" type="Label" parent="." unique_id=364771078]
 visible = false
 offset_right = 40.0
