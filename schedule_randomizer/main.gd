@@ -3,8 +3,7 @@ extends MarginContainer
 @onready var date_entry: TextEdit = %dateEntry
 @onready var container: GridContainer = %container
 @onready var err: Label = %err
-
-const SHOW_ROLL: bool = false
+@onready var show_roll: CheckButton = %show
 
 const format: String = "%Y-%m-%d"
 
@@ -24,10 +23,10 @@ class LineEntry:
 	var count: int
 	var color: Color
 	var lset: LabelSettings
-	func add_row(roll: int, container: GridContainer) -> void:
-		if SHOW_ROLL:
+	func add_row(roll: int, container: GridContainer, show_roll: bool) -> void:
+		if show_roll:
 			var r = Label.new()
-			r.text = str("r=", roll)
+			r.text = str("r=", roll, "")
 			r.modulate = Color.GRAY
 			container.add_child(r)
 		match mode:
@@ -105,13 +104,13 @@ var results_time: Array[LineEntry] = [
 	LineEntry.new_icon("Anytime", CHECK_MARK, Color.GREEN),
 ]
 var results_tasks: Array[LineEntry] = [
-	LineEntry.new_text("3 tasks", Color.RED),
-	LineEntry.new_text("2 tasks", Color.ORANGE),
-	LineEntry.new_text("2 tasks", Color.ORANGE),
-	LineEntry.new_text("1 task", Color.YELLOW),
-	LineEntry.new_text("1 task", Color.YELLOW),
-	LineEntry.new_text("1 task", Color.YELLOW),
-	LineEntry.new_text("0 tasks", Color.GREEN),
+	LineEntry.new_text("4 tasks", Color.RED),
+	LineEntry.new_text("3 tasks", Color.ORANGE),
+	LineEntry.new_text("3 tasks", Color.ORANGE),
+	LineEntry.new_text("2 task", Color.YELLOW),
+	LineEntry.new_text("2 task", Color.YELLOW),
+	LineEntry.new_text("1 task", Color.GREEN_YELLOW),
+	LineEntry.new_text("1 tasks", Color.GREEN_YELLOW),
 	LineEntry.new_text("0 tasks", Color.GREEN),
 	LineEntry.new_text("0 tasks", Color.GREEN),
 ]
@@ -160,7 +159,7 @@ func _add_row(dt: DateTime) -> void:
 		var s: int = _get_seed(dt, i)
 		var val: int = data_randoms[i].call(s, l)
 		var res: LineEntry = get_or_error(source, val)
-		res.add_row(val, container)
+		res.add_row(val, container, show_roll.button_pressed)
 
 func _display_error(txt: String) -> void:
 	err.text = txt
@@ -168,6 +167,8 @@ func _display_error(txt: String) -> void:
 	print("err: ", txt)
 
 func _update() -> void:
+	container.columns = 1 + (2 + (1 if show_roll.button_pressed else 0)) * len(data_sources)
+
 	var split = date_entry.text.split("-")
 	if len(split) != 3 or !split[0].is_valid_int() or !split[1].is_valid_int() or !split[2].is_valid_int():
 		_display_error("format error, use YYYY-MM-DD")
@@ -194,5 +195,4 @@ func _ready() -> void:
 		int(Time.get_unix_time_from_system() - secondsPerDay),
 		Time.get_datetime_dict_from_system()["dst"])
 	date_entry.text = dt.strftime(format)
-	container.columns = 1 + (2 + (1 if SHOW_ROLL else 0)) * len(data_sources)
 	_update()
