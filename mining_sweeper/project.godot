@@ -8,19 +8,34 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="mining_sweeper"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+run/main_scene="uid://c7etckbefik67"
+config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Loggie="*res://addons/loggie/loggie.gd"
 
+[display]
+
+window/size/viewport_width=510
+window/size/viewport_height=433
+window/size/resizable=false
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/loggie/plugin.cfg", "res://addons/script-ide/plugin.cfg")
+
+[global_group]
+
+slots=""
 
 [rendering]
 
