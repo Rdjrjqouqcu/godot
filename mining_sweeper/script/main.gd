@@ -2,8 +2,8 @@ extends Node2D
 class_name Main
 
 const GROUP_SLOTS = "slots"
-const ROWS = 20
-const COLS = 20
+const ROWS = 15
+const COLS = 15
 
 var slot_cache: Dictionary[Vector2i, Slot] = {}
 
