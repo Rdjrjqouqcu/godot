@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bb5rmiyagptq8" path="res://scene/targets/move_target.gd" id="2_ymp0j"]
 
 [node name="move_target" type="TextureRect"]
-self_modulate = Color(0, 0, 1, 0.501961)
+self_modulate = Color(0, 0, 1, 0.25098)
 custom_minimum_size = Vector2(32, 32)
 offset_right = 32.0
 offset_bottom = 32.0
@@ -12,9 +12,21 @@ texture = ExtResource("1_ymp0j")
 script = ExtResource("2_ymp0j")
 
 [node name="count" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "1/4"
+
+[node name="progress" type="ProgressBar" parent="."]
+self_modulate = Color(0, 0, 1, 1)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+max_value = 4.0
+step = 1.0
+show_percentage = false
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
