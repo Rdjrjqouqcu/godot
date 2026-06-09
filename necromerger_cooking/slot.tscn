@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhg7olykab0v4"]
+
+[ext_resource type="Script" uid="uid://dkk8n1iuxitmo" path="res://slot.gd" id="1_c24ra"]
+[ext_resource type="PackedScene" uid="uid://dr6simhb4kqjo" path="res://frame.tscn" id="2_khion"]
+[ext_resource type="PackedScene" uid="uid://cpxnlp84t0p5w" path="res://drag_drop/droppable.tscn" id="3_hiqfk"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_c24ra")
+
+[node name="Frame" parent="." instance=ExtResource("2_khion")]
+
+[node name="Droppable" parent="." instance=ExtResource("3_hiqfk")]

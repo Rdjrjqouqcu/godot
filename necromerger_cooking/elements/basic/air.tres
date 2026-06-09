@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d1rpg626lb53b"]
+
+[ext_resource type="Script" uid="uid://b30e78eflj3a4" path="res://elements/element.gd" id="1_vrtgx"]
+[ext_resource type="Texture2D" uid="uid://c2fydcm0b5jgh" path="res://icon.svg" id="2_ot2vx"]
+
+[resource]
+script = ExtResource("1_vrtgx")
+name = "Air"
+texture = ExtResource("2_ot2vx")
