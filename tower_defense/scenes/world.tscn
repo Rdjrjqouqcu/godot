@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://b64n245y8m3eb"]
+[gd_scene load_steps=2 format=3 uid="uid://b64n245y8m3eb"]
+
+[ext_resource type="Script" uid="uid://cds35dm1ptk6r" path="res://scenes/world.gd" id="1_nnsk1"]
 
 [node name="world" type="Node2D"]
+script = ExtResource("1_nnsk1")
+
+[node name="slots" type="Node2D" parent="."]
+unique_name_in_owner = true
