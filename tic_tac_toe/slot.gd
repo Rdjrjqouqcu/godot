@@ -51,9 +51,3 @@ func _on_gui_input(event):
 			icon_o.visible = true
 		sig.emit(x_pos, y_pos, state)
 		print("set ", x_pos, " ", y_pos, " to ", state)
-
-
-
-
-
-

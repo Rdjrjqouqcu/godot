@@ -178,5 +178,3 @@ func add_slot(x, y):
 	instance.gs = self
 	instance.sig = played
 	add_child(instance)
-
-
