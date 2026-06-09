@@ -1,0 +1,115 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0sh6jdkqfigf"]
+
+[sub_resource type="GDScript" id="GDScript_fsg0l"]
+script/source = "@tool
+extends Node2D
+class_name GridAllocator
+
+@export_group(\"Scene\")
+@export var TiledScene: PackedScene
+@export var SceneProperties: Dictionary[String, Variant]
+
+@export_group(\"Settings\")
+@export_range(1, 10, 1, \"or_greater\") var cols: int = 4
+@export_range(1, 10, 1, \"or_greater\") var rows: int = 3
+
+@export_group(\"Padding\")
+@export var row_padding: int = 0
+@export var col_padding: int = 0
+
+@export var border_top_padding: int = 0
+@export var border_right_padding: int = 0
+@export var border_bottom_padding: int = 0
+@export var border_left_padding: int = 0
+
+@export_group(\"Apply\")
+@export_tool_button(\"Apply\") var action = _apply_view
+
+func _get_scene_instance() -> Node2D:
+	var scene = TiledScene.instantiate()
+	for k in SceneProperties:
+		scene.set(k, SceneProperties.get(k))
+	return scene
+
+func _get_box(x: int, y: int) -> PackedVector2Array:
+	return PackedVector2Array([
+		Vector2i(0,0),
+		Vector2i(x,0),
+		Vector2i(x,y),
+		Vector2i(0,y),
+	])
+
+func _apply_view() -> void:
+	var board = get_node(\"board\")
+	if board == null:
+		board = Polygon2D.new()
+		board.name = \"board\"
+		board.color = Color(\"80808080\")
+		self.add_child(board)
+
+	if TiledScene == null:
+		return
+
+	var s = _get_scene_instance()
+	var s_wid = s.get(\"width\")
+	var s_hei = s.get(\"height\")
+	if s_wid == null or s_hei == null:
+		var path = self.get_parent().name
+		if path.is_empty():
+			path = self.name
+		else:
+			path = path + \"/\" + self.name
+		push_error(path + \" needs an int 'width' and 'height' property\")
+		s_wid = 50
+		s_hei = 50
+	var tot_width = border_left_padding + border_right_padding + s_wid * cols + (cols - 1) * col_padding
+	var tot_height = border_top_padding + border_bottom_padding + s_hei * rows + (rows - 1) * row_padding
+	board.polygon = _get_box(tot_width, tot_height)
+
+	for c in board.get_children():
+		c.queue_free()
+
+	for y in rows:
+		for x in cols:
+			var c = Polygon2D.new()
+			c.position = Vector2i(
+					border_left_padding + x * (s_wid + col_padding),
+					border_top_padding + y * (s_hei + row_padding),
+			)
+			c.polygon = _get_box(s_wid, s_hei)
+			board.add_child(c)
+			c.owner = board
+
+
+func _build_board() -> void:
+	var grid = Node2D.new()
+	grid.name = self.name
+	grid.position = self.position
+	add_sibling.call_deferred(grid)
+	for y in rows:
+		for x in cols:
+			var s = _get_scene_instance()
+			var s_wid = s.get(\"width\")
+			var s_hei = s.get(\"height\")
+			if s_wid == null or s_hei == null:
+				assert(false, \"Grid Allocated Scene needs an int 'width' and 'height' property\")
+			s.set(\"loc\", Vector2i(x, y))
+			s.position = Vector2i(
+				border_left_padding + x * (s_wid + col_padding),
+				border_top_padding + y * (s_hei + row_padding),
+			)
+			grid.add_child(s)
+	self.queue_free()
+
+func _ready() -> void:
+	if Engine.is_editor_hint():
+		_apply_view()
+	else:
+		_build_board()
+"
+
+[node name="grid_allocator" type="Node2D"]
+script = SubResource("GDScript_fsg0l")
+
+[node name="board" type="Polygon2D" parent="."]
+color = Color(0.5019608, 0.5019608, 0.5019608, 0.5019608)
