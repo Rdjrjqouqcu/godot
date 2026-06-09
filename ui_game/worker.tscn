@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://dckjid1a5yqee"]
+
+[ext_resource type="Texture2D" uid="uid://bv3dpsj7ghggo" path="res://icon.svg" id="1_151vt"]
+[ext_resource type="Script" path="res://worker.gd" id="1_uik26"]
+[ext_resource type="Theme" uid="uid://d305yra51d2bj" path="res://style/margin_theme.tres" id="2_0xykh"]
+[ext_resource type="LabelSettings" uid="uid://dgcogd1ny3nq2" path="res://style/job_title.tres" id="4_lqsem"]
+[ext_resource type="LabelSettings" uid="uid://nrslf8kswebb" path="res://style/worker_text.tres" id="5_3vfn8"]
+
+[node name="worker" type="PanelContainer"]
+script = ExtResource("1_uik26")
+durability_maximum = null
+
+[node name="margin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("2_0xykh")
+
+[node name="flow" type="HBoxContainer" parent="margin"]
+layout_mode = 2
+
+[node name="icon" type="TextureRect" parent="margin/flow"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+texture = ExtResource("1_151vt")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="content" type="VBoxContainer" parent="margin/flow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="title" type="Label" parent="margin/flow/content"]
+layout_mode = 2
+text = "Basic Workers"
+label_settings = ExtResource("4_lqsem")
+
+[node name="job" type="HBoxContainer" parent="margin/flow/content"]
+layout_mode = 2
+
+[node name="remove" type="Button" parent="margin/flow/content/job"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+disabled = true
+text = "x"
+
+[node name="name" type="Label" parent="margin/flow/content/job"]
+layout_mode = 2
+text = "Idle"
+label_settings = ExtResource("5_3vfn8")
+
+[node name="Label" type="Label" parent="margin/flow/content/job"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Selected"
+label_settings = ExtResource("5_3vfn8")
+horizontal_alignment = 2
+
+[node name="durability" type="Label" parent="margin/flow/content"]
+layout_mode = 2
+text = "durability: 100 / 100"
+label_settings = ExtResource("5_3vfn8")
+
+[connection signal="gui_input" from="." to="." method="select_worker"]
+[connection signal="pressed" from="margin/flow/content/job/remove" to="." method="_clear_active_job"]
