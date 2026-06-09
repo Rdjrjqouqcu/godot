@@ -10,7 +10,7 @@ const VIEWPORT_WIDTH = BOARD_WIDTH * TILE_SIZE # 1152
 const VIEWPORT_HEIGHT = BOARD_WIDTH * TILE_SIZE # 1152
 
 static func map_position(pos: Vector2i) -> Vector2i:
-	return pos * TILE_SIZE + Vector2i(TILE_SIZE / 2, TILE_SIZE / 2)
+	return pos * TILE_SIZE + Vector2i(TILE_SIZE / 2.0, TILE_SIZE / 2.0)
 
 # palette: https://lospec.com/palette-list/burnt-retinas
 const COLOR_BLACK: Color = Color("050112")

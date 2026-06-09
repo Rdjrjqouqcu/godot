@@ -8,6 +8,8 @@ script = ExtResource("1_jyhfs")
 
 [node name="border" type="Node2D" parent="."]
 
+[node name="blocks" type="Node2D" parent="."]
+
 [node name="spawners" type="Node2D" parent="."]
 
 [node name="ball" parent="." instance=ExtResource("4_o6xl0")]
