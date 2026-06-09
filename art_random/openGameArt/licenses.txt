@@ -45,8 +45,18 @@ License(s): CC0
 Author: Kyzerole
 
 
+Shrine or Grave
+
+https://opengameart.org/content/shrine-or-gravestone
+License(s): CC0
+Author: simranzenov
 
 
+LPC Skeleton
+
+https://opengameart.org/content/lpc-skeleton
+License(s): CC-BY-SA 3.0 ; GPL 3.0
+Author: wulax
 
 
 

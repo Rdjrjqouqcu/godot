@@ -1,0 +1,46 @@
+Cow Attack Art Assets
+
+
+https://opengameart.org/content/cow-attack-basic-action-set
+License(s): CC-BY 3.0
+Author: qubodup
+
+
+License & Authors
+=================
+
+Copyright 2012 Yoann Sculo <yoann.sculo @ gmail .com> <http://twitter.com/yoannsculo> <http://yoannsculo.fr>
+License: Creative Commons Attribution 3.0 Universal <http://creativecommons.org/licenses/by/3.0/>
+Source: http://opengameart.org/content/simerion-tiles-and-images
+
+Changes (by Iwan Gabovitch):
+ - alien is a color-changed cultist
+ - alien with gun has changed posture and a simple pixel stick in her hands
+ - cow is a bit thinner and has longer legs
+ - cow eat animations have the mouth changing shape and add some grass in the mouth
+ - cowfacehappy is based on eat animations
+ - cow step animations have the legs slightly deformed
+ - grass and grassdry are color modified and a bit shorter
+ - surface is a color-modified and 'rectanglified' sand ground tile
+ - surfacered is surface with GIMP/Colors/Hue-Saturation Overlap=0,Hue=-7,Lightness=-23,Saturation=21 applied
+ - cowscout and cowmothership are 'enginered' cows fit for space and air travel
+ - cowmothership2 and cowmothership3 is based on a building with a glass dome, cow head and cow's colors
+ - icons are mix-ups of above images
+ - cowfaceohno based on alien and cowfacehappy
+ - cowhead
+Copyright of changes 2012 Iwan Gabovitch <qubodup@gmail.com> <http://twitter.com/qubodup> <http://qubodup.net>
+License of changes: Creative Commons Attribution 3.0 Universal <http://creativecommons.org/licenses/by/3.0/>
+
+Some graphics were created from scratch but included, as they are fitting. They are very simple and terms for their usage are very permissive.
+
+Cow Attack Original Graphics
+Copyright 2012 Iwan Gabovitch <qubodup@gmail.com> <http://twitter.com/qubodup> <http://qubodup.net>
+License: CC0 1.0 Universal <http://creativecommons.org/publicdomain/zero/1.0/>
+ - beam
+ - beamsimple
+ - sky (gimp noise + gradient overlay)
+ - drop (milk)
+ - backgroundover screens
+
+Definitely not copyrightable
+ - lasershot
