@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://gokyouu26dua"]
+[gd_scene load_steps=11 format=3 uid="uid://gokyouu26dua"]
 
 [ext_resource type="Texture2D" uid="uid://dymfxign781ab" path="res://assets/openGameArt/anvil.png" id="1_qojh1"]
 [ext_resource type="Script" uid="uid://sshr3vbnw5q" path="res://scripts/anvil.gd" id="1_tr4vl"]
@@ -7,9 +7,6 @@
 [ext_resource type="Animation" uid="uid://4fcg3anvk20t" path="res://assets/move_left.res" id="5_ndfmv"]
 [ext_resource type="Animation" uid="uid://dfgb1b2csfqe1" path="res://assets/move_reset_x.res" id="6_8mnad"]
 [ext_resource type="Animation" uid="uid://b5x28jerut7tc" path="res://assets/move_right.res" id="6_jx4t7"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tr4vl"]
-size = Vector2(32, 32)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dutve"]
 _data = {
@@ -29,16 +26,14 @@ _data = {
 &"move_right": ExtResource("6_jx4t7")
 }
 
-[node name="anvil" type="AnimatableBody2D"]
+[node name="anvil" type="Node2D"]
 script = ExtResource("1_tr4vl")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_tr4vl")
 
 [node name="sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_qojh1")
 
 [node name="speed1" type="CPUParticles2D" parent="sprite"]
+unique_name_in_owner = true
 position = Vector2(0, -48)
 amount = 24
 lifetime = 0.25
@@ -54,6 +49,7 @@ scale_amount_max = 1.5
 color = Color(0.713726, 0.133333, 0.0117647, 1)
 
 [node name="speed2" type="CPUParticles2D" parent="sprite"]
+unique_name_in_owner = true
 position = Vector2(0, -16)
 amount = 16
 lifetime = 0.38
@@ -69,6 +65,7 @@ scale_amount_max = 2.0
 color = Color(1, 0.458824, 0, 1)
 
 [node name="speed3" type="CPUParticles2D" parent="sprite"]
+unique_name_in_owner = true
 position = Vector2(0, -16)
 lifetime = 0.5
 emission_shape = 3
@@ -83,6 +80,7 @@ scale_amount_max = 4.0
 color = Color(0.843137, 0.207843, 0.00784314, 1)
 
 [node name="speed4" type="CPUParticles2D" parent="sprite"]
+unique_name_in_owner = true
 position = Vector2(0, -16)
 amount = 4
 lifetime = 0.63
@@ -98,16 +96,22 @@ scale_amount_max = 8.0
 color = Color(0.501961, 0.0666667, 0, 1)
 
 [node name="down" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../sprite")
 libraries = {
 &"": SubResource("AnimationLibrary_dutve")
 }
 
 [node name="left" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../sprite")
 libraries = {
 &"": SubResource("AnimationLibrary_7y83d")
 }
 
 [node name="right" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../sprite")
 libraries = {
 &"": SubResource("AnimationLibrary_4ct6o")
 }

@@ -38,25 +38,20 @@ position = Vector2(240, 272)
 position = Vector2(272, 272)
 
 [node name="stone_block" parent="blocks" instance=ExtResource("6_x17xt")]
-position = Vector2(304, 272)
-
-[node name="stone_block2" parent="blocks" instance=ExtResource("6_x17xt")]
-position = Vector2(336, 272)
-
-[node name="stone_block3" parent="blocks" instance=ExtResource("6_x17xt")]
 position = Vector2(368, 272)
 
+[node name="stone_block2" parent="blocks" instance=ExtResource("6_x17xt")]
+position = Vector2(144, 16)
+
+[node name="stone_block3" parent="blocks" instance=ExtResource("6_x17xt")]
+position = Vector2(336, 272)
+
 [node name="stone_block4" parent="blocks" instance=ExtResource("6_x17xt")]
-position = Vector2(400, 272)
+position = Vector2(304, 272)
 
 [node name="anvil" parent="." node_paths=PackedStringArray("level") instance=ExtResource("2_3flxk")]
 position = Vector2(48, 48)
 level = NodePath("..")
-
-[node name="debug" type="CheckBox" parent="."]
-offset_right = 24.0
-offset_bottom = 24.0
-text = "debug"
 
 [node name="starting_area" type="Node2D" parent="."]
 
@@ -98,3 +93,32 @@ position = Vector2(112, 80)
 
 [node name="target3" parent="starting_area" instance=ExtResource("7_lsoxn")]
 position = Vector2(144, 144)
+
+[node name="ui" type="PanelContainer" parent="."]
+offset_top = 512.0
+offset_right = 640.0
+offset_bottom = 640.0
+
+[node name="MarginContainer" type="MarginContainer" parent="ui"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ui/MarginContainer"]
+layout_mode = 2
+
+[node name="restart" type="Button" parent="ui/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Restart"
+
+[node name="debug" type="CheckBox" parent="ui/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "debug"
+
+[connection signal="pressed" from="ui/MarginContainer/HBoxContainer/restart" to="." method="_restart"]
