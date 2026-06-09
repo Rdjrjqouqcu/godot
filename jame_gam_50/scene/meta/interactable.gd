@@ -10,14 +10,14 @@ enum InteractionType {
 @export var odds:float = 0.33
 
 var targets_to_clear = 0
-signal failed
-signal cleared
 
+signal cleared
 func _on_cleared():
 	targets_to_clear -= 1
 	if targets_to_clear == 0:
 		get_parent().pass_puzzle()
 
+signal failed
 func _on_failed():
 	get_parent().fail_puzzle()
 

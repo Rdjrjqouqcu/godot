@@ -1,12 +1,6 @@
 extends Node2D
 class_name Main
 
-enum Difficulty {
-	EASY = 0,
-	MEDIUM = 1,
-	HARD = 2,
-}
-
 @onready var pop_display: RichTextLabel = %popDisplay
 @onready var chip_display: RichTextLabel = %chipDisplay
 @onready var time_display: RichTextLabel = %timeDisplay
@@ -18,6 +12,8 @@ var collected_chips = 0
 var total_chips = 10
 var remaining_population = 1_000_000_000
 var time_elapsed_ms = 0
+var circuit_cooldown_ms = 500
+var puzzle_cooldown_ms = 0
 
 func add_circuit() -> void:
 	collected_chips += 1
@@ -42,21 +38,101 @@ func redraw_text() -> void:
 	var ms:int = floori(time_elapsed_ms) % 100
 	time_display.text = "%02d:%02d.%02d" % [tmin, sec, ms]
 
+	for child in frames.get_children():
+		child.redraw(board)
+
+var board: Dictionary[Vector2i, bool] = {}
+var active_puzzle_count: int = 0
+var is_circuit_active: bool = false
+func mark_add_puzzle(locs: Array[Vector2i], is_circuit: bool, spawn_cooldown: int):
+	active_puzzle_count += 1
+	is_circuit_active = is_circuit_active || is_circuit
+	if is_circuit && spawn_cooldown >= 0:
+		circuit_cooldown_ms = spawn_cooldown
+	if !is_circuit && spawn_cooldown >= 0:
+		puzzle_cooldown_ms = spawn_cooldown
+	for loc in locs:
+		board.set(loc, true)
+func mark_free_puzzle(locs: Array[Vector2i], is_circuit: bool, spawn_cooldown: int):
+	active_puzzle_count -= 1
+	is_circuit_active = is_circuit_active && !is_circuit
+	if is_circuit && spawn_cooldown >= 0:
+		circuit_cooldown_ms = spawn_cooldown
+	if !is_circuit && spawn_cooldown >= 0:
+		puzzle_cooldown_ms = spawn_cooldown
+	for loc in locs:
+		board.set(loc, false)
+
+func _rand_coords() -> Vector2i:
+	return Vector2i(randi_range(0,15), randi_range(0,8))
+func _spawn_circuit_puzzle() -> bool:
+	var c = _rand_coords()
+	var p = PuzzleCircuit2x1.get_new()
+	for i in range(10):
+		if p.can_fit(c, board):
+			break
+		c = _rand_coords()
+	if p.can_fit(c, board):
+		p.init(c, self)
+		return true
+	return false
+func _get_noncirc_puzzle() -> PuzzleBase:
+	const total = 12
+	var r = randi_range(0, total - 1)
+	r -= 6
+	if r < 0:
+		return PuzzleShield.get_new_green()
+	r -= 2
+	if r < 0:
+		return PuzzleShield.get_new_green2()
+	r -= 3
+	if r < 0:
+		return PuzzleShield.get_new_blue()
+	r -= 1
+	if r < 0:
+		return PuzzleShield.get_new_blue2()
+	Loggie.error("Random Puzzle selection failed using default: ", r)
+	return PuzzleShield.get_new_green()
+func _spawn_noncirc_puzzle() -> bool:
+	var c = _rand_coords()
+	var p = _get_noncirc_puzzle()
+	for i in range(10):
+		if p.can_fit(c, board):
+			break
+		c = _rand_coords()
+	if p.can_fit(c, board):
+		p.init(c, self)
+		return true
+	return false
+
 func _init_frames() -> void:
 	for i in range(16):
 		for j in range(9):
 			var frame = FRAME.instantiate()
+			frame.pos = Vector2i(i, j)
 			frame.global_position = Vector2i(i*120, j * 120)
 			frames.add_child(frame)
 
 func _ready() -> void:
 	seed(0)
+	for i in range(0, 16):
+		for j in range(0, 9):
+			board.set(Vector2i(i, j), false)
 	_init_frames()
-	redraw_text()
-	add_child(PuzzleCircuit2x1.create_circuit_2x1(Vector2i(2,2)))
-	add_child(PuzzleShield1x1.create_shield_1x1(Vector2i(3,3)))
-	add_child(PuzzleShield1x1.create_shield_1x1(Vector2i(3,4)))
+	board.set(Vector2i(0, 0), true)
+	board.set(Vector2i(1, 0), true)
+	board.set(Vector2i(2, 0), true)
 
 func _process(delta: float) -> void:
+	var prev_ms = time_elapsed_ms
 	time_elapsed_ms += delta * 100
+	circuit_cooldown_ms -= delta * 100
+	puzzle_cooldown_ms -= delta * 100
 	redraw_text()
+
+	if circuit_cooldown_ms <= 0:
+		if !is_circuit_active:
+			if _spawn_circuit_puzzle():
+				return
+	if puzzle_cooldown_ms <= 0:
+		_spawn_noncirc_puzzle()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://58v0qq84xeo0"]
+[gd_scene load_steps=16 format=3 uid="uid://58v0qq84xeo0"]
 
 [ext_resource type="Texture2D" uid="uid://dv4gitnto6mx1" path="res://art/Space Skybox Pack/common/jettelly_space_common_blue_BACK.png" id="1_4j5ol"]
 [ext_resource type="Script" uid="uid://ybt3hvlmw3b0" path="res://scene/main.gd" id="1_of57s"]
@@ -8,8 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://di87vo76ov63c" path="res://art/Space Skybox Pack/common/jettelly_space_common_blue_RIGHT.png" id="5_tqoya"]
 [ext_resource type="Texture2D" uid="uid://wtuh3oqlhpiv" path="res://art/Space Skybox Pack/common/jettelly_space_common_blue_UP.png" id="6_k65ib"]
 [ext_resource type="Texture2D" uid="uid://ddo2blxhm6txp" path="res://art/openGameArt/printed_circuit_board_texture.png" id="8_of57s"]
-[ext_resource type="PackedScene" uid="uid://duon3fpniyk4u" path="res://scene/puzzles/circuit_2x_1.tscn" id="9_b5f6u"]
-[ext_resource type="PackedScene" uid="uid://d0cstody6c5aj" path="res://scene/puzzles/shield_1x1.tscn" id="10_tqoya"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_evhkr"]
 texture = ExtResource("1_4j5ol")
@@ -123,9 +121,3 @@ text = "00:12.562"
 fit_content = true
 
 [node name="frames" type="Node2D" parent="."]
-
-[node name="circuit_2x1" parent="." instance=ExtResource("9_b5f6u")]
-position = Vector2(480, 480)
-
-[node name="shield_1x1" parent="." instance=ExtResource("10_tqoya")]
-position = Vector2(840, 240)
