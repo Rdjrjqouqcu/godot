@@ -7,25 +7,35 @@ const CANCEL: Resource = preload("res://gameicons/cancel.png")
 const CHECK_MARK: Resource = preload("res://gameicons/check-mark.png")
 const STOPWATCH: Resource = preload("res://gameicons/stopwatch.png")
 
-@abstract class DataSource:
-	@abstract func _get_data(dt: DateTime, row_offset: int) -> Array[Node]
-	@abstract func get_column_count(show_roll: bool) -> int
-	func _get_roll_node(roll: Variant) -> Node:
+class DataSourceUtil:
+	static func _get_roll_node(roll: Variant) -> Node:
 		var r = Label.new()
 		r.text = str("r=", roll, "")
 		r.modulate = Color.GRAY
 		return r
-	func _get_seed_daily(dt: DateTime, offset: int = 0) -> int:
-		return offset * 100000000 + dt.year * 10000 + dt.month * 100 + dt.day
-	func _get_seed_monthly(dt: DateTime, offset: int = 0) -> int:
-		return offset * 100000000 + dt.year * 10000 + dt.month * 100
-	func _random_distributed(seed_used: int, entry_count: int) -> int:
+
+	static func _get_seed_day_of_month(dt: DateTime, offset: int = 0) -> int:
+		return offset * 1_0000_00_00 + dt.year * 1_00_00 + dt.month * 1_00 + dt.day
+	static func _get_seed_day_of_year(dt: DateTime, offset: int = 0) -> int:
+		return offset * 1_0000_000 + dt.year * 1_000 + dt._get_day_of_year()
+	static func _get_seed_month_of_year(dt: DateTime, offset: int = 0) -> int:
+		return offset * 1_0000_00 + dt.year * 1_00 + dt.month
+	static func _get_seed_week_of_year(dt: DateTime, offset: int = 0) -> int:
+		var wk = dt._get_week_of_year()
+		# 13 + wk to prevent month_of_year collisions
+		return offset * 1_0000_00 + dt.year * 1_00 + (13 + wk)
+
+	static func _random_distributed(seed_used: int, entry_count: int) -> int:
 		var seed_offset = seed_used % entry_count
 		var seed_floored = seed_used - seed_offset
 		var offsets = range(entry_count)
 		seed(seed_floored)
 		offsets.shuffle()
 		return offsets[seed_offset]
+
+@abstract class DataSource extends DataSourceUtil:
+	@abstract func _get_data(dt: DateTime, row_offset: int) -> Array[Node]
+	@abstract func get_column_count(show_roll: bool) -> int
 	func add_row(container: GridContainer, dt: DateTime, row_offset: int, show_roll: bool) -> void:
 		for n in _get_data(dt, row_offset).slice(0 if show_roll else 1):
 			container.add_child(n)
@@ -55,7 +65,7 @@ class TimeDataSource extends DataSource:
 		return 2 + (1 if show_roll else 0)
 
 	func _get_data(dt: DateTime, row_offset: int) -> Array[Node]:
-		var seed_used = _get_seed_daily(dt, row_offset)
+		var seed_used = _get_seed_day_of_month(dt, row_offset)
 		var roll = _random_distributed(seed_used, entries.size())
 
 		var line = entries[roll][0]
@@ -91,32 +101,27 @@ class RestrictionDataSource extends DataSource:
 		return 1 + (1 if show_roll else 0)
 
 	func _get_data(dt: DateTime, row_offset: int) -> Array[Node]:
-		var seed_used = _get_seed_daily(dt, row_offset)
-		var roll = _random_distributed(seed_used, entries.size())
+		var hbox = HBoxContainer.new()
 
-		var seed_monthly = _get_seed_monthly(dt, row_offset)
+		var seed_monthly = _get_seed_month_of_year(dt, row_offset)
 		seed(seed_monthly)
 		var first_monthly = randi_range(1,14)
 		var second_monthly = randi_range(15,28)
-
-		var roll_set = [roll, first_monthly, second_monthly]
-
 		if dt.day == first_monthly or dt.day == second_monthly:
 			var binfo = Label.new()
 			binfo.text = "BORED"
-			if dt.weekday_name == "monday":
-				binfo.text += entries[roll][0]
 			binfo.modulate = Color.PURPLE
-			return [_get_roll_node(roll_set), binfo]
+			hbox.add_child(binfo)
 
-		if dt.weekday_name != "monday":
-			return [_get_roll_node(roll_set), Label.new()]
+		var seed_used = _get_seed_week_of_year(dt, row_offset)
+		var roll = _random_distributed(seed_used, entries.size())
+		if dt.weekday_name == "monday":
+			var info = Label.new()
+			info.text = entries[roll][0]
+			info.modulate = entries[roll][1]
+			hbox.add_child(info)
 
-		var info = Label.new()
-		info.text = entries[roll][0]
-		info.modulate = entries[roll][1]
-
-		return [_get_roll_node(roll_set), info]
+		return [_get_roll_node([roll, first_monthly, second_monthly]), hbox]
 
 
 var data_sources: Array[DataSource] = [
