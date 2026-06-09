@@ -1,63 +1,67 @@
 
 
 printed_circuit_board_texture.png
-
 https://opengameart.org/content/printed-circuit-board-texture
 File: Ogd1 layers2
 License: GPLv2 or later <http://www.gnu.org/licenses/old-licenses/gpl-2.0.html>
 Author Original: Traversal Technology
 Author Ferivative: Sreejith K <http://commons.wikimedia.org/wiki/User:Sreejithk2000>
 
-
 meteor
-
 https://opengameart.org/content/meteor-animated-64x64
 License(s): CC-BY 4.0
 Author: Lluc Entertainment
 
-
 scifi Buildings
-
 https://opengameart.org/content/assets-free-space-modular-buildings-kit
 License(s): CC0
 Author: Wenrexa
 
-
 anvil
-
 https://opengameart.org/content/anvil
 License(s): CC0
 Author: xxgicoxx
 
-
 material tileset
-
 https://opengameart.org/content/platformer-tileset
 License(s): CC-BY 3.0
 Author: Bleddyuffles
 Link: https://www.bleddy.xyz/
 
-
 target
-
 https://opengameart.org/content/target
 License(s): CC0
 Author: Kyzerole
 
-
 Shrine or Grave
-
 https://opengameart.org/content/shrine-or-gravestone
 License(s): CC0
 Author: simranzenov
 
-
 LPC Skeleton
-
 https://opengameart.org/content/lpc-skeleton
 License(s): CC-BY-SA 3.0 ; GPL 3.0
 Author: wulax
 
+lpc Mage spell casting
+https://opengameart.org/content/four-characters-my-lpc-entries
+License(s): CC-BY 3.0 ; CC-BY-SA 3.0 ; OGA-BY 3.0
+Author: Stephen Challener (Redshrike) and Zi Ye
+
+smokeParticleAssets
+https://opengameart.org/content/smoke-particle-assets
+License(s): CC0
+Author: Kenny
+
+Smoke Aura
+https://opengameart.org/content/smoke-aura
+License(s): CC0
+Author: Beast
+
+db32rpgitems
+https://opengameart.org/content/16x16-rpg-items-db32
+License(s): CC0
+Author: ARoachIFoundOnMyPillow
 
 
 

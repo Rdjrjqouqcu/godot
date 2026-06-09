@@ -2,6 +2,12 @@
 https://game-icons.net/1x1/delapouite/check-mark.html
 https://game-icons.net/1x1/sbed/cancel.html
 https://game-icons.net/1x1/skoll/stopwatch.html
+https://game-icons.net/1x1/delapouite/sound-off.html
+https://game-icons.net/1x1/delapouite/sound-on.html
+https://game-icons.net/1x1/delapouite/speaker-off.html
+https://game-icons.net/1x1/delapouite/speaker.html
+https://game-icons.net/1x1/lorc/open-book.html
+
 
 
 
