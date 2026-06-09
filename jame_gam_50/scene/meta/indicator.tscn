@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvibv018xsueg"]
+
+[ext_resource type="Texture2D" uid="uid://1lx5588w0857" path="res://art/personal/square.032.png" id="1_bg6gx"]
+[ext_resource type="Script" uid="uid://bfwcfwdtyv60q" path="res://scene/meta/indicator.gd" id="2_u2b24"]
+
+[node name="indicator" type="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0.501961)
+texture = ExtResource("1_bg6gx")
+centered = false
+script = ExtResource("2_u2b24")

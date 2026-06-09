@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://bh5yxqyj1oitx"]
+
+[ext_resource type="Script" uid="uid://b0x6atvc3fxer" path="res://scene/puzzles/basic.gd" id="1_ddmrm"]
+[ext_resource type="PackedScene" uid="uid://r7b4ykm6jufi" path="res://scene/meta/frame.tscn" id="2_ddmrm"]
+[ext_resource type="Texture2D" uid="uid://5005cc6qcxq6" path="res://art/openGameArt/Turret01.png" id="3_i67dm"]
+[ext_resource type="PackedScene" uid="uid://fpnp36yqbj4i" path="res://scene/meta/fail_timer.tscn" id="3_o4upr"]
+[ext_resource type="Texture2D" uid="uid://cdetbj1v8qe4l" path="res://art/openGameArt/meteor/Meteor3.png" id="4_ddmrm"]
+[ext_resource type="Script" uid="uid://7hhp7pob4eg6" path="res://scene/meta/interactable.gd" id="5_38waw"]
+[ext_resource type="PackedScene" uid="uid://dvibv018xsueg" path="res://scene/meta/indicator.tscn" id="6_a6bnk"]
+
+[node name="meteor_2x1" type="Node2D"]
+script = ExtResource("1_ddmrm")
+
+[node name="frames" type="Node2D" parent="."]
+
+[node name="top" parent="frames" instance=ExtResource("2_ddmrm")]
+
+[node name="bottom" parent="frames" instance=ExtResource("2_ddmrm")]
+position = Vector2(0, 120)
+
+[node name="failTimer" parent="." instance=ExtResource("3_o4upr")]
+offset_top = 232.0
+offset_bottom = 240.0
+
+[node name="turret" type="Sprite2D" parent="."]
+position = Vector2(60, 180)
+rotation = 3.14159
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_i67dm")
+
+[node name="meteor" type="Sprite2D" parent="."]
+position = Vector2(60, 60)
+scale = Vector2(2, 2)
+texture = ExtResource("4_ddmrm")
+
+[node name="interactable" type="Node2D" parent="."]
+script = ExtResource("5_38waw")
+odds = 1.0
+
+[node name="indicator1" parent="interactable" instance=ExtResource("6_a6bnk")]
+position = Vector2(28, 114)
+scale = Vector2(2, 2)
+click_weight = 1
+
+[node name="indicator2" parent="interactable" instance=ExtResource("6_a6bnk")]
+position = Vector2(28, 165)
+scale = Vector2(2, 2)
+mouse_motion_weight = 1
+
+[node name="indicator3" parent="interactable" instance=ExtResource("6_a6bnk")]
+position = Vector2(28, 9)
+scale = Vector2(2, 2)
+dont_click_weight = 1
