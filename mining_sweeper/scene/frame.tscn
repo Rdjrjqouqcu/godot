@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://donnsc8414dig"]
+
+[sub_resource type="GDScript" id="GDScript_c24ra"]
+script/source = "extends Polygon2D
+class_name PolygonFrame
+
+@export var width: int = 64
+@export var height: int = 64
+@export var thickness: int = 2
+@export var color_override: Color = Color.WHITE
+
+func _ready() -> void:
+	self.polygon = PackedVector2Array([
+		Vector2(0,0),
+		Vector2(width,0),
+		Vector2(width,height),
+		Vector2(0,height),
+		Vector2(0,0),
+		Vector2(thickness,thickness),
+		Vector2(thickness,height-thickness),
+		Vector2(width-thickness,height-thickness),
+		Vector2(width-thickness,thickness),
+		Vector2(thickness,thickness),
+	])
+	self.color = color_override
+"
+
+[node name="Frame" type="Polygon2D"]
+color = Color(0.49803922, 0.49803922, 0.49803922, 0.49803922)
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
+script = SubResource("GDScript_c24ra")
