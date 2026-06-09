@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://nw3gv6bwma16"]
+
+[ext_resource type="Texture2D" uid="uid://dr3jdbkuw52em" path="res://art/Square2.png" id="1_4pdpe"]
+
+[node name="Plot" type="TextureRect"]
+self_modulate = Color(0.25098, 0.25098, 0.25098, 1)
+offset_right = 512.0
+offset_bottom = 512.0
+texture = ExtResource("1_4pdpe")
+
+[node name="debug" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "test 1
+2
+3
+4"
