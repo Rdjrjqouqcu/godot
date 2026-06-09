@@ -25,17 +25,6 @@ func open_menu(m:Main, loc:Vector2i, pos: Vector2) -> void:
 	self.last_loc = loc
 	self.visible = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-
-func _get_color() -> Color:
-	return Color(
-		1 if %red.is_pressed() else 0,
-		1 if %green.is_pressed() else 0,
-		1 if %blue.is_pressed() else 0,
-	)
-
 func _color_click(src: CheckBox) -> void:
 	%red.set_pressed_no_signal(false)
 	%green.set_pressed_no_signal(false)
@@ -44,8 +33,20 @@ func _color_click(src: CheckBox) -> void:
 
 func _clear_click() -> void:
 	self.visible = false
-	menu.interact_with_slot(last_loc, 0, false, _get_color())
+	menu.interact_with_slot(
+		last_loc,
+		0 if %red.is_pressed() else -1,
+		0 if %green.is_pressed() else -1,
+		0 if %blue.is_pressed() else -1,
+		false
+	)
 
 func _hint_flag_click(id: int, flag: bool) -> void:
 	self.visible = false
-	menu.interact_with_slot(last_loc, id, flag, _get_color())
+	menu.interact_with_slot(
+		last_loc,
+		id if %red.is_pressed() else 0,
+		id if %green.is_pressed() else 0,
+		id if %blue.is_pressed() else 0,
+		flag
+	)

@@ -58,13 +58,13 @@ func rclick(loc:Vector2i, pos: Vector2, cantOpen: bool) -> void:
 	elif not cantOpen:
 		%rclick.open_menu(self, loc, pos + Vector2(26,26))
 
-func interact_with_slot(loc: Vector2i, num: int, flag: bool, c:Color) -> void:
-	Loggie.info(loc, num, flag)
+func interact_with_slot(loc: Vector2i, r: int, g: int, b: int, flag: bool) -> void:
+	#Loggie.info(loc, r, g, b)
 	var s = slot_cache.get(loc) as Slot
-	s.hint_slot(num, flag, c)
+	s.hint_slot(r, g, b, flag)
 
 func handle_revealed_ore(r: int, g: int, b: int) -> void:
-	Loggie.info(r, g, b, target_red, target_green, target_blue)
+	#Loggie.info(r, g, b, target_red, target_green, target_blue)
 	if r != 0:
 		if r - 1 == target_red:
 			target_red = r
@@ -84,9 +84,10 @@ func handle_revealed_ore(r: int, g: int, b: int) -> void:
 			target_blue_failed = true
 			%blue_target.text = "X"
 
-func is_flag_ready(val: int, col: Color) -> bool:
-	# TODO impl
-	return false
+func is_flag_ready(r: int, g: int, b: int) -> bool:
+	return (r == 0 or r - 1 == target_red) and \
+		(g == 0 or g - 1 == target_green) and \
+		(b == 0 or b - 1 == target_blue)
 
 func _new_game() -> void:
 	Loggie.info("new_game")
