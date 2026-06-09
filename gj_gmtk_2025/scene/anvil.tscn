@@ -1,0 +1,54 @@
+[gd_scene load_steps=12 format=3 uid="uid://gokyouu26dua"]
+
+[ext_resource type="Texture2D" uid="uid://dymfxign781ab" path="res://assets/openGameArt/anvil.png" id="1_qojh1"]
+[ext_resource type="Script" uid="uid://sshr3vbnw5q" path="res://scripts/anvil.gd" id="1_tr4vl"]
+[ext_resource type="Animation" uid="uid://bnnutirxmcgak" path="res://assets/move_down.res" id="3_g4n77"]
+[ext_resource type="Animation" uid="uid://b8diu4201e342" path="res://assets/move_reset_y.res" id="4_8mnad"]
+[ext_resource type="Animation" uid="uid://4fcg3anvk20t" path="res://assets/move_left.res" id="5_ndfmv"]
+[ext_resource type="Animation" uid="uid://dfgb1b2csfqe1" path="res://assets/move_reset_x.res" id="6_8mnad"]
+[ext_resource type="Animation" uid="uid://b5x28jerut7tc" path="res://assets/move_right.res" id="6_jx4t7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tr4vl"]
+size = Vector2(32, 32)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dutve"]
+_data = {
+&"RESET": ExtResource("4_8mnad"),
+&"move_down": ExtResource("3_g4n77")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7y83d"]
+_data = {
+&"RESET": ExtResource("6_8mnad"),
+&"move_left": ExtResource("5_ndfmv")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ct6o"]
+_data = {
+&"RESET": ExtResource("6_8mnad"),
+&"move_right": ExtResource("6_jx4t7")
+}
+
+[node name="anvil" type="AnimatableBody2D"]
+script = ExtResource("1_tr4vl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tr4vl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qojh1")
+
+[node name="down" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dutve")
+}
+
+[node name="left" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7y83d")
+}
+
+[node name="right" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4ct6o")
+}

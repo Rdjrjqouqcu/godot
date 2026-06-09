@@ -1,9 +1,22 @@
 extends Node2D
+class_name Level
 
 
-# Called when the node enters the scene tree for the first time.
+func is_debug_enabled() -> bool:
+	return $debug.is_pressed()
+
+func cell_get_block(coord: Vector2i) -> Block:
+	var pos = Globals.map_coord_to_pos(coord)
+	for child in get_tree().get_nodes_in_group(Globals.GROUP_BLOCKS):
+		if pos == (child as Block).position:
+			return child
+	return null
+
+func cell_contains_block(coord: Vector2i) -> bool:
+	return cell_get_block(coord) != null
+
 func _ready() -> void:
-	pass # Replace with function body.
+	Loggie.info("block count", get_tree().get_node_count_in_group(Globals.GROUP_BLOCKS))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
