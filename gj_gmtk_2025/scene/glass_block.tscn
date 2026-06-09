@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://bogyc6f8t1l3n"]
+
+[ext_resource type="Script" uid="uid://b2m1q3m4tdwio" path="res://scripts/block.gd" id="1_jg43r"]
+[ext_resource type="Texture2D" uid="uid://dasfv11rsar11" path="res://assets/openGameArt/material_tileset.png" id="1_wukot"]
+[ext_resource type="Texture2D" uid="uid://cevol8heatfeb" path="res://assets/simpleShapes/square.016.png" id="3_0pxab"]
+[ext_resource type="AudioStream" uid="uid://kn1vxx3vhrdf" path="res://assets/sounds/block_hit_glass.wav" id="4_e3dcj"]
+[ext_resource type="Texture2D" uid="uid://iwb6bimwserj" path="res://assets/simpleShapes/circle.016.png" id="5_w3e06"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jg43r"]
+atlas = ExtResource("1_wukot")
+region = Rect2(368, 0, 16, 16)
+
+[node name="glass" type="Sprite2D"]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_jg43r")
+script = ExtResource("1_jg43r")
+durability = 1
+
+[node name="white_fin" type="CPUParticles2D" parent="."]
+scale = Vector2(0.5, 0.5)
+emitting = false
+amount = 16
+texture = ExtResource("3_0pxab")
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 16.0
+spread = 180.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+scale_amount_min = 0.13
+scale_amount_max = 0.25
+
+[node name="gray_fin" type="CPUParticles2D" parent="."]
+modulate = Color(0.6, 0.6, 0.6, 1)
+scale = Vector2(0.5, 0.5)
+emitting = false
+amount = 16
+texture = ExtResource("3_0pxab")
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 16.0
+spread = 180.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+scale_amount_min = 0.13
+scale_amount_max = 0.25
+
+[node name="break_audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_e3dcj")
+
+[node name="guide" type="Sprite2D" parent="."]
+position = Vector2(-4, -52)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_w3e06")
