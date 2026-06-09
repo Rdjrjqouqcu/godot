@@ -176,8 +176,13 @@ layout_mode = 2
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 text = "GREEN boxes need to be clicked
-RED boxes cannot be clicked
-BLUE boxes need to be charged by moving the mouse
+RED boxes should never be clicked
+BLUE boxes need to be charged by moving the mouse inside the box
+
+Clicking on boxes depends on the color you get
+If Green, Click Immediately
+If Blue, keep moving mouse around until charge complete
+If Red, never click
 
 Boxes without charge levels will interact by moving the mouse while holding left click"
 label_settings = SubResource("LabelSettings_tqoya")
@@ -191,7 +196,9 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 text = "- Made in Godot
 - Shield icons by Daniel Eddeland: https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements
-- PCB icon: https://opengameart.org/content/printed-circuit-board-texture"
+- PCB icon: https://opengameart.org/content/printed-circuit-board-texture
+-Meteor icon: https://opengameart.org/content/meteor-animated-64x64
+-Turret icon: https://opengameart.org/content/assets-free-space-modular-buildings-kit"
 autowrap_mode = 3
 
 [connection signal="pressed" from="startMenu/VBoxContainer/start" to="." method="_on_start_pressed"]

@@ -8,6 +8,7 @@ enum InteractionType {
 }
 
 @export var odds:float = 0.33
+@export var require_target: bool = true
 
 var targets_to_clear = 0
 
@@ -70,7 +71,7 @@ func _ready() -> void:
 							targets_to_clear += 1
 							break
 
-	if targets_to_clear == 0:
+	if require_target and targets_to_clear == 0:
 		Loggie.info("Puzzle without targets rolled, skipping")
 		get_parent().queue_free()
 		return

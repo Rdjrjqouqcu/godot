@@ -9,4 +9,19 @@ Author Original: Traversal Technology
 Author Ferivative: Sreejith K <http://commons.wikimedia.org/wiki/User:Sreejithk2000>
 
 
+meteor
+
+https://opengameart.org/content/meteor-animated-64x64
+License(s): CC-BY 4.0
+Author: Lluc Entertainment
+
+
+scifi Buildings
+
+https://opengameart.org/content/assets-free-space-modular-buildings-kit
+License(s): CC0
+Author: Wenrexa
+
 PCB icon: https://opengameart.org/content/printed-circuit-board-texture
+Meteor icon: https://opengameart.org/content/meteor-animated-64x64
+Turret icon: https://opengameart.org/content/assets-free-space-modular-buildings-kit
