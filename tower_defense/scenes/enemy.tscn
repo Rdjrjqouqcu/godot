@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cfrgtcvfatoqa"]
+
+[node name="enemy" type="Node2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+offset = Vector2(-8, -10)
+polygon = PackedVector2Array(0, 0, 8, 24, 16, 0, 14, 0, 8, 20, 2, 0)

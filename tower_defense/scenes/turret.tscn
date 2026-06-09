@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgp0ocuriudfi"]
+
+[ext_resource type="PackedScene" uid="uid://dsxi8ol43kexm" path="res://scenes/hexagon.tscn" id="1_x3mc5"]
+
+[node name="turret" type="Node2D"]
+
+[node name="hexagon" parent="." instance=ExtResource("1_x3mc5")]
+position = Vector2(2, 2)
+edge = 28
+color_override = Color(0, 0, 1, 1)
