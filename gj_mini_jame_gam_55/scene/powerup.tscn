@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://brjlvogf76ft8"]
+
+[ext_resource type="Script" uid="uid://b0isso1m1alj2" path="res://script/powerup.gd" id="1_ltvly"]
+[ext_resource type="Texture2D" uid="uid://btabgjrpgx1k5" path="res://assets/db32rpgitems.png" id="2_ltvly"]
+[ext_resource type="AudioStream" uid="uid://baeig06fko0el" path="res://assets/bfxr/PowerUp.wav" id="3_2gsbw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gsbw"]
+atlas = ExtResource("2_ltvly")
+region = Rect2(176, 80, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8ww4"]
+size = Vector2(32, 64)
+
+[node name="powerup" type="Node2D" unique_id=644573970 groups=["needs_main"]]
+script = ExtResource("1_ltvly")
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=186773454]
+position = Vector2(16, 40)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_2gsbw")
+
+[node name="area" type="Area2D" parent="." unique_id=1798767529]
+collision_layer = 16
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area" unique_id=2126214257]
+position = Vector2(16, 32)
+shape = SubResource("RectangleShape2D_g8ww4")
+
+[node name="audio" type="AudioStreamPlayer" parent="." unique_id=963154946]
+stream = ExtResource("3_2gsbw")
+
+[node name="effect" type="Label" parent="." unique_id=1378040348]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_right = 46.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(28, 11.5)
+text = "+speed"
+horizontal_alignment = 1
+
+[connection signal="area_entered" from="area" to="." method="_on_area_2d_area_entered"]
+[connection signal="finished" from="audio" to="." method="_cleanup"]
