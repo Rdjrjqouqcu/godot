@@ -36,4 +36,4 @@ http://lpc.opengameart.org/static/lpc-style-guide/assets.html
 Attribution Instructions: 
 Please attribute creator as Daniel Eddeland. Please include a link to opengameart.org as well (preferably to the submission for this art package) if you use the art.
 
-
+Shield icons by Daniel Eddeland: https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements

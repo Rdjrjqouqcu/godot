@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://58v0qq84xeo0"]
+[gd_scene load_steps=19 format=3 uid="uid://58v0qq84xeo0"]
 
 [ext_resource type="Texture2D" uid="uid://dv4gitnto6mx1" path="res://art/Space Skybox Pack/common/jettelly_space_common_blue_BACK.png" id="1_4j5ol"]
 [ext_resource type="Script" uid="uid://ybt3hvlmw3b0" path="res://scene/main.gd" id="1_of57s"]
@@ -53,6 +53,9 @@ font_size = 64
 
 [sub_resource type="LabelSettings" id="LabelSettings_b5f6u"]
 font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_tqoya"]
+font_size = 20
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_of57s")
@@ -170,13 +173,25 @@ text = "Start"
 layout_mode = 2
 
 [node name="instructions" type="Label" parent="startMenu/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+text = "GREEN boxes need to be clicked
+RED boxes cannot be clicked
+BLUE boxes need to be charged by moving the mouse
+
+Boxes without charge levels will interact by moving the mouse while holding left click"
+label_settings = SubResource("LabelSettings_tqoya")
+autowrap_mode = 2
 
 [node name="spacer3" type="Label" parent="startMenu/VBoxContainer"]
 layout_mode = 2
 
 [node name="credits" type="Label" parent="startMenu/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-text = "TODO misc credits"
+text = "- Made in Godot
+- Shield icons by Daniel Eddeland: https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements
+- PCB icon: https://opengameart.org/content/printed-circuit-board-texture"
+autowrap_mode = 3
 
 [connection signal="pressed" from="startMenu/VBoxContainer/start" to="." method="_on_start_pressed"]
