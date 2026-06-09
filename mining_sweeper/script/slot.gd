@@ -2,6 +2,7 @@ extends Node2D
 class_name Slot
 
 const size: Vector2i = Vector2i(25, 25)
+const MAX_RADIUS: int = 25
 
 var loc: Vector2i
 var main: Main
@@ -12,6 +13,7 @@ var ore_blue: int = 0
 
 var revealed: bool = false
 
+# TODO hint_red, hint_green, hint_blue
 var hint_value: int = 0
 var hint_color: Color = Color(0,0,0,1)
 var hint_is_flag: bool = false
@@ -73,12 +75,17 @@ func reveal_digit() -> Array[Slot]:
 	if has_ore():
 		main.handle_revealed_ore(ore_red, ore_green, ore_blue)
 		_update_digit_color(ore_red, ore_green, ore_blue, true)
+		for n: Slot in main.get_neighbor_slots(loc, 1):
+			if not n.has_ore():
+				n.reveal_area()
 		return []
 	var red_count = 0
 	var green_count = 0
 	var blue_count = 0
 	var neighbors = main.get_neighbor_slots(loc, 1)
 	for n: Slot in neighbors:
+		if n.is_revealed():
+			continue
 		red_count += n.ore_red
 		green_count += n.ore_green
 		blue_count += n.ore_blue
@@ -88,17 +95,16 @@ func reveal_digit() -> Array[Slot]:
 	return []
 
 func reveal_area() -> void:
-	var max_radius = 15
 	var queue = reveal_digit()
 	while not queue.is_empty():
 		var s = queue.pop_back()
 		if s.is_revealed() or s.is_hinted_or_flagged():
 			continue
 		var dist = max(abs(s.loc.x - loc.x), abs(s.loc.y - loc.y))
-		if max_radius <= dist:
+		if MAX_RADIUS <= dist:
 			continue
 		var n = s.reveal_digit()
-		if dist < max_radius:
+		if dist < MAX_RADIUS:
 			queue.append_array(n)
 
 func hint_slot(val: int, isFlag: bool, c:Color) -> void:
@@ -118,9 +124,12 @@ func _input_event(_view, event, _shape) -> void:
 	if event is InputEventMouseButton:
 		event = event as InputEventMouseButton
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			if not is_flagged():
-				reveal_area()
-				main.rclick(loc, self.position, true)
+			# TODO ordered clickthrough if next flag
+			if is_flagged():
+				if not main.is_flag_ready(hint_value, hint_color):
+					return
+			reveal_area()
+			main.rclick(loc, self.position, true)
 		elif event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
 			main.rclick(loc, self.position, self.is_revealed())
 		#Loggie.info(loc, event)

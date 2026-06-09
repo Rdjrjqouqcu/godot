@@ -36,6 +36,12 @@ func _get_color() -> Color:
 		1 if %blue.is_pressed() else 0,
 	)
 
+func _color_click(src: CheckBox) -> void:
+	%red.set_pressed_no_signal(false)
+	%green.set_pressed_no_signal(false)
+	%blue.set_pressed_no_signal(false)
+	src.set_pressed_no_signal(true)
+
 func _clear_click() -> void:
 	self.visible = false
 	menu.interact_with_slot(last_loc, 0, false, _get_color())

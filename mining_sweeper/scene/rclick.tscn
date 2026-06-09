@@ -53,4 +53,7 @@ layout_mode = 2
 columns = 3
 metadata/_tab_index = 1
 
+[connection signal="pressed" from="v/h/red" to="." method="_color_click" flags=18]
+[connection signal="pressed" from="v/h/green" to="." method="_color_click" flags=18]
+[connection signal="pressed" from="v/h/blue" to="." method="_color_click" flags=18]
 [connection signal="pressed" from="v/clear" to="." method="_clear_click"]

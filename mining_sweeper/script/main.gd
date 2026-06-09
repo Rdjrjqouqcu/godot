@@ -84,6 +84,10 @@ func handle_revealed_ore(r: int, g: int, b: int) -> void:
 			target_blue_failed = true
 			%blue_target.text = "X"
 
+func is_flag_ready(val: int, col: Color) -> bool:
+	# TODO impl
+	return false
+
 func _new_game() -> void:
 	Loggie.info("new_game")
 	get_tree().call_group(GROUP_SLOTS, "reset")
