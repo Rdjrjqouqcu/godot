@@ -18,10 +18,10 @@ func init_main(m: Main) -> void:
 	main = m
 	main.slot_cache.set(loc, self)
 
-func init_ore(amt_red: int, amt_green: int, amt_blue: int) -> void:
-	ore_red = amt_red
-	ore_green = amt_green
-	ore_blue = amt_blue
+func add_ore(amt_red: int, amt_green: int, amt_blue: int) -> void:
+	ore_red += amt_red
+	ore_green += amt_green
+	ore_blue += amt_blue
 
 func reset() -> void:
 	ore_red = 0
