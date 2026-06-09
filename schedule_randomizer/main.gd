@@ -107,10 +107,10 @@ var results_tasks: Array[LineEntry] = [
 	LineEntry.new_text("4 tasks", Color.RED),
 	LineEntry.new_text("3 tasks", Color.ORANGE),
 	LineEntry.new_text("3 tasks", Color.ORANGE),
-	LineEntry.new_text("2 task", Color.YELLOW),
-	LineEntry.new_text("2 task", Color.YELLOW),
+	LineEntry.new_text("2 tasks", Color.YELLOW),
+	LineEntry.new_text("2 tasks", Color.YELLOW),
 	LineEntry.new_text("1 task", Color.GREEN_YELLOW),
-	LineEntry.new_text("1 tasks", Color.GREEN_YELLOW),
+	LineEntry.new_text("1 task", Color.GREEN_YELLOW),
 	LineEntry.new_text("0 tasks", Color.GREEN),
 	LineEntry.new_text("0 tasks", Color.GREEN),
 ]
