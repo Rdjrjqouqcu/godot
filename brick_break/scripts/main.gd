@@ -11,7 +11,12 @@ func add_block_at(block:Block, pos:Vector2i) -> void:
 	$blocks.add_child(block)
 
 
+func _resize_ui() -> void:
+	%ui_root.size = Vector2(Globals.BOARD_WIDTH, Globals.UI_HEIGHT) * Globals.TILE_SIZE
+	%ui_root.position = Vector2(0, Globals.BOARD_HEIGHT) * Globals.TILE_SIZE
+
 func _ready() -> void:
+	_resize_ui()
 	# add border
 	for i in range(-1, Globals.BOARD_WIDTH + 1):
 		$border.add_child(Block.new_border_block(Vector2i(-1, i), self))

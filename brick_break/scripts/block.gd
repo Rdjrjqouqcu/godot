@@ -13,7 +13,7 @@ static func new_border_block(pos:Vector2i, aroot:Main) -> Block:
 	var block = BASIC_BLOCK.instantiate()
 	block.variance_degrees = 0
 	block.indestructible = true
-	block.modulate = Globals.COLOR_BLACK
+	block.modulate = Globals.COLOR_TRANSPARENT
 	block.position = Globals.map_position(pos)
 	block.root = aroot
 	return block

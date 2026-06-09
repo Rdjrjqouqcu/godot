@@ -2,6 +2,7 @@ class_name Globals
 
 const BOARD_WIDTH: int = 18
 const BOARD_HEIGHT: int = 18
+const UI_HEIGHT: int = 5
 
 const TILE_SIZE: int = 64
 
@@ -13,6 +14,7 @@ static func map_position(pos: Vector2i) -> Vector2i:
 	return pos * TILE_SIZE + Vector2i(TILE_SIZE / 2.0, TILE_SIZE / 2.0)
 
 # palette: https://lospec.com/palette-list/burnt-retinas
+const COLOR_TRANSPARENT: Color = Color.TRANSPARENT
 const COLOR_BLACK: Color = Color("050112")
 # 0f0c19 unused
 # 15121d unused
