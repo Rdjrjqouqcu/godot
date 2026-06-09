@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://codal3f6si3ap"]
+
+[ext_resource type="Texture2D" uid="uid://cdkt8e5tv8fbt" path="res://Square2.png" id="1_jnd16"]
+[ext_resource type="Script" path="res://slot.gd" id="1_yf17g"]
+[ext_resource type="Texture2D" uid="uid://dvalnn6jyw52h" path="res://Triangle 2.png" id="3_ln2to"]
+[ext_resource type="Texture2D" uid="uid://7xrv4p2p3n0b" path="res://Circle 2.png" id="4_tgfaa"]
+
+[node name="slot" type="TextureRect"]
+offset_right = 512.0
+offset_bottom = 512.0
+scale = Vector2(0.25, 0.25)
+size_flags_horizontal = 4
+texture = ExtResource("1_jnd16")
+stretch_mode = 3
+script = ExtResource("1_yf17g")
+
+[node name="icon_x" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(256, 256)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_ln2to")
+
+[node name="icon_o" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(256, 256)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_tgfaa")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
