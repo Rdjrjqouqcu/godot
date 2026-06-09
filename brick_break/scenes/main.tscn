@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2s0nj8jnqiu3"]
+
+[ext_resource type="Script" uid="uid://b66fgfcvsxjo3" path="res://scripts/main.gd" id="1_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://c5to7j3uiis8p" path="res://scenes/ball.tscn" id="4_o6xl0"]
+
+[node name="root" type="Node"]
+script = ExtResource("1_jyhfs")
+
+[node name="border" type="Node2D" parent="."]
+
+[node name="spawners" type="Node2D" parent="."]
+
+[node name="ball" parent="." instance=ExtResource("4_o6xl0")]
+position = Vector2(385, 292)

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://xkj6torlnf87"]
+
+[ext_resource type="Script" uid="uid://gjmh7ea2j8yj" path="res://scripts/spawner.gd" id="1_ik2nu"]
+[ext_resource type="Texture2D" uid="uid://b37257523kw2t" path="res://sprites/shapes/square.064.png" id="2_tx2ig"]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_ik2nu")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(0.160784, 0.176471, 0.188235, 1)
+scale = Vector2(0.95, 0.95)
+texture = ExtResource("2_tx2ig")
+
+[node name="Button" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(64, 64)
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+action_mode = 0
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_mouse_on"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_mouse_off"]
+[connection signal="pressed" from="Button" to="." method="_on_mouse_click"]
