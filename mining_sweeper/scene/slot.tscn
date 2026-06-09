@@ -15,6 +15,7 @@ size = Vector2(23, 23)
 script = ExtResource("1_502e6")
 
 [node name="Frame" parent="." instance=ExtResource("2_3ilvd")]
+polygon = PackedVector2Array(0, 0, 25, 0, 25, 25, 0, 25, 0, 0, 1, 1, 1, 24, 24, 24, 24, 1, 1, 1)
 width = 25
 height = 25
 thickness = 1
@@ -38,7 +39,7 @@ vertical_alignment = 1
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(12, 12)
+position = Vector2(12.5, 12.5)
 shape = SubResource("RectangleShape2D_502e6")
 
 [connection signal="input_event" from="Area2D" to="." method="_input_event"]
