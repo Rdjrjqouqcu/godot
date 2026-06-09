@@ -227,7 +227,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Grave" type="Node2D" unique_id=124555190 groups=["grave"]]
+[node name="Grave" type="Node2D" unique_id=124555190 groups=["grave", "needs_main"]]
 script = ExtResource("1_mgvom")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1909864725]

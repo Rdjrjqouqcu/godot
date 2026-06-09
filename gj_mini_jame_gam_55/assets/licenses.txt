@@ -1,63 +1,58 @@
+Asset sources and attributions:
 
+
+https://game-icons.net/1x1/delapouite/sound-off.html
+https://game-icons.net/1x1/delapouite/sound-on.html
+https://game-icons.net/1x1/delapouite/speaker-off.html
+https://game-icons.net/1x1/delapouite/speaker.html
+
+ANMLFarm_Kuh-Bulle-Agressiv 17_IOKA_NONE_Hofefeld.wav by JakobGille -- https://freesound.org/s/610797/ -- License: Creative Commons 0
+ANMLFarm_Kuh-Bulle-Agressiv 16_IOKA_NONE_Hofefeld.wav by JakobGille -- https://freesound.org/s/610798/ -- License: Creative Commons 0
+ANMLFarm_Kuh-Bulle-Agressiv 15_IOKA_NONE_Hofefeld.wav by JakobGille -- https://freesound.org/s/610799/ -- License: Creative Commons 0
+
+https://pizzadoggy.itch.io/cozy-tunes
 
 Shrine or Grave
-
 https://opengameart.org/content/shrine-or-gravestone
 License(s): CC0
 Author: simranzenov
 
-
 LPC Farming Tilesets
-
 https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements
 License(s): CC-BY-SA 3.0 ; GNU GPL 3.0 or later
 Author: Daniel Eddeland
 
-
 LPC Farm
-
 https://opengameart.org/content/lpc-farm
 License(s): CC-BY 4.0
 Author: bluecarrot16
 
-
 Cow Attack
-
 https://opengameart.org/content/cow-attack-basic-action-set
 License(s): CC-BY 3.0
 Author: qubodup
 
-
 LPC Skeleton
-
 https://opengameart.org/content/lpc-skeleton
 License(s): CC-BY-SA 3.0 ; GPL 3.0
 Author: wulax
 
-
 smokeParticleAssets
-
 https://opengameart.org/content/smoke-particle-assets
 License(s): CC0
 Author: Kenny
 
-
 Smoke Aura
-
 https://opengameart.org/content/smoke-aura
 License(s): CC0
 Author: Beast
 
-
 db32rpgitems
-
 https://opengameart.org/content/16x16-rpg-items-db32
 License(s): CC0
 Author: ARoachIFoundOnMyPillow
 
-
 lpc Mage spell casting
-
 https://opengameart.org/content/four-characters-my-lpc-entries
 License(s): CC-BY 3.0 ; CC-BY-SA 3.0 ; OGA-BY 3.0
 Author: Stephen Challener (Redshrike) and Zi Ye

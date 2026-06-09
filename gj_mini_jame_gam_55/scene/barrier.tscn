@@ -2,6 +2,13 @@
 
 [ext_resource type="Script" uid="uid://duxugkup3rb75" path="res://script/barrier.gd" id="1_kmie8"]
 [ext_resource type="Texture2D" uid="uid://b1v8tpm3my8pp" path="res://assets/lpc Farming tilesets/tilesets/fence.png" id="1_l6p4b"]
+[ext_resource type="AudioStream" uid="uid://jsrg27ka56d8" path="res://assets/bfxr/hit noises/0.wav" id="3_dsvkl"]
+[ext_resource type="AudioStream" uid="uid://2il5cjeuf8o5" path="res://assets/bfxr/hit noises/1.wav" id="4_xcafy"]
+[ext_resource type="AudioStream" uid="uid://pdi25uf361j4" path="res://assets/bfxr/hit noises/2.wav" id="5_ddd6w"]
+[ext_resource type="AudioStream" uid="uid://cqwrkiv8oy112" path="res://assets/bfxr/hit noises/3.wav" id="6_ygn2d"]
+[ext_resource type="AudioStream" uid="uid://c4wfi1hp3dxbt" path="res://assets/bfxr/hit noises/4.wav" id="7_4thig"]
+[ext_resource type="AudioStream" uid="uid://db64h4fwx6g0v" path="res://assets/bfxr/hit noises/5.wav" id="8_enksd"]
+[ext_resource type="AudioStream" uid="uid://cgnhej2c311cj" path="res://assets/bfxr/break.wav" id="9_xcafy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kmie8"]
 atlas = ExtResource("1_l6p4b")
@@ -18,7 +25,16 @@ region = Rect2(0, 32, 32, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l6p4b"]
 size = Vector2(8, 64)
 
-[node name="barrier" type="Node2D" unique_id=617552397]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1sbid"]
+streams_count = 6
+stream_0/stream = ExtResource("3_dsvkl")
+stream_1/stream = ExtResource("4_xcafy")
+stream_2/stream = ExtResource("5_ddd6w")
+stream_3/stream = ExtResource("6_ygn2d")
+stream_4/stream = ExtResource("7_4thig")
+stream_5/stream = ExtResource("8_enksd")
+
+[node name="barrier" type="Node2D" unique_id=617552397 groups=["needs_main"]]
 script = ExtResource("1_kmie8")
 
 [node name="top" type="Sprite2D" parent="." unique_id=1685599011]
@@ -37,6 +53,7 @@ self_modulate = Color(0.4392157, 0.24313726, 0.13333334, 1)
 position = Vector2(0, -5)
 emitting = false
 amount = 32
+lifetime = 0.4
 one_shot = true
 explosiveness = 0.75
 spread = 180.0
@@ -71,3 +88,9 @@ offset_right = 10.0
 offset_bottom = 10.0
 fill_mode = 3
 show_percentage = false
+
+[node name="audio" type="AudioStreamPlayer" parent="." unique_id=1824123788]
+stream = SubResource("AudioStreamRandomizer_1sbid")
+
+[node name="break_audio" type="AudioStreamPlayer" parent="." unique_id=363376426]
+stream = ExtResource("9_xcafy")

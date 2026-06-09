@@ -1,7 +1,7 @@
 extends Node2D
 class_name Grave
 
-@export var main: Main
+var main: Main
 
 var cow_captured: = false
 
@@ -21,7 +21,6 @@ func show_necromancer() -> void:
 
 
 func _ready() -> void:
-	$skeleton.main = main
 	$smoke.visible = false
 	$necromancer.visible = false
 

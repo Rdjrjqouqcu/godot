@@ -2,7 +2,6 @@ extends Node2D
 class_name Cow
 
 
-
 func move_cow(val: float) -> bool:
 	position.x -= val
 	return false

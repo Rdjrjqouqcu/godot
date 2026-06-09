@@ -4,6 +4,12 @@
 [ext_resource type="Script" uid="uid://c27r4a1mvwvso" path="res://script/skeleton.gd" id="1_mb7nf"]
 [ext_resource type="Texture2D" uid="uid://4fxxhdue780r" path="res://assets/lpc skeleton skull only.png" id="3_3drt6"]
 [ext_resource type="Texture2D" uid="uid://c4s7t0kgucdmk" path="res://assets/smoke aura/Smoke30Frames.png" id="4_bhurr"]
+[ext_resource type="AudioStream" uid="uid://dkv76cbsxwqm1" path="res://assets/bfxr/gravel/0.wav" id="5_tgcwm"]
+[ext_resource type="AudioStream" uid="uid://bd7a5po0wj85i" path="res://assets/bfxr/gravel/1.wav" id="6_qs483"]
+[ext_resource type="AudioStream" uid="uid://jg7xh0a0anbe" path="res://assets/bfxr/gravel/2.wav" id="7_2lps8"]
+[ext_resource type="AudioStream" uid="uid://co3kq72anscda" path="res://assets/bfxr/gravel/3.wav" id="8_xoknl"]
+[ext_resource type="AudioStream" uid="uid://b7l5v1enf4pi7" path="res://assets/bfxr/gravel/4.wav" id="9_3s7nr"]
+[ext_resource type="AudioStream" uid="uid://d064xf6g0oov1" path="res://assets/bfxr/gravel/5.wav" id="10_uby8e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qs483"]
 atlas = ExtResource("1_cyrxt")
@@ -366,7 +372,19 @@ size = Vector2(20, 47)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhurr"]
 size = Vector2(4, 20)
 
-[node name="skeleton" type="Node2D" unique_id=1223569942]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hm4ke"]
+streams_count = 6
+stream_0/stream = ExtResource("5_tgcwm")
+stream_1/stream = ExtResource("6_qs483")
+stream_2/stream = ExtResource("7_2lps8")
+stream_3/stream = ExtResource("8_xoknl")
+stream_4/stream = ExtResource("9_3s7nr")
+stream_5/stream = ExtResource("10_uby8e")
+
+[sub_resource type="AudioStream" id="AudioStream_tgcwm"]
+resource_local_to_scene = true
+
+[node name="skeleton" type="Node2D" unique_id=1223569942 groups=["needs_main"]]
 script = ExtResource("1_mb7nf")
 
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1813182018]
@@ -386,7 +404,7 @@ self_modulate = Color(0.20392157, 0.08235294, 0.22352941, 1)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_jbvms")
 autoplay = "default"
-frame_progress = 0.65963787
+frame_progress = 0.7876584
 speed_scale = 2.0
 
 [node name="skull2" type="Sprite2D" parent="." unique_id=1234929236]
@@ -535,5 +553,11 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack" unique_id=993404714]
 position = Vector2(44, 24)
 shape = SubResource("RectangleShape2D_bhurr")
+
+[node name="rattle" type="AudioStreamPlayer" parent="." unique_id=1319562933]
+stream = SubResource("AudioStreamRandomizer_hm4ke")
+
+[node name="cow" type="AudioStreamPlayer" parent="." unique_id=959683246]
+stream = SubResource("AudioStream_tgcwm")
 
 [connection signal="area_entered" from="attack" to="." method="_on_attack_area_entered"]

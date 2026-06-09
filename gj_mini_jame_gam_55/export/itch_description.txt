@@ -1,0 +1,19 @@
+Cow Thief
+
+
+Mini Jame Gam #55 Submission
+
+Click the graves to summon (or use 1, 2, or 3)
+
+I was originally going to try to make something like Plants vs. Zombies, but where you control the zombies, however that was turning out to be way out of scope. I suspect the majority of the engagement in PvZ are the different things that affect multiple lanes.
+As such, this is a very patchy demo that doesn't have enough complexity.
+
+I was also planning on adding multiple different buffs but decided it wouldn't be done in time.
+
+
+
+
+
+
+
+

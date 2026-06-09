@@ -41,6 +41,13 @@ func done() -> void:
 	is_done = true
 	$durability.visible = false
 	$sprite.play("stand")
+	$cow.stream = main.get_next_cow_noise()
+	$cow.volume_linear = main.get_fx_volume_linear()
+	$cow.play()
+
+func _play_rattle() -> void:
+	$rattle.volume_linear = main.get_fx_volume_linear()
+	$rattle.play()
 
 func die() -> void:
 	if is_summoning or not is_active or is_dying or is_done:
@@ -57,6 +64,7 @@ func die() -> void:
 	$sprite.visible = false
 	$durability.visible = false
 	$skull/skull_smoke.visible = false
+	_play_rattle()
 	for p: CPUParticles2D in $die_particles.get_children():
 		p.emitting = true
 	var die_tween = create_tween()
@@ -82,6 +90,7 @@ func summon() -> void:
 	is_summoning = true
 	grave.summon_start()
 	$skull/skull_smoke.visible = true
+	_play_rattle()
 	var summon_tween = create_tween()
 	summon_tween.tween_property($skull, "position", skull_top_pos, 1)
 	summon_tween.tween_callback(_summon_complete)

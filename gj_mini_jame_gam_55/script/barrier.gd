@@ -2,8 +2,9 @@ extends Node2D
 class_name Barrier
 
 @export var durability: float = 100.0
+var main: Main
 
-const hit_cooldown_max: float = 0.25
+const hit_cooldown_max: float = 0.5
 var hit_cooldown: float = 0
 
 var is_broken: bool = false
@@ -13,6 +14,8 @@ func _break() -> void:
 	$middle.visible = false
 	$durability.visible = false
 	$break.emitting = true
+	$break_audio.volume_linear = main.get_fx_volume_linear()
+	$break_audio.play()
 	$area.queue_free()
 
 
@@ -24,6 +27,8 @@ func take_damage(val: float) -> bool:
 	$durability.value = durability
 	if hit_cooldown <= 0:
 		$hit.emitting = true
+		$audio.volume_linear = main.get_fx_volume_linear()
+		$audio.play()
 		hit_cooldown = hit_cooldown_max
 	if durability <= 0:
 		_break()
