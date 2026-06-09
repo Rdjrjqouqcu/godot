@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://did8jio68e7qf"]
+
+[ext_resource type="Texture2D" uid="uid://dcbacrvcyb7jr" path="res://assets/lpc skeleton.png" id="1_cyrxt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3drt6"]
+atlas = ExtResource("1_cyrxt")
+region = Rect2(64, 704, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhurr"]
+atlas = ExtResource("1_cyrxt")
+region = Rect2(128, 704, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbvms"]
+atlas = ExtResource("1_cyrxt")
+region = Rect2(192, 704, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7bxq"]
+atlas = ExtResource("1_cyrxt")
+region = Rect2(256, 704, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2di4e"]
+atlas = ExtResource("1_cyrxt")
+region = Rect2(320, 704, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lm2m6"]
+atlas = ExtResource("1_cyrxt")
+region = Rect2(384, 704, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jafab"]
+atlas = ExtResource("1_cyrxt")
+region = Rect2(448, 704, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgcwm"]
+atlas = ExtResource("1_cyrxt")
+region = Rect2(512, 704, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qs483"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3drt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhurr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbvms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7bxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2di4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lm2m6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jafab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgcwm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="skeleton" type="Node2D" unique_id=1223569942]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1813182018]
+position = Vector2(32, 20)
+sprite_frames = SubResource("SpriteFrames_qs483")
+autoplay = "default"
+frame_progress = 0.94532776
+speed_scale = 0.5

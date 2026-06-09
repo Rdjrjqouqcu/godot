@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://stv1ggypifsp"]
+
+[ext_resource type="Texture2D" uid="uid://caalq4vx8iema" path="res://assets/yoannsculo-qubodup-cow_attack/cow-48x32-left-eat1.png" id="1_ivh24"]
+[ext_resource type="Texture2D" uid="uid://bvdn7vvwf6dhy" path="res://assets/yoannsculo-qubodup-cow_attack/cow-48x32-left-eat2.png" id="2_6yie1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ybf8w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ivh24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6yie1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="cow" type="Node2D" unique_id=846078143]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=628082443]
+position = Vector2(24, 32)
+sprite_frames = SubResource("SpriteFrames_ybf8w")
+autoplay = "default"
+frame_progress = 0.6528113
+speed_scale = 0.5

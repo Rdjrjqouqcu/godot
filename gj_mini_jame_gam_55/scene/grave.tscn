@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cyx4eykdwfyg3"]
+
+[ext_resource type="PackedScene" uid="uid://donnsc8414dig" path="res://scene/frame.tscn" id="1_i4qct"]
+[ext_resource type="Texture2D" uid="uid://benbt2aptaevw" path="res://assets/shrineorgrave.png" id="2_r8jv8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8jv8"]
+size = Vector2(60, 60)
+
+[node name="Grave" type="Node2D" unique_id=124555190]
+
+[node name="Frame" parent="." unique_id=1183137883 instance=ExtResource("1_i4qct")]
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64, 0, 0, 2, 2, 2, 62, 62, 62, 62, 2, 2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1909864725]
+texture = ExtResource("2_r8jv8")
+offset = Vector2(32, 24)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=499116852]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1821808001]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_r8jv8")

@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="gj_mini_jame_gam_55"
+run/main_scene="uid://0c3r4yddjtsr"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://assets/icon.svg"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [physics]
 
