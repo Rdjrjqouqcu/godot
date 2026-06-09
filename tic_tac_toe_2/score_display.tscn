@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://bb7xw2i644bcc"]
+
+[ext_resource type="Texture2D" uid="uid://dlerku74i1gcw" path="res://Square2.png" id="1_ne3gv"]
+[ext_resource type="Script" uid="uid://bdpenae8otskp" path="res://score_display.gd" id="2_1qcjw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ne3gv"]
+font_size = 48
+outline_size = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_1qcjw"]
+line_spacing = -20.0
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_ewhq4"]
+line_spacing = 9.0
+
+[node name="ScoreDisplay" type="TextureRect"]
+offset_right = 128.0
+offset_bottom = 128.0
+texture = ExtResource("1_ne3gv")
+expand_mode = 2
+script = ExtResource("2_1qcjw")
+
+[node name="score" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -33.5
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "999  "
+label_settings = SubResource("LabelSettings_ne3gv")
+horizontal_alignment = 2
+
+[node name="toast" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -27.5
+offset_right = 27.5
+offset_bottom = 45.0
+grow_horizontal = 2
+text = "
++12"
+label_settings = SubResource("LabelSettings_1qcjw")
+horizontal_alignment = 1
+
+[node name="turn" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "
+
+Active Turn"
+label_settings = SubResource("LabelSettings_ewhq4")

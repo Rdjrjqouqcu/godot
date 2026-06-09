@@ -19,8 +19,10 @@ const SCORE_HIGHLIGHT = preload("res://score_highlight.tscn")
 @onready var st: Timer = $score_timer
 
 var slots: Dictionary[Vector2i, Slot] = {}
-var npc_modes: Dictionary[int, Callable] = {}
-var npc_mode_names: Dictionary[int, String] = {}
+#var npc_modes: Dictionary[int, Callable] = {}
+#var npc_mode_names: Dictionary[int, String] = {}
+
+var fresh_restart: bool = false
 
 var turn: int = 0
 var enabled_radius: int = 1
@@ -52,6 +54,9 @@ var p3_score: int = 0
 func _score_queue_pop() -> void:
 	if score_queue.size() == 0:
 		sh.hide_all()
+		%sd1.clear_toast()
+		%sd2.clear_toast()
+		%sd3.clear_toast()
 		return
 
 	var item = score_queue.pop_front() as ScoreEvent
@@ -68,6 +73,20 @@ func _score_queue_pop() -> void:
 
 	if color != null:
 		sh.display(item.left, item.right, color)
+
+	# update displays
+	if item.player == 1:
+		%sd1.add_points(item.value)
+		%sd2.clear_toast()
+		%sd3.clear_toast()
+	elif item.player == 2:
+		%sd1.clear_toast()
+		%sd2.add_points(item.value)
+		%sd3.clear_toast()
+	elif item.player == 3:
+		%sd1.clear_toast()
+		%sd2.clear_toast()
+		%sd3.add_points(item.value)
 
 	# restart regardless to hide the last view
 	_update_debug()
@@ -107,7 +126,7 @@ func _do_score_line(player: int, center: Vector2i, slot_map: Callable) -> void:
 	# find left and right
 	var left = 0
 	var left_slot = slot_map.call(center, 0) as Slot
-	while left_slot.has_player(player):
+	while left_slot.has_player(player) and not left_slot.is_overloaded():
 		left = left - 1
 		left_slot = slot_map.call(center, left) as Slot
 		if left_slot == null:
@@ -117,7 +136,7 @@ func _do_score_line(player: int, center: Vector2i, slot_map: Callable) -> void:
 
 	var right = 0
 	var right_slot = slot_map.call(center, 0) as Slot
-	while right_slot.has_player(player):
+	while right_slot.has_player(player) and not right_slot.is_overloaded():
 		right = right + 1
 		right_slot = slot_map.call(center, right) as Slot
 		if right_slot == null:
@@ -155,7 +174,6 @@ func _do_moves() -> void:
 	_do_score(1, p1_move)
 	_do_score(2, p2_move)
 	_do_score(3, p3_move)
-	#sh.display(p1_move, p3_move, Constants.colors[p1_selected.y])
 	var enabled_count = 0
 	var playable_count = 0
 	for s: Slot in slots.values():
@@ -168,6 +186,9 @@ func _do_moves() -> void:
 			enabled_radius += 1
 			_enable_radius()
 		elif playable_count == 0:
+			%sd1.clear_turn()
+			%sd2.clear_turn()
+			%sd3.clear_turn()
 			print("TODO: Board full.")
 
 func _on_slot_clicked(loc: Vector2i) -> void:
@@ -178,21 +199,27 @@ func _on_slot_clicked(loc: Vector2i) -> void:
 	if turn == 0:
 		p1_move = loc
 		turn += 1
+		%sd1.end_turn()
 		if %mode2.selected != 0:
-			p2_move = npc_modes[%mode2.selected].call()
+			p2_move = Constants.npc_modes[%mode2.selected].call(slots)
 			turn += 1
+			%sd2.end_turn()
 			if %mode3.selected != 0:
-				p3_move = npc_modes[%mode3.selected].call()
+				p3_move = Constants.npc_modes[%mode3.selected].call(slots)
 				turn += 1
+				%sd3.end_turn()
 	elif turn == 1:
 		p2_move = loc
 		turn += 1
+		%sd2.end_turn()
 		if %mode3.selected != 0:
-			p3_move = npc_modes[%mode3.selected].call()
+			p3_move = Constants.npc_modes[%mode3.selected].call(slots)
 			turn += 1
+			%sd3.end_turn()
 	elif turn == 2:
 		p3_move = loc
 		turn += 1
+		%sd3.end_turn()
 	if turn == 3:
 		turn = 0
 		_do_moves()
@@ -212,6 +239,11 @@ func _enable_radius() -> void:
 		for j in range(-enabled_radius, enabled_radius + 1):
 			slots[Vector2i(i, j)].enable()
 
+func _dirty_restart() -> void:
+	if fresh_restart:
+		%restart.set_pressed_no_signal(true)
+		fresh_restart = false
+
 func restart_game() -> void:
 	radius = 3 + radius_option.selected
 	expand_pct = 1 - (3 + expand_option.selected) / 10.0
@@ -227,6 +259,8 @@ func restart_game() -> void:
 	p1_score = 0
 	p2_score = 0
 	p3_score = 0
+	fresh_restart = true
+	%restart.set_pressed_no_signal(false)
 	
 	var s1 = %shape1.get_selected_id()
 	var s2 = %shape2.get_selected_id()
@@ -238,6 +272,10 @@ func restart_game() -> void:
 	p2_selected = Vector2i(s2, c2)
 	p3_selected = Vector2i(s3, c3)
 	
+	%sd1.init(Constants.colors[c1], %sd2)
+	%sd2.init(Constants.colors[c2], %sd3)
+	%sd3.init(Constants.colors[c3], %sd1)
+
 	for slot in slots_node.get_children():
 		slot.queue_free()
 	
@@ -250,30 +288,41 @@ func restart_game() -> void:
 			slots[loc] = s
 			slots_node.add_child(s)
 	_enable_radius()
-	var window = get_window()
-	window.size = 0.75 * Vector2i((2 * radius + 1) * unit_length, (2 * radius + 2) * unit_length)
-	window.unresizable = true
+	#var window = get_window()
+	#window.size = 0.75 * Vector2i((2 * radius + 1) * unit_length, (2 * radius + 2) * unit_length)
+	#window.unresizable = true
 	_update_debug()
 	
 	sh.init(center, unit_length)
 
-func _move_random() -> Vector2i:
-	var available = []
-	for s: Slot in slots.values():
-		if s.is_playable():
-			available.append(s.loc)
-	if available.size() == 0:
-		return Vector2i(0,0)
-	return available[randi() % available.size()]
-
 func _add_player_modes() -> void:
-	npc_modes[1] = _move_random
-	npc_mode_names[1] = "random"
 	for m in [ %mode1, %mode2, %mode3 ]:
-		m.add_item("random")
+		m.clear()
+		for n in Constants.npc_mode_names:
+			m.add_item(n)
+
+func _add_player_colors() -> void:
+	var count = 0
+	for list in [%color1, %color2, %color3]:
+		list.clear()
+		for n in Constants.color_names:
+			list.add_item(n)
+		list.selected = count
+		count += 1
+
+func _add_player_shapes() -> void:
+	var count = 0
+	for list in [%shape1, %shape2, %shape3]:
+		list.clear()
+		for n in Constants.shape_names:
+			list.add_item(n)
+		list.selected = count
+		count += 1
 
 func _ready() -> void:
 	_add_player_modes()
+	_add_player_colors()
+	_add_player_shapes()
 	restart_game()
 	restart_game()
 

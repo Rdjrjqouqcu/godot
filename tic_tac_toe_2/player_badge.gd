@@ -1,19 +1,15 @@
 extends Node2D
 class_name PlayerBadge
 
-@onready
-var shapes: Array[Sprite2D] = [
-	$triangle,
-	$circle,
-	$diamond,
-]
+func get_shape(offset: int) -> Sprite2D:
+	return get_node(Constants.shape_names[offset])
 
 func _ready() -> void:
-	for shape in shapes:
+	for shape in get_children():
 		shape.visible = false
 
 func _show_display(state: Vector2i) -> void:
-	var shape = shapes[state[0]]
+	var shape = get_shape(state[0])
 	var color = Constants.colors[state[1]]
 	shape.visible = true
 	shape.modulate = color
