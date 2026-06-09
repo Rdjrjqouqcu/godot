@@ -1,5 +1,7 @@
 extends Container
 
+const MENU_HEIGHT: int = 204
+
 var menu: Node2D
 var last_loc: Vector2i
 
@@ -18,6 +20,8 @@ func _ready() -> void:
 func open_menu(m:Main, loc:Vector2i, pos: Vector2) -> void:
 	self.menu = m
 	self.position = pos
+	if self.position.y > get_viewport_rect().size.y - MENU_HEIGHT:
+		self.position.y = get_viewport_rect().size.y - MENU_HEIGHT
 	self.last_loc = loc
 	self.visible = true
 
@@ -25,7 +29,17 @@ func open_menu(m:Main, loc:Vector2i, pos: Vector2) -> void:
 func _process(_delta: float) -> void:
 	pass
 
+func _get_color() -> Color:
+	return Color(
+		1 if %red.is_pressed() else 0,
+		1 if %green.is_pressed() else 0,
+		1 if %blue.is_pressed() else 0,
+	)
+
+func _clear_click() -> void:
+	self.visible = false
+	menu.interact_with_slot(last_loc, 0, false, _get_color())
 
 func _hint_flag_click(id: int, flag: bool) -> void:
 	self.visible = false
-	menu.set_node(last_loc, id, flag)
+	menu.interact_with_slot(last_loc, id, flag, _get_color())

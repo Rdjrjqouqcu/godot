@@ -4,6 +4,10 @@
 [ext_resource type="Script" uid="uid://duavr61jjsdg5" path="res://script/main.gd" id="1_wp4xf"]
 [ext_resource type="PackedScene" uid="uid://clusakthvh5mo" path="res://scene/slot.tscn" id="2_v0l8b"]
 [ext_resource type="PackedScene" uid="uid://dy8ms7dkjcitb" path="res://scene/rclick.tscn" id="4_brvut"]
+[ext_resource type="PackedScene" uid="uid://donnsc8414dig" path="res://scene/frame.tscn" id="5_0ha60"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4j5ol"]
+font_size = 32
 
 [node name="main" type="Node2D" unique_id=73154580]
 script = ExtResource("1_wp4xf")
@@ -22,3 +26,81 @@ border_left_padding = 10
 [node name="rclick" parent="." unique_id=563911376 instance=ExtResource("4_brvut")]
 unique_name_in_owner = true
 visible = false
+
+[node name="frame" parent="." unique_id=1917218120 instance=ExtResource("5_0ha60")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(577, 10)
+polygon = PackedVector2Array(0, 0, 53, 0, 53, 53, 0, 53, 0, 0, 2, 2, 2, 51, 51, 51, 51, 2, 2, 2)
+width = 53
+height = 53
+
+[node name="red_target" type="Label" parent="frame" unique_id=1804454384]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_4j5ol")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="frame2" parent="." unique_id=995144707 instance=ExtResource("5_0ha60")]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(577, 66)
+polygon = PackedVector2Array(0, 0, 53, 0, 53, 53, 0, 53, 0, 0, 2, 2, 2, 51, 51, 51, 51, 2, 2, 2)
+width = 53
+height = 53
+
+[node name="green_target" type="Label" parent="frame2" unique_id=1333897069]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_4j5ol")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="frame3" parent="." unique_id=865818193 instance=ExtResource("5_0ha60")]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(577, 122)
+polygon = PackedVector2Array(0, 0, 53, 0, 53, 53, 0, 53, 0, 0, 2, 2, 2, 51, 51, 51, 51, 2, 2, 2)
+width = 53
+height = 53
+
+[node name="blue_target" type="Label" parent="frame3" unique_id=1710191578]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_4j5ol")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="reset" type="Button" parent="." unique_id=393108309]
+offset_left = 577.0
+offset_top = 178.0
+offset_right = 642.0
+offset_bottom = 209.0
+text = "Restart"
+
+[connection signal="pressed" from="reset" to="." method="_new_game"]

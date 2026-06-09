@@ -15,17 +15,25 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="red" type="CheckBox" parent="v/h" unique_id=1723346201]
+unique_name_in_owner = true
 layout_mode = 2
 button_pressed = true
 text = "R"
 
 [node name="green" type="CheckBox" parent="v/h" unique_id=129670184]
+unique_name_in_owner = true
 layout_mode = 2
 text = "G"
 
 [node name="blue" type="CheckBox" parent="v/h" unique_id=2111725564]
+unique_name_in_owner = true
 layout_mode = 2
 text = "B"
+
+[node name="clear" type="Button" parent="v" unique_id=361797463]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Clear"
 
 [node name="tabs" type="TabContainer" parent="v" unique_id=1491387783]
 layout_mode = 2
@@ -44,3 +52,5 @@ visible = false
 layout_mode = 2
 columns = 3
 metadata/_tab_index = 1
+
+[connection signal="pressed" from="v/clear" to="." method="_clear_click"]

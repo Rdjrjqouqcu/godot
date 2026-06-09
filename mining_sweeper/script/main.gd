@@ -7,6 +7,25 @@ const COLS = 20
 
 var slot_cache: Dictionary[Vector2i, Slot] = {}
 
+var target_red: int = 0:
+	set(x):
+		target_red = x
+		if not target_red_failed:
+			%red_target.text = str(x)
+var target_green: int = 0:
+	set(x):
+		target_green = x
+		if not target_green_failed:
+			%green_target.text = str(x)
+var target_blue: int = 0:
+	set(x):
+		target_blue = x
+		if not target_blue_failed:
+			%blue_target.text = str(x)
+var target_red_failed: bool = false
+var target_green_failed: bool = false
+var target_blue_failed: bool = false
+
 func get_ore_map() -> Array[Dictionary]:
 	var red: Dictionary[Vector2i, int] = {}
 	var green: Dictionary[Vector2i, int] = {}
@@ -33,15 +52,50 @@ func get_neighbor_slots(loc: Vector2i, radius: int = 1) -> Array[Slot]:
 			res.append(slot_cache.get(nloc))
 	return res
 
-func rclick(loc:Vector2i, pos: Vector2) -> void:
-	%rclick.open_menu(self, loc, pos + Vector2(26,26))
+func rclick(loc:Vector2i, pos: Vector2, cantOpen: bool) -> void:
+	if %rclick.visible:
+		%rclick.visible = false
+	elif not cantOpen:
+		%rclick.open_menu(self, loc, pos + Vector2(26,26))
 
-func set_node(loc: Vector2i, num: int, flag: bool) -> void:
+func interact_with_slot(loc: Vector2i, num: int, flag: bool, c:Color) -> void:
 	Loggie.info(loc, num, flag)
-	pass
+	var s = slot_cache.get(loc) as Slot
+	s.hint_slot(num, flag, c)
+
+func handle_revealed_ore(r: int, g: int, b: int) -> void:
+	Loggie.info(r, g, b, target_red, target_green, target_blue)
+	if r != 0:
+		if r - 1 == target_red:
+			target_red = r
+		else:
+			target_red_failed = true
+			%red_target.text = "X"
+	if g != 0:
+		if g - 1 == target_green:
+			target_green = g
+		else:
+			target_green_failed = true
+			%green_target.text = "X"
+	if b != 0:
+		if b - 1 == target_blue:
+			target_blue = b
+		else:
+			target_blue_failed = true
+			%blue_target.text = "X"
 
 func _new_game() -> void:
+	Loggie.info("new_game")
 	get_tree().call_group(GROUP_SLOTS, "reset")
+	%rclick.visible = false
+
+	# need to reset failed before value
+	target_red_failed = false
+	target_green_failed = false
+	target_blue_failed = false
+	target_red = 0
+	target_green = 0
+	target_blue = 0
 
 	var ores: Array[Dictionary] = get_ore_map()
 	for i in ores[0].keys():
@@ -51,16 +105,11 @@ func _new_game() -> void:
 	for i in ores[2].keys():
 		slot_cache.get(i).add_ore(0, 0, ores[2].get(i))
 
-	slot_cache.get(Vector2i(1,1)).add_ore(1, 0, 0)
-	slot_cache.get(Vector2i(1,2)).add_ore(0, 2, 0)
-	slot_cache.get(Vector2i(1,3)).add_ore(0, 0, 3)
-
 	get_tree().call_group(GROUP_SLOTS, "_update_debug")
 
 func _ready() -> void:
 	get_tree().call_group.call_deferred(GROUP_SLOTS, "init_main", self)
 	_new_game.call_deferred()
-
 
 func _process(_delta: float) -> void:
 	pass
