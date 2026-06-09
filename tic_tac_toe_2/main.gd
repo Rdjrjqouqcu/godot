@@ -16,9 +16,12 @@ const SCORE_HIGHLIGHT = preload("res://score_highlight.tscn")
 @onready var slots_node: Node = %slots
 @onready var sh: ScoreHighlight = $score_highlight
 
-
 # v4.4 var slots: Dictionary[Vector2i, Slot] = {}
 var slots: Dictionary = {}
+# v4.4 var npc_modes: Dictionary[String, function] = {}
+var npc_modes: Dictionary = {}
+# v4.4 var npc_modes: Dictionary[int, String] = {}
+var npc_mode_names: Dictionary = {}
 
 var turn: int = 0
 var enabled_radius: int = 1
@@ -54,14 +57,24 @@ func _on_slot_clicked(loc: Vector2i) -> void:
 	sh.hide_all()
 	if not s.is_playable():
 		return
-	match turn:
-		0:
-			p1_move = loc
-		1:
-			p2_move = loc
-		2:
-			p3_move = loc
-	turn += 1
+	if turn == 0:
+		p1_move = loc
+		turn += 1
+		if %mode2.selected != 0:
+			p2_move = npc_modes[%mode2.selected].call()
+			turn += 1
+			if %mode3.selected != 0:
+				p3_move = npc_modes[%mode3.selected].call()
+				turn += 1
+	elif turn == 1:
+		p2_move = loc
+		turn += 1
+		if %mode3.selected != 0:
+			p3_move = npc_modes[%mode3.selected].call()
+			turn += 1
+	elif turn == 2:
+		p3_move = loc
+		turn += 1
 	if turn == 3:
 		turn = 0
 		sh.display(p1_move, p3_move, Constants.colors[p1_selected.y])
@@ -116,13 +129,29 @@ func restart_game() -> void:
 			slots_node.add_child(s)
 	_enable_radius()
 	var window = get_window()
-	window.size = Vector2i((2 * radius + 1) * unit_length, (2 * radius + 2) * unit_length)
+	window.size = 0.75 * Vector2i((2 * radius + 1) * unit_length, (2 * radius + 2) * unit_length)
 	window.unresizable = true
 	_update_debug()
 	
 	sh.init(center, unit_length)
 
+func _move_random() -> Vector2i:
+	var available = []
+	for s: Slot in slots.values():
+		if s.is_playable():
+			available.append(s.loc)
+	if available.size() == 0:
+		return Vector2i(0,0)
+	return available[randi() % available.size()]
+
+func _add_player_modes() -> void:
+	npc_modes[1] = _move_random
+	npc_mode_names[1] = "random"
+	for m in [ %mode1, %mode2, %mode3 ]:
+		m.add_item("random")
+
 func _ready() -> void:
+	_add_player_modes()
 	restart_game()
 	restart_game()
 

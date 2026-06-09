@@ -21,7 +21,9 @@ Constants="*res://constants.gd"
 
 [display]
 
-window/size/viewport_height=1152
+window/size/viewport_width=864
+window/size/viewport_height=864
+window/stretch/scale=0.75
 
 [rendering]
 

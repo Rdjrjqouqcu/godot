@@ -91,6 +91,14 @@ popup/item_1/id = 1
 popup/item_2/text = "blue"
 popup/item_2/id = 2
 
+[node name="mode1" type="OptionButton" parent="MarginContainer/VFlowContainer/p1"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+selected = 0
+item_count = 1
+popup/item_0/text = "player"
+
 [node name="p2" type="HFlowContainer" parent="MarginContainer/VFlowContainer"]
 layout_mode = 2
 
@@ -120,6 +128,13 @@ popup/item_1/id = 1
 popup/item_2/text = "blue"
 popup/item_2/id = 2
 
+[node name="mode2" type="OptionButton" parent="MarginContainer/VFlowContainer/p2"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 1
+popup/item_0/text = "player"
+
 [node name="p3" type="HFlowContainer" parent="MarginContainer/VFlowContainer"]
 layout_mode = 2
 
@@ -148,6 +163,13 @@ popup/item_1/text = "green"
 popup/item_1/id = 1
 popup/item_2/text = "blue"
 popup/item_2/id = 2
+
+[node name="mode3" type="OptionButton" parent="MarginContainer/VFlowContainer/p3"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 1
+popup/item_0/text = "player"
 
 [node name="debug" type="Label" parent="MarginContainer/VFlowContainer"]
 unique_name_in_owner = true
