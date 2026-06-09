@@ -1,0 +1,3 @@
+[submodule "art_random/idkwhattoput-code-scripts"]
+	path = art_random/idkwhattoput-code-scripts
+	url = https://github.com/idkwhattoput-code/godot-scripts
