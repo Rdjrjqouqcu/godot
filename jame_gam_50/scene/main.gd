@@ -3,23 +3,40 @@ class_name Main
 
 const FRAME = preload("res://scene/meta/frame.tscn")
 
-var started: bool = false
-var start_delay = 50
-var collected_chips = 0
-var total_chips = 10
-var completed_mega_chip = false
-var remaining_population = 100_000_000
-var time_elapsed_ms = 0
-var circuit_cooldown_ms = 500
-var puzzle_cooldown_ms = 0
-var board: Dictionary[Vector2i, bool] = {}
-var active_puzzle_count: int = 0
-var is_circuit_active: bool = false
+var started: bool
+var start_delay: float
+var collected_chips: int
+var completed_mega_chip: bool
+var remaining_population: int
+var time_elapsed_ms: float
+var circuit_cooldown_ms: float
+var puzzle_cooldown_ms: float
+var board: Dictionary[Vector2i, bool]
+var active_puzzle_count: int
+var is_circuit_active: bool
+func _reset_game() -> void:
+	started = false
+	start_delay = 50
+	collected_chips = 0
+	completed_mega_chip = false
+	remaining_population = 100_000_000
+	time_elapsed_ms = 0
+	circuit_cooldown_ms = 500
+	puzzle_cooldown_ms = 0
+	board = {}
+	active_puzzle_count = 0
+	is_circuit_active = false
+	_init_board()
+	_redraw_text()
+	$endScreen.visible = false
+	$startMenu.visible = true
+	$scores.visible = true
 
-const spawn_fail_cooldown_ms = 10
-const mult_per_10s_pop_damage = 1.5
-const mult_overall_cooldown = 2.0
-const mult_per_10s_cooldown = 0.9
+const total_chips: int = 10
+const spawn_fail_cooldown_ms: int = 10
+const mult_per_10s_pop_damage: float = 1.25
+const mult_overall_cooldown: float = 2.0
+const mult_per_10s_cooldown: float = 0.9
 const debug_info: bool = false
 
 func _comma_format(i: int) -> String:
@@ -39,6 +56,13 @@ func _init_frames() -> void:
 			frame.pos = Vector2i(i, j)
 			frame.global_position = Vector2i(i*120, j * 120)
 			$frames.add_child(frame)
+func _init_board() -> void:
+	for i in range(0, 16):
+		for j in range(0, 9):
+			board.set(Vector2i(i, j), false)
+	board.set(Vector2i(0, 0), true)
+	board.set(Vector2i(1, 0), true)
+	board.set(Vector2i(2, 0), true)
 func _end_game():
 	started = false
 	for c in get_puzzle_node().get_children():
@@ -79,10 +103,7 @@ func _on_start_pressed() -> void:
 	started = true
 	$startMenu.visible = false
 func _on_restart_pressed() -> void:
-	$endScreen.visible = false
-	$startMenu.visible = true
-	$scores.visible = true
-	started = false
+	_reset_game()
 
 func get_puzzle_node() -> Node:
 	return $puzzles
@@ -162,15 +183,9 @@ func _spawn_noncirc_puzzle() -> bool:
 
 func _ready() -> void:
 	seed(0)
-	for i in range(0, 16):
-		for j in range(0, 9):
-			board.set(Vector2i(i, j), false)
 	_init_frames()
 	$frames.visible = debug_info
-	board.set(Vector2i(0, 0), true)
-	board.set(Vector2i(1, 0), true)
-	board.set(Vector2i(2, 0), true)
-	_redraw_text()
+	_reset_game()
 
 func _process(delta: float) -> void:
 	if !started:
