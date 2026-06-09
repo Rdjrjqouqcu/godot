@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo8w3aiquak4k"]
+
+[ext_resource type="Texture2D" uid="uid://bw1xdxl5re0ql" path="res://sprites/game-sprites-master/characters/blue.svg" id="1_3dph7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kcse0"]
+radius = 30.0
+height = 145.0
+
+[node name="Blue" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3dph7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_kcse0")
