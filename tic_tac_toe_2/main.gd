@@ -7,6 +7,7 @@ var expand_pct: float = 0.5
 var board_available: float = 0
 
 const unit_length: int = 128
+const score_timeout: float = 0.75
 const SLOT = preload("res://slot.tscn")
 const SCORE_HIGHLIGHT = preload("res://score_highlight.tscn")
 
@@ -15,13 +16,11 @@ const SCORE_HIGHLIGHT = preload("res://score_highlight.tscn")
 @onready var expand_option: OptionButton = %expandOption
 @onready var slots_node: Node = %slots
 @onready var sh: ScoreHighlight = $score_highlight
+@onready var st: Timer = $score_timer
 
-# v4.4 var slots: Dictionary[Vector2i, Slot] = {}
-var slots: Dictionary = {}
-# v4.4 var npc_modes: Dictionary[String, function] = {}
-var npc_modes: Dictionary = {}
-# v4.4 var npc_modes: Dictionary[int, String] = {}
-var npc_mode_names: Dictionary = {}
+var slots: Dictionary[Vector2i, Slot] = {}
+var npc_modes: Dictionary[int, Callable] = {}
+var npc_mode_names: Dictionary[int, String] = {}
 
 var turn: int = 0
 var enabled_radius: int = 1
@@ -34,33 +33,120 @@ var p1_move: Variant = null
 var p2_move: Variant = null
 var p3_move: Variant = null
 
+class ScoreEvent:
+	var player: int
+	var value: int
+	var left: Vector2i
+	var right: Vector2i
+	func init(p: int, v: int, l: Vector2i, r: Vector2i) -> void:
+		player = p
+		value = v
+		left = l
+		right = r
+var score_queue: Array[ScoreEvent] = []
+
 var p1_score: int = 0
 var p2_score: int = 0
 var p3_score: int = 0
 
+func _score_queue_pop() -> void:
+	if score_queue.size() == 0:
+		sh.hide_all()
+		return
+
+	var item = score_queue.pop_front() as ScoreEvent
+	var color: Color
+	if item.player == 1:
+		p1_score += item.value
+		color = Constants.colors[p1_selected.y]
+	elif item.player == 2:
+		p2_score += item.value
+		color = Constants.colors[p2_selected.y]
+	elif item.player == 3:
+		p3_score += item.value
+		color = Constants.colors[p3_selected.y]
+
+	if color != null:
+		sh.display(item.left, item.right, color)
+
+	# restart regardless to hide the last view
+	_update_debug()
+	st.start(score_timeout)
+
+func _score_queue_add(player: int, value: int, left: Vector2i, right: Vector2i) -> void:
+	#print("ScoreQueueAdded: ", player, " ", left, " ", right, " ", value)
+	var entry = ScoreEvent.new()
+	entry.init(player, value, left, right)
+	score_queue.append(entry)
+	if st.is_stopped():
+		st.start(score_timeout)
+		_score_queue_pop()
+
+func _do_score_horizontal_slot_map(center: Vector2i, offset: int) -> Slot:
+	if abs(center.x + offset) > radius:
+		return null
+	return slots[Vector2i(center.x + offset, center.y)] as Slot
+func _do_score_vertical_slot_map(center: Vector2i, offset: int) -> Slot:
+	if abs(center.y + offset) > radius:
+		return null
+	return slots[Vector2i(center.x, center.y + offset)] as Slot
+func _do_score_slash_slot_map(center: Vector2i, offset: int) -> Slot:
+	if abs(center.x + offset) > radius:
+		return null
+	if abs(center.y + offset) > radius:
+		return null
+	return slots[Vector2i(center.x + offset, center.y + offset)] as Slot
+func _do_score_backslash_slot_map(center: Vector2i, offset: int) -> Slot:
+	if abs(center.x + offset) > radius:
+		return null
+	if abs(center.y - offset) > radius:
+		return null
+	return slots[Vector2i(center.x + offset, center.y - offset)] as Slot
+
+func _do_score_line(player: int, center: Vector2i, slot_map: Callable) -> void:
+	# find left and right
+	var left = 0
+	var left_slot = slot_map.call(center, 0) as Slot
+	while left_slot.has_player(player):
+		left = left - 1
+		left_slot = slot_map.call(center, left) as Slot
+		if left_slot == null:
+			break
+	left = left + 1
+	left_slot = slot_map.call(center, left) as Slot
+
+	var right = 0
+	var right_slot = slot_map.call(center, 0) as Slot
+	while right_slot.has_player(player):
+		right = right + 1
+		right_slot = slot_map.call(center, right) as Slot
+		if right_slot == null:
+			break
+	right = right - 1
+	right_slot = slot_map.call(center, right) as Slot
+
+	#print("l/r: ", Vector2i(left, right))
+
+	# add scores
+	for x in range(left, 1, 1):
+		for y in range(right, -1, -1):
+			var count = y - x + 1
+			if count < 3:
+				continue
+			_score_queue_add(player, count - 2, (slot_map.call(center, x) as Slot).loc, (slot_map.call(center, y) as Slot).loc)
 
 func _do_score(player: int, move: Vector2i) -> void:
 	#var tween = get_tree().create_tween()
 	
-	
 	if (slots[move] as Slot).is_overloaded():
 		return
-	
-	# horizontal
-	if true:
-		var left = move.x
-		for i in range(move.x, -radius, -1):
-			if not (slots[Vector2i(i, move.y)] as Slot).has_player(player):
-				break
-			left = i
-		var right = move.x
-		for i in range(move.x, radius, 1):
-			if not (slots[Vector2i(i, move.y)] as Slot).has_player(player):
-				break
-			right = i
-		print(left, " ", right)
 
-	pass
+	#print("player=", player, " move=", move)
+
+	_do_score_line(player, move, _do_score_horizontal_slot_map)
+	_do_score_line(player, move, _do_score_vertical_slot_map)
+	_do_score_line(player, move, _do_score_slash_slot_map)
+	_do_score_line(player, move, _do_score_backslash_slot_map)
 
 func _do_moves() -> void:
 	for i in [p1_move, p2_move, p3_move]:
@@ -136,6 +222,11 @@ func restart_game() -> void:
 	p1_move = null
 	p2_move = null
 	p3_move = null
+	st.stop()
+	score_queue = []
+	p1_score = 0
+	p2_score = 0
+	p3_score = 0
 	
 	var s1 = %shape1.get_selected_id()
 	var s2 = %shape2.get_selected_id()
