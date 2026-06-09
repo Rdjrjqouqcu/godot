@@ -34,19 +34,24 @@ func _reset_game() -> void:
 
 const total_chips: int = 10
 const spawn_fail_cooldown_ms: int = 10
-const mult_per_10s_pop_damage: float = 1.25
-const mult_overall_cooldown: float = 2.0
-const mult_per_10s_cooldown: float = 0.9
+
+const scale_pop_damage: float = 1
+const mult_pop_damage: float = 1.2
+
+const mult_overall_cooldown: float = 0.25
+const mult_circuit_cooldown: float = 4
+const scale_cooldown_min: float = 0.1
+const scale_cooldown_max: float = 0.08
+
+const min_cooldown_ms: int = 50
 const debug_info: bool = false
 
-func _comma_format(i: int) -> String:
-	var text = ""
-	while i >= 1000:
-		text += ",%03d" % (i % 1000)
-		i /= 1000
-	return str(i, text)
-func _modify_cooldowns(c: int) -> int:
-	return c * mult_overall_cooldown * (mult_per_10s_cooldown ** (time_elapsed_ms / 100.0 / 10.0))
+
+func _modify_cooldowns(cmin: int, cmax: int) -> int:
+	var mmin = cmin / (1 + scale_cooldown_min * time_elapsed_ms / 100.0 / 10.0)
+	var mmax = cmax / (1 + scale_cooldown_max * time_elapsed_ms / 100.0 / 10.0)
+	var c = randi_range(mmin, mmax) * mult_overall_cooldown
+	return max(c, min_cooldown_ms)
 func _rand_coords() -> Vector2i:
 	return Vector2i(randi_range(0,15), randi_range(0,8))
 func _init_frames() -> void:
@@ -105,24 +110,30 @@ func _on_start_pressed() -> void:
 func _on_restart_pressed() -> void:
 	_reset_game()
 
+func comma_format(i: int) -> String:
+	var text = ""
+	while i >= 1000:
+		text += ",%03d" % (i % 1000)
+		i /= 1000
+	return str(i, text)
 func get_puzzle_node() -> Node:
 	return $puzzles
-func mark_add_puzzle(locs: Array[Vector2i], is_circuit: bool, spawn_cooldown: int):
+func mark_add_puzzle(locs: Array[Vector2i], is_circuit: bool, min_cooldown: int, max_cooldown):
 	active_puzzle_count += 1
 	is_circuit_active = is_circuit_active || is_circuit
-	if is_circuit && spawn_cooldown >= 0:
-		circuit_cooldown_ms = _modify_cooldowns(spawn_cooldown)
-	if !is_circuit && spawn_cooldown >= 0:
-		puzzle_cooldown_ms = _modify_cooldowns(spawn_cooldown)
+	if is_circuit && min_cooldown >= 0:
+		circuit_cooldown_ms = max(circuit_cooldown_ms, mult_circuit_cooldown * _modify_cooldowns(min_cooldown, max_cooldown))
+	if !is_circuit && min_cooldown >= 0:
+		puzzle_cooldown_ms = max(puzzle_cooldown_ms, _modify_cooldowns(min_cooldown, max_cooldown))
 	for loc in locs:
 		board.set(loc, true)
-func mark_free_puzzle(locs: Array[Vector2i], is_circuit: bool, spawn_cooldown: int):
+func mark_free_puzzle(locs: Array[Vector2i], is_circuit: bool, min_cooldown: int, max_cooldown):
 	active_puzzle_count -= 1
 	is_circuit_active = is_circuit_active && !is_circuit
-	if is_circuit && spawn_cooldown >= 0:
-		circuit_cooldown_ms = _modify_cooldowns(spawn_cooldown)
-	if !is_circuit && spawn_cooldown >= 0:
-		puzzle_cooldown_ms = _modify_cooldowns(spawn_cooldown)
+	if is_circuit && min_cooldown >= 0:
+		circuit_cooldown_ms = max(circuit_cooldown_ms, mult_circuit_cooldown * _modify_cooldowns(min_cooldown, max_cooldown))
+	if !is_circuit && min_cooldown >= 0:
+		puzzle_cooldown_ms = max(puzzle_cooldown_ms, _modify_cooldowns(min_cooldown, max_cooldown))
 	for loc in locs:
 		board.set(loc, false)
 func add_circuit() -> void:
@@ -132,9 +143,12 @@ func add_mega_circuit() -> void:
 	completed_mega_chip = true
 	_redraw_text()
 	_end_game()
-func lose_population(amount: int):
-	var final_amount = amount * (mult_per_10s_pop_damage ** (time_elapsed_ms / 100.0 / 10.0) )
-	remaining_population -= final_amount
+func modify_population_loss(amount: int) -> int:
+	var final_amount = amount * (1 + scale_pop_damage * (time_elapsed_ms / 100.0 / 10.0) )
+	final_amount = final_amount * (mult_pop_damage ** (time_elapsed_ms / 100.0 / 10.0) )
+	return final_amount
+func lose_population(amount: int) -> void:
+	remaining_population -= amount
 	if remaining_population < 0:
 		remaining_population = 0
 	_redraw_text()
@@ -142,11 +156,11 @@ func lose_population(amount: int):
 		_end_game()
 
 func _redraw_text() -> void:
-	%popDisplay.text = _comma_format(remaining_population)
+	%popDisplay.text = comma_format(remaining_population)
 	%chipDisplay.text = str(collected_chips, " / ", total_chips)
 	var text = ""
 	@warning_ignore("integer_division")
-	var tmin:int = time_elapsed_ms / 60 / 100
+	var tmin:int = floori(time_elapsed_ms) / 60 / 100
 	@warning_ignore("integer_division")
 	var sec:int = floori(time_elapsed_ms / 100) % 60
 	var ms:int = floori(time_elapsed_ms) % 100

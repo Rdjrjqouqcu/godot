@@ -56,8 +56,8 @@ scale = Vector2(1.90625, 1.9375)
 dont_click_weight = 1
 
 [node name="indicator2" parent="interactable" instance=ExtResource("6_mlj7q")]
-position = Vector2(153, 205)
-scale = Vector2(7.09375, 0.46875)
+position = Vector2(153, 199)
+scale = Vector2(7.09375, 0.78125)
 mouse_motion_count = 500
 mouse_motion_weight = 1
 

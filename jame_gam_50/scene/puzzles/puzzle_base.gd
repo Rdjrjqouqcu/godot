@@ -1,7 +1,10 @@
 extends Node2D
 class_name PuzzleBase
 
+const TOAST = preload("res://scene/meta/toast.tscn")
+
 var offsets: Array[Vector2i] = [Vector2i.ZERO]
+var center_offset: Vector2 = Vector2(0.5, 0.5)
 var locations: Array[Vector2i]
 var is_circuit: bool = false
 var is_mega_circuit: bool = false
@@ -21,9 +24,6 @@ func can_fit(loc: Vector2i, board: Dictionary[Vector2i, bool]) -> bool:
 		ret = ret && !board.get(Vector2i(loc.x + off.x, loc.y + off.y), true)
 	return ret
 
-static func get_new() -> PuzzleBase:
-	return null
-
 func init(location: Vector2i, roots: Main) -> void:
 	position = location * 120
 	root = roots
@@ -33,20 +33,36 @@ func init(location: Vector2i, roots: Main) -> void:
 	locations = []
 	for off in offsets:
 		locations.append(location + off)
-	root.mark_add_puzzle(locations, is_circuit or is_mega_circuit, randi_range(spawn_cooldown_min, spawn_cooldown_max))
+	root.mark_add_puzzle(locations, is_circuit or is_mega_circuit, spawn_cooldown_min, spawn_cooldown_max)
 	root.get_puzzle_node().add_child(self)
 
 func pass_puzzle() -> void:
 	#Loggie.info("pass", self.position / 120)
-	root.mark_free_puzzle(locations, is_circuit or is_mega_circuit, randi_range(complete_cooldown_min, complete_cooldown_max))
+	root.mark_free_puzzle(locations, is_circuit or is_mega_circuit, complete_cooldown_min, complete_cooldown_max)
+	var pop = root.modify_population_loss(randi_range(pop_loss_min, pop_loss_max))
+	var toast_text = ""
+	if pop != 0:
+		toast_text = "saved " + root.comma_format(pop)
 	queue_free()
 	if is_circuit:
 		root.add_circuit()
+		toast_text = "constructed circuit"
 	if is_mega_circuit:
 		root.add_mega_circuit()
-	
+	if toast_text != "":
+		var toast = TOAST.instantiate()
+		toast.position = position + 120 * center_offset
+		toast.text = toast_text
+		root.add_child(toast)
+
 func fail_puzzle() -> void:
 	#Loggie.info("fail", self.position / 120)
-	root.mark_free_puzzle(locations, is_circuit or is_mega_circuit, randi_range(complete_cooldown_min, complete_cooldown_max))
-	root.lose_population(randi_range(pop_loss_min, pop_loss_max))
+	root.mark_free_puzzle(locations, is_circuit or is_mega_circuit, complete_cooldown_min, complete_cooldown_max)
+	var pop = root.modify_population_loss(randi_range(pop_loss_min, pop_loss_max))
+	root.lose_population(pop)
+	if pop != 0:
+		var toast = TOAST.instantiate()
+		toast.position = position + 120 * center_offset
+		toast.text = "lost " + root.comma_format(pop)
+		root.add_child(toast)
 	queue_free()
