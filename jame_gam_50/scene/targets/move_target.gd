@@ -10,10 +10,10 @@ const MOVE_TARGET = preload("res://scene/targets/move_target.tscn")
 
 var complete: Signal
 
-static func create_target(location: Vector2i, tscale: Vector2i, difficulty: int, deplete: Signal) -> TargetMove:
+static func create_target(location: Vector2i, tsize: Vector2i, difficulty: int, deplete: Signal) -> TargetMove:
 	var target = MOVE_TARGET.instantiate()
 	target.position = location
-	target.scale = tscale
+	target.size = tsize
 	target.move_count = 0
 	target.target_count = difficulty
 	target.complete = deplete

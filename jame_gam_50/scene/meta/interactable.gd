@@ -37,7 +37,7 @@ class InteractionData:
 
 class DataBundle:
 	var location: Vector2i
-	var size: Vector2i
+	var size: Vector2
 	var interactions: Array[InteractionData]
 	var interaction_weight: int
 	func _to_string():
@@ -51,7 +51,7 @@ func _ready() -> void:
 	for child in self.get_children():
 		var data: DataBundle = child.get_data()
 		child.queue_free()
-		# Loggie.info(data)
+		#Loggie.info(data)
 		if randf() <= odds:
 			var weight = randi_range(0,data.interaction_weight - 1)
 			#Loggie.info(weight, data.interactions, get_parent().position)
@@ -60,14 +60,14 @@ func _ready() -> void:
 				if weight < 0:
 					match interaction.type:
 						InteractionType.CLICK_COUNT:
-							newNodes.append(TargetClick.create_target(data.location, data.size, interaction.difficulty, cleared))
+							newNodes.append(TargetClick.create_target(data.location, data.size * 32, interaction.difficulty, cleared))
 							targets_to_clear += 1
 							break
 						InteractionType.DONT_CLICK:
-							newNodes.append(TargetNoClick.create_target(data.location, data.size,interaction.difficulty, failed))
+							newNodes.append(TargetNoClick.create_target(data.location, data.size * 32,interaction.difficulty, failed))
 							break
 						InteractionType.MOUSE_MOTION:
-							newNodes.append(TargetMove.create_target(data.location, data.size, interaction.difficulty, cleared))
+							newNodes.append(TargetMove.create_target(data.location, data.size * 32, interaction.difficulty, cleared))
 							targets_to_clear += 1
 							break
 
