@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b7iuhunh3a6jo"]
 
 [ext_resource type="Texture2D" uid="uid://dcunswphm5pny" path="res://Semicircle.png" id="1_bc00w"]
-[ext_resource type="Script" path="res://score_highlight.gd" id="1_omodu"]
+[ext_resource type="Script" uid="uid://4r6paypm0qyi" path="res://score_highlight.gd" id="1_omodu"]
 [ext_resource type="Texture2D" uid="uid://b44uu0avt2pvb" path="res://Square.png" id="2_2bqx8"]
 
 [node name="score_highlight" type="Node2D"]

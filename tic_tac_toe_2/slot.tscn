@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://i3f070y2iqsn"]
 
 [ext_resource type="Texture2D" uid="uid://dlerku74i1gcw" path="res://Square2.png" id="1_8pp5m"]
-[ext_resource type="Script" path="res://slot.gd" id="1_r08ku"]
+[ext_resource type="Script" uid="uid://chwhwasagi0mh" path="res://slot.gd" id="1_r08ku"]
 [ext_resource type="PackedScene" uid="uid://bl88sclg0tcw7" path="res://player_badge.tscn" id="3_xx4ow"]
 [ext_resource type="Texture2D" uid="uid://c5ctpoqnuaont" path="res://Splat1.png" id="4_dvjoj"]
 
