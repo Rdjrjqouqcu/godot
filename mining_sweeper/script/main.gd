@@ -22,8 +22,9 @@ func get_neighbor_slots(loc: Vector2i, radius: int = 1) -> Array[Slot]:
 func _new_game() -> void:
 	get_tree().call_group(GROUP_SLOTS, "reset")
 
-	slot_cache.get(Vector2i(1,1)).init_ore(1, Slot.ORE_TYPE.IRON)
-	slot_cache.get(Vector2i(1,2)).init_ore(2, Slot.ORE_TYPE.COPPER)
+	slot_cache.get(Vector2i(1,1)).init_ore(1, 0, 0)
+	slot_cache.get(Vector2i(1,2)).init_ore(0, 2, 0)
+	slot_cache.get(Vector2i(1,3)).init_ore(0, 0, 3)
 
 	get_tree().call_group(GROUP_SLOTS, "_update_debug")
 
@@ -32,6 +33,5 @@ func _ready() -> void:
 	_new_game.call_deferred()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
