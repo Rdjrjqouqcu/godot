@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkryfpehcpck6"]
+
+[ext_resource type="Script" path="res://scripts/meteor.gd" id="1_r53mh"]
+[ext_resource type="PackedScene" uid="uid://b6l76hp3dxrqo" path="res://scenes/health.tscn" id="2_cdy65"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_iy86y"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_im5we"]
+
+[node name="Meteor" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_iy86y")
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_r53mh")
+
+[node name="Health" parent="." instance=ExtResource("2_cdy65")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_im5we")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)

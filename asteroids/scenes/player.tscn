@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb7mr1ohu4mqe"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_5lo0s"]
+[ext_resource type="Texture2D" uid="uid://40eh64hhl066" path="res://resources/SpaceShooterRedux/PNG/playerShip1_green.png" id="1_gdo2e"]
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_5lo0s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_gdo2e")
+
+[node name="Collision" type="CollisionPolygon2D" parent="."]
+rotation = 1.5708
+build_mode = 1
+polygon = PackedVector2Array(-8, -37, 8, -37, 12, -12, 35, 2, 49, -7, 47, 25, 14, 27, 8, 38, -8, 38, -14, 27, -47, 25, -49, -7, -35, 2, -12, -12)
