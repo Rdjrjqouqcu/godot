@@ -28,79 +28,79 @@ script = ExtResource("5_acb45")
 [node name="indicator1" parent="interactable" instance=ExtResource("6_ke28u")]
 position = Vector2(37, 11)
 click_weight = 3
-mouse_motion_count = 100
+dont_click_weight = 1
 
 [node name="indicator2" parent="interactable" instance=ExtResource("6_ke28u")]
 position = Vector2(70, 11)
 click_weight = 3
-mouse_motion_count = 100
+dont_click_weight = 1
 
 [node name="indicator3" parent="interactable" instance=ExtResource("6_ke28u")]
 position = Vector2(103, 11)
 click_weight = 3
-mouse_motion_count = 100
+dont_click_weight = 1
 
 [node name="indicator4" parent="interactable" instance=ExtResource("6_ke28u")]
 position = Vector2(136, 11)
 click_weight = 3
-mouse_motion_count = 100
+dont_click_weight = 1
 
 [node name="indicator5" parent="interactable" instance=ExtResource("6_ke28u")]
 position = Vector2(169, 11)
 click_weight = 3
-mouse_motion_count = 100
+dont_click_weight = 1
 
 [node name="indicator6" parent="interactable" instance=ExtResource("6_ke28u")]
 position = Vector2(37, 44)
 click_weight = 3
-mouse_motion_count = 100
+dont_click_weight = 1
 
 [node name="indicator7" parent="interactable" instance=ExtResource("6_ke28u")]
 position = Vector2(70, 44)
 click_weight = 3
-mouse_motion_count = 100
+dont_click_weight = 1
 
 [node name="indicator8" parent="interactable" instance=ExtResource("6_ke28u")]
 position = Vector2(103, 44)
 click_weight = 3
-mouse_motion_count = 100
+dont_click_weight = 1
 mouse_motion_weight = 4
 
 [node name="indicator9" parent="interactable" instance=ExtResource("6_ke28u")]
 position = Vector2(136, 44)
 click_weight = 3
-mouse_motion_count = 100
+dont_click_weight = 1
 
 [node name="indicator10" parent="interactable" instance=ExtResource("6_ke28u")]
 position = Vector2(169, 44)
 click_weight = 3
-mouse_motion_count = 100
+dont_click_weight = 1
 
 [node name="indicator11" parent="interactable" instance=ExtResource("6_ke28u")]
 position = Vector2(37, 77)
 click_weight = 3
-mouse_motion_count = 100
+dont_click_weight = 1
 
 [node name="indicator12" parent="interactable" instance=ExtResource("6_ke28u")]
 position = Vector2(70, 77)
 click_weight = 3
-mouse_motion_count = 100
+dont_click_weight = 1
 mouse_motion_weight = 2
 
 [node name="indicator13" parent="interactable" instance=ExtResource("6_ke28u")]
 position = Vector2(103, 77)
 click_weight = 3
-mouse_motion_count = 100
+dont_click_weight = 1
 mouse_motion_weight = 2
 
 [node name="indicator14" parent="interactable" instance=ExtResource("6_ke28u")]
 position = Vector2(136, 77)
 click_weight = 3
-mouse_motion_count = 100
+dont_click_weight = 1
 mouse_motion_weight = 2
 
 [node name="indicator15" parent="interactable" instance=ExtResource("6_ke28u")]
 position = Vector2(169, 77)
 click_weight = 3
-mouse_motion_count = 100
+dont_click_weight = 1
 mouse_motion_weight = 2

@@ -7,7 +7,7 @@ enum InteractionType {
 	MOUSE_MOTION,
 }
 
-@export var difficulty:int = Main.Difficulty.EASY
+@export var odds:float = 0.33
 
 var targets_to_clear = 0
 signal failed
@@ -51,8 +51,9 @@ func _ready() -> void:
 		var data: DataBundle = child.get_data()
 		child.queue_free()
 		# Loggie.info(data)
-		if randi_range(Main.Difficulty.EASY,Main.Difficulty.HARD + 1) <= difficulty:
-			var weight = randi_range(0,data.interaction_weight)
+		if randf() <= odds:
+			var weight = randi_range(0,data.interaction_weight - 1)
+			Loggie.info(weight, data.interactions, get_parent().position)
 			for interaction: InteractionData in data.interactions:
 				weight -= interaction.weight
 				if weight < 0:
