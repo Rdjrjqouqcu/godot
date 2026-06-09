@@ -7,7 +7,7 @@ const ANIMATION_LEFT: String = "move_left"
 const ANIMATION_RIGHT: String = "move_right"
 const ANIMATION_DOWN: String = "move_down"
 
-@export var level: Level
+var level: Level
 var queue_left: bool = false
 var queue_right: bool = false
 var wait_for_fall: bool = false
@@ -25,6 +25,14 @@ func _get_neighbor_block(off: Vector2i) -> Block:
 func _has_neighbor_block(off: Vector2i) -> bool:
 	return _get_neighbor_block(off) != null
 
+func _land() -> void:
+	if fall_distance != 0:
+		%land_audio.volume_linear = level.get_volume()
+		%land_audio.play()
+	block_already_hit = true
+	wait_for_fall = true
+	fall_distance = 0
+	_change_speed()
 func _move_left() -> void:
 	block_already_hit = false
 	wait_for_fall = true
@@ -97,18 +105,15 @@ func _try_move_down() -> void:
 	if down != null:
 		var broken = down.hit(fall_distance)
 		if not broken:
-			block_already_hit = true
-			wait_for_fall = true
-			fall_distance = 0
-			_change_speed()
-			if left:
+			_land()
+			if left and not _has_neighbor_block(Vector2i.LEFT):
 				_move_left()
-			elif right:
+			elif right and not _has_neighbor_block(Vector2i.RIGHT):
 				_move_right()
 			return
 	if (left
 			and not _has_neighbor_block(Vector2i.LEFT + Vector2i.DOWN)
-			and not  _has_neighbor_block(Vector2i.LEFT) ):
+			and not _has_neighbor_block(Vector2i.LEFT) ):
 		_move_down_left()
 	elif (right
 			and not _has_neighbor_block(Vector2i.RIGHT + Vector2i.DOWN)
@@ -155,25 +160,29 @@ func _change_speed() -> void:
 func _process(_delta: float) -> void:
 
 	if level.is_debug_enabled():
-		fall_distance = 0
-		if Input.is_action_just_pressed("ui_up"):
+		_land()
+		if Input.is_action_just_pressed("up"):
 			_try_move_up()
-		if Input.is_action_just_pressed("ui_down"):
+		if Input.is_action_just_pressed("down"):
 			_try_move_down()
-		if Input.is_action_just_pressed("ui_left"):
+		if Input.is_action_just_pressed("left"):
 			_try_move_left()
-		if Input.is_action_just_pressed("ui_right"):
+		if Input.is_action_just_pressed("right"):
 			_try_move_right()
 		return
 
-	if Input.is_action_just_pressed("ui_left"):
+	if Input.is_action_just_pressed("left"):
 		_try_move_left()
-	if Input.is_action_just_pressed("ui_right"):
+	if Input.is_action_just_pressed("right"):
 		_try_move_right()
 
 	_try_move_down()
 
 func _ready() -> void:
+	var parent = get_parent()
+	while not parent is Level:
+		parent = parent.get_parent()
+	level = parent as Level
 	wait_for_fall = _has_neighbor_block(Vector2i.DOWN)
 	_change_speed()
 	Loggie.info("anvil ready", wait_for_fall)

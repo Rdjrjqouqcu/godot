@@ -14,6 +14,11 @@ const UI_HEIGHT: int = TILE_SIZE * 4 # 128
 const GROUP_BLOCKS: String = "blocks"
 const GROUP_TARGETS: String = "targets"
 
+const COLOR_GRAY: Color = Color("80808080")
+const COLOR_BRONZE: Color = Color("c79b56")
+const COLOR_SILVER: Color = Color("c0c0c0")
+const COLOR_GOLD: Color = Color("d4af37")
+
 const HEIGHT_LEVELS: Array[int] = [0, 2, 4, 6, 8]
 
 static func map_coord_to_pos(coord: Vector2i) -> Vector2:
