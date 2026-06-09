@@ -35,6 +35,29 @@ License(s): CC-BY-SA 3.0 ; GPL 3.0
 Author: wulax
 
 
+smokeParticleAssets
+
+https://opengameart.org/content/smoke-particle-assets
+License(s): CC0
+Author: Kenny
 
 
+Smoke Aura
 
+https://opengameart.org/content/smoke-aura
+License(s): CC0
+Author: Beast
+
+
+db32rpgitems
+
+https://opengameart.org/content/16x16-rpg-items-db32
+License(s): CC0
+Author: ARoachIFoundOnMyPillow
+
+
+lpc Mage spell casting
+
+https://opengameart.org/content/four-characters-my-lpc-entries
+License(s): CC-BY 3.0 ; CC-BY-SA 3.0 ; OGA-BY 3.0
+Author: Stephen Challener (Redshrike) and Zi Ye
