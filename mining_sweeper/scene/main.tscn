@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7etckbefik67"]
+[gd_scene format=3 uid="uid://c7etckbefik67"]
 
 [ext_resource type="PackedScene" uid="uid://d0sh6jdkqfigf" path="res://scene/grid_allocator.tscn" id="1_v0l8b"]
 [ext_resource type="Script" uid="uid://duavr61jjsdg5" path="res://script/main.gd" id="1_wp4xf"]
 [ext_resource type="PackedScene" uid="uid://clusakthvh5mo" path="res://scene/slot.tscn" id="2_v0l8b"]
+[ext_resource type="PackedScene" uid="uid://dy8ms7dkjcitb" path="res://scene/rclick.tscn" id="4_brvut"]
 
-[node name="main" type="Node2D"]
+[node name="main" type="Node2D" unique_id=73154580]
 script = ExtResource("1_wp4xf")
 
-[node name="grid_allocator" parent="." instance=ExtResource("1_v0l8b")]
+[node name="grid_allocator" parent="." unique_id=330244578 instance=ExtResource("1_v0l8b")]
 TiledScene = ExtResource("2_v0l8b")
 cols = 20
 rows = 20
@@ -17,3 +18,7 @@ border_top_padding = 10
 border_right_padding = 10
 border_bottom_padding = 10
 border_left_padding = 10
+
+[node name="rclick" parent="." unique_id=563911376 instance=ExtResource("4_brvut")]
+unique_name_in_owner = true
+visible = false

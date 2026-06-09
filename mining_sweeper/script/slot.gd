@@ -93,6 +93,8 @@ func _input_event(_view, event, _shape) -> void:
 		event = event as InputEventMouseButton
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			reveal_area()
+		elif event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+			main.rclick(loc, self.position)
 		#Loggie.info(loc, event)
 
 

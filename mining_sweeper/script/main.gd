@@ -33,6 +33,13 @@ func get_neighbor_slots(loc: Vector2i, radius: int = 1) -> Array[Slot]:
 			res.append(slot_cache.get(nloc))
 	return res
 
+func rclick(loc:Vector2i, pos: Vector2) -> void:
+	%rclick.open_menu(self, loc, pos + Vector2(26,26))
+
+func set_node(loc: Vector2i, num: int, flag: bool) -> void:
+	Loggie.info(loc, num, flag)
+	pass
+
 func _new_game() -> void:
 	get_tree().call_group(GROUP_SLOTS, "reset")
 
