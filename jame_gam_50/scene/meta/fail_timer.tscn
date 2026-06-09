@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://fpnp36yqbj4i"]
+
+[ext_resource type="Script" uid="uid://djdjdfev7n2l5" path="res://scene/meta/fail_timer.gd" id="1_0nfj7"]
+
+[node name="failTimer" type="ProgressBar"]
+self_modulate = Color(1, 0, 0, 1)
+offset_top = 112.0
+offset_right = 120.0
+offset_bottom = 120.0
+max_value = 4.0
+value = 4.0
+show_percentage = false
+script = ExtResource("1_0nfj7")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

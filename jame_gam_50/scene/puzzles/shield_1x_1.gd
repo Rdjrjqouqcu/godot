@@ -2,6 +2,7 @@ extends PuzzleBase
 class_name PuzzleShield1x1
 
 const SHIELD_1X_1 = preload("res://scene/puzzles/shield_1x1.tscn")
+@onready var fail_timer: FailTimer = $failTimer
 
 static func create_shield_1x1(location: Vector2i) -> PuzzleShield1x1:
 	var puzzle = SHIELD_1X_1.instantiate()
