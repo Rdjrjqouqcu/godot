@@ -36,3 +36,7 @@ func _on_gui_input(event: InputEvent) -> void:
 			if click_count <= 0:
 				complete.emit()
 				queue_free()
+	elif target_count == 1 and event is InputEventMouseMotion:
+		if event.button_mask & MOUSE_BUTTON_MASK_LEFT:
+			complete.emit()
+			queue_free()
