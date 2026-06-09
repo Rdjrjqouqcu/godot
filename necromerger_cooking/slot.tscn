@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhg7olykab0v4"]
+
+[ext_resource type="Script" uid="uid://dkk8n1iuxitmo" path="res://slot.gd" id="1_c24ra"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3jfm"]
+size = Vector2(64, 64)
+
+[sub_resource type="GDScript" id="GDScript_c24ra"]
+script/source = "extends Polygon2D
+class_name PolygonFrame
+
+@export var width: int = 64
+@export var height: int = 64
+@export var thickness: int = 2
+@export var color_override: Color = Color.WHITE
+
+func _ready() -> void:
+	self.polygon = PackedVector2Array([
+		Vector2(0,0),
+		Vector2(width,0),
+		Vector2(width,height),
+		Vector2(0,height),
+		Vector2(0,0),
+		Vector2(thickness,thickness),
+		Vector2(thickness,height-thickness),
+		Vector2(width-thickness,height-thickness),
+		Vector2(width-thickness,thickness),
+		Vector2(thickness,thickness),
+	])
+	self.color = color_override
+"
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_c24ra")
+
+[node name="Area" type="Area2D" parent="."]
+position = Vector2(32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+shape = SubResource("RectangleShape2D_f3jfm")
+
+[node name="Frame" type="Polygon2D" parent="."]
+color = Color(0.49803922, 0.49803922, 0.49803922, 0.49803922)
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
+script = SubResource("GDScript_c24ra")
