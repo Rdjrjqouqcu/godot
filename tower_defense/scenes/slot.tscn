@@ -14,8 +14,9 @@ font_size = 8
 script = ExtResource("1_ic0fu")
 
 [node name="Frame" parent="." instance=ExtResource("1_4v6ba")]
-width = 32
-height = 32
+width = 33
+height = 33
+thickness = 1
 
 [node name="Area2D" type="Area2D" parent="."]
 
