@@ -75,6 +75,8 @@ func _try_move_left() -> void:
 		queue_right = false
 		return
 	if _is_moving_horizontally():
+		queue_left = true
+		queue_right = false
 		return
 	if _has_neighbor_block(Vector2i.LEFT):
 		return
@@ -85,6 +87,8 @@ func _try_move_right() -> void:
 		queue_right = true
 		return
 	if _is_moving_horizontally():
+		queue_left = false
+		queue_right = true
 		return
 	if _has_neighbor_block(Vector2i.RIGHT):
 		return

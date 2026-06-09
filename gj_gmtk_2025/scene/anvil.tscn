@@ -36,6 +36,7 @@ texture = ExtResource("1_qojh1")
 [node name="speed1" type="CPUParticles2D" parent="sprite"]
 unique_name_in_owner = true
 position = Vector2(0, -48)
+emitting = false
 amount = 24
 lifetime = 0.25
 emission_shape = 3
@@ -52,6 +53,7 @@ color = Color(0.713726, 0.133333, 0.0117647, 1)
 [node name="speed2" type="CPUParticles2D" parent="sprite"]
 unique_name_in_owner = true
 position = Vector2(0, -16)
+emitting = false
 amount = 16
 lifetime = 0.38
 emission_shape = 3
@@ -68,6 +70,7 @@ color = Color(1, 0.458824, 0, 1)
 [node name="speed3" type="CPUParticles2D" parent="sprite"]
 unique_name_in_owner = true
 position = Vector2(0, -16)
+emitting = false
 lifetime = 0.5
 emission_shape = 3
 emission_rect_extents = Vector2(16, 1)
@@ -83,6 +86,7 @@ color = Color(0.843137, 0.207843, 0.00784314, 1)
 [node name="speed4" type="CPUParticles2D" parent="sprite"]
 unique_name_in_owner = true
 position = Vector2(0, -16)
+emitting = false
 amount = 4
 lifetime = 0.63
 emission_shape = 3

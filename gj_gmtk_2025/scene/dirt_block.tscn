@@ -1,15 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://dof0ieoia08j4"]
+[gd_scene load_steps=7 format=3 uid="uid://dof0ieoia08j4"]
 
 [ext_resource type="Script" uid="uid://b2m1q3m4tdwio" path="res://scripts/block.gd" id="1_0c3ce"]
 [ext_resource type="Texture2D" uid="uid://dasfv11rsar11" path="res://assets/openGameArt/material_tileset.png" id="2_x1m7w"]
 [ext_resource type="Texture2D" uid="uid://cevol8heatfeb" path="res://assets/simpleShapes/square.016.png" id="3_x1m7w"]
 [ext_resource type="AudioStream" uid="uid://dnq2w21dh72w4" path="res://assets/sounds/block_hit_dirt.wav" id="4_170a2"]
+[ext_resource type="Texture2D" uid="uid://iwb6bimwserj" path="res://assets/simpleShapes/circle.016.png" id="5_6q0rq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jg43r"]
 atlas = ExtResource("2_x1m7w")
 region = Rect2(64, 0, 16, 16)
 
-[node name="Sprite2D" type="Sprite2D"]
+[node name="dirt" type="Sprite2D"]
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_jg43r")
 script = ExtResource("1_0c3ce")
@@ -35,3 +36,9 @@ scale_amount_max = 0.25
 
 [node name="break_audio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_170a2")
+
+[node name="guide" type="Sprite2D" parent="."]
+modulate = Color(0.596078, 0.376471, 0.254902, 1)
+position = Vector2(4, -84)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_6q0rq")
