@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Leg" format=3 uid="uid://baqbqprrwi7gl"]
+
+[ext_resource type="Script" uid="uid://cuigj8k618ume" path="res://survivorslike/res_leg/leg.gd" id="1_dj47m"]
+
+[resource]
+script = ExtResource("1_dj47m")
+name = "fast"
+move_speed = 400
+metadata/_custom_type_script = "uid://cuigj8k618ume"

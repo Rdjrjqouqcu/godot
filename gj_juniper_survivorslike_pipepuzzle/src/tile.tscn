@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cwn0hw0vmfwe3"]
+
+[ext_resource type="Script" uid="uid://hy1hlntyjlkk" path="res://src/tile.gd" id="1_j0ehh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7htxc"]
+size = Vector2(32, 32)
+
+[node name="tile" type="Node2D" unique_id=1060300156]
+script = ExtResource("1_j0ehh")
+
+[node name="up" type="Polygon2D" parent="." unique_id=1309943907]
+polygon = PackedVector2Array(10, 0, 22, 0, 22, 22, 10, 22)
+
+[node name="right" type="Polygon2D" parent="." unique_id=527780900]
+polygon = PackedVector2Array(10, 10, 10, 22, 32, 22, 32, 10)
+
+[node name="down" type="Polygon2D" parent="." unique_id=1867605676]
+polygon = PackedVector2Array(10, 10, 22, 10, 22, 32, 10, 32)
+
+[node name="left" type="Polygon2D" parent="." unique_id=1706965704]
+polygon = PackedVector2Array(0, 10, 0, 22, 22, 22, 22, 10)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=713892145]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=355584809]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_7htxc")
+
+[node name="Label" type="Label" parent="." unique_id=63367630]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

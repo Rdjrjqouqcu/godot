@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Head" format=3 uid="uid://dctt7b3wmewo"]
+
+[ext_resource type="Script" uid="uid://clul5suw50ajw" path="res://survivorslike/res_head/head.gd" id="1_8x4si"]
+
+[resource]
+script = ExtResource("1_8x4si")
+name = "short"
+metadata/_custom_type_script = "uid://clul5suw50ajw"

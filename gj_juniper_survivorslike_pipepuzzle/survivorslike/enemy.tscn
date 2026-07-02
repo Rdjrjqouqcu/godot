@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d1jp1o3xym1ap"]
+
+[ext_resource type="Texture2D" uid="uid://5p8u5ihuwamt" path="res://icon.svg" id="1_4x26n"]
+[ext_resource type="Script" uid="uid://t6wmfbw00sg1" path="res://survivorslike/enemy.gd" id="1_jebom"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yggsk"]
+size = Vector2(32, 32)
+
+[node name="enemy" type="CharacterBody2D" unique_id=1340098663]
+script = ExtResource("1_jebom")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1688518205]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_4x26n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1564056520]
+shape = SubResource("RectangleShape2D_yggsk")

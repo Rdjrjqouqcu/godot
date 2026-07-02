@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://donnsc8414dig"]
+
+[sub_resource type="GDScript" id="GDScript_c24ra"]
+script/source = "@tool
+extends Polygon2D
+
+@export var width: int = 64
+@export var height: int = 64
+@export var thickness: int = 2
+
+@export_tool_button(\"Apply\") var action = _apply
+
+func _apply() -> void:
+	self.polygon = PackedVector2Array([
+		Vector2(0,0),
+		Vector2(width,0),
+		Vector2(width,height),
+		Vector2(0,height),
+		Vector2(0,0),
+		Vector2(thickness,thickness),
+		Vector2(thickness,height-thickness),
+		Vector2(width-thickness,height-thickness),
+		Vector2(width-thickness,thickness),
+		Vector2(thickness,thickness),
+	])
+	self.notify_property_list_changed()
+
+func _ready() -> void:
+	_apply()
+"
+
+[node name="Frame" type="Polygon2D" unique_id=1241922743]
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
+script = SubResource("GDScript_c24ra")

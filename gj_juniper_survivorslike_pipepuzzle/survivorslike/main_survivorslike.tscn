@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bve3dfomqxr5o"]
+
+[ext_resource type="Script" uid="uid://t826qh4lj33k" path="res://survivorslike/world.gd" id="1_onlut"]
+[ext_resource type="PackedScene" uid="uid://cny06wrvkf5uq" path="res://survivorslike/player.tscn" id="2_fudwt"]
+[ext_resource type="PackedScene" uid="uid://6gfwycv1j2my" path="res://survivorslike/border_tool.tscn" id="3_qaw5f"]
+[ext_resource type="PackedScene" uid="uid://d1jp1o3xym1ap" path="res://survivorslike/enemy.tscn" id="4_uiswa"]
+[ext_resource type="PackedScene" uid="uid://bfd351s1vrmvy" path="res://survivorslike/debug_ui.tscn" id="5_fumra"]
+
+[node name="main_survivorslike" type="Node" unique_id=548405058]
+
+[node name="world" type="Node2D" parent="." unique_id=772689811]
+script = ExtResource("1_onlut")
+
+[node name="player" parent="world" unique_id=1410725788 instance=ExtResource("2_fudwt")]
+position = Vector2(284, 237)
+motion_mode = 1
+
+[node name="border_tool" parent="world" unique_id=1357881158 instance=ExtResource("3_qaw5f")]
+width = 1152
+height = 648
+
+[node name="enemy" parent="world" unique_id=1340098663 instance=ExtResource("4_uiswa")]
+position = Vector2(476, 70)
+collision_layer = 5
+motion_mode = 1
+
+[node name="ui" type="CanvasLayer" parent="." unique_id=504054707]
+
+[node name="PanelContainer" type="PanelContainer" parent="ui" unique_id=452718713]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="debug_ui" parent="ui/PanelContainer" unique_id=1498079947 node_paths=PackedStringArray("player") instance=ExtResource("5_fumra")]
+layout_mode = 2
+player = NodePath("../../../world/player")

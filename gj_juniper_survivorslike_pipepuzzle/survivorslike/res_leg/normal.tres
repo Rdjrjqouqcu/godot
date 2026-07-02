@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Leg" format=3 uid="uid://gc3qb2ujgi8f"]
+
+[ext_resource type="Script" uid="uid://cuigj8k618ume" path="res://survivorslike/res_leg/leg.gd" id="1_s1kfm"]
+
+[resource]
+script = ExtResource("1_s1kfm")
+name = "normal"
+metadata/_custom_type_script = "uid://cuigj8k618ume"

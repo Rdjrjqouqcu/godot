@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bfd351s1vrmvy"]
+
+[ext_resource type="Script" uid="uid://cyp4wbybflknh" path="res://survivorslike/debug_ui.gd" id="1_53crj"]
+
+[node name="debug" type="VBoxContainer" unique_id=1498079947]
+script = ExtResource("1_53crj")
+
+[node name="Label" type="Label" parent="." unique_id=420699040]
+layout_mode = 2
+text = "Debug"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1553640110]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=260613107]
+layout_mode = 2
+text = "Head"
+
+[node name="head" type="OptionButton" parent="HBoxContainer" unique_id=2060793607]
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "short"
+popup/item_0/id = 0
+popup/item_1/text = "medium"
+popup/item_1/id = 1
+popup/item_2/text = "long"
+popup/item_2/id = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=295968725]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer2" unique_id=729979630]
+layout_mode = 2
+text = "Body"
+
+[node name="body" type="OptionButton" parent="HBoxContainer2" unique_id=1933233409]
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "red"
+popup/item_0/id = 0
+popup/item_1/text = "green"
+popup/item_1/id = 1
+popup/item_2/text = "blue"
+popup/item_2/id = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="." unique_id=1202075798]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer3" unique_id=651292538]
+layout_mode = 2
+text = "Legs"
+
+[node name="leg" type="OptionButton" parent="HBoxContainer3" unique_id=467119029]
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "slow"
+popup/item_0/id = 0
+popup/item_1/text = "medium"
+popup/item_1/id = 1
+popup/item_2/text = "fast"
+popup/item_2/id = 2
+
+[connection signal="item_selected" from="HBoxContainer/head" to="." method="_on_selection_changed"]
+[connection signal="item_selected" from="HBoxContainer2/body" to="." method="_on_selection_changed"]
+[connection signal="item_selected" from="HBoxContainer3/leg" to="." method="_on_selection_changed"]

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Body" format=3 uid="uid://bhn6uyw3tkyo5"]
+
+[ext_resource type="Script" uid="uid://da2nw37mtu101" path="res://survivorslike/res_body/body.gd" id="1_uyp1u"]
+
+[resource]
+script = ExtResource("1_uyp1u")
+name = "red"
+color = Color(1, 0, 0, 1)
+metadata/_custom_type_script = "uid://da2nw37mtu101"

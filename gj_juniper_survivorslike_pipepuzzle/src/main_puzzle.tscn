@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cppfwuagbvt7t"]
+
+[ext_resource type="PackedScene" uid="uid://d0sh6jdkqfigf" path="res://src/grid_allocator.tscn" id="1_jva5o"]
+[ext_resource type="Script" uid="uid://tp6utsyvyyb7" path="res://src/level.gd" id="1_p3jvw"]
+[ext_resource type="PackedScene" uid="uid://ddq7y7b3jqjp4" path="res://src/big_tile.tscn" id="2_p3jvw"]
+
+[node name="main_puzzle" type="Node" unique_id=1253664287]
+
+[node name="level" type="Node2D" parent="." unique_id=1190312261]
+script = ExtResource("1_p3jvw")
+
+[node name="grid_allocator" parent="level" unique_id=999157741 instance=ExtResource("1_jva5o")]
+position = Vector2(64, 64)
+TiledScene = ExtResource("2_p3jvw")
+cols = 7
+rows = 7
+
+[node name="ui" type="CanvasLayer" parent="." unique_id=1338332505]

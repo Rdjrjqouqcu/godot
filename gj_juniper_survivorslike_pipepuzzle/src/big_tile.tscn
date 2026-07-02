@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ddq7y7b3jqjp4"]
+
+[ext_resource type="PackedScene" uid="uid://d0sh6jdkqfigf" path="res://src/grid_allocator.tscn" id="1_gr55r"]
+[ext_resource type="Script" uid="uid://topgmf4gogsv" path="res://src/big_tile.gd" id="1_mmpil"]
+[ext_resource type="PackedScene" uid="uid://cwn0hw0vmfwe3" path="res://src/tile.tscn" id="2_mmpil"]
+[ext_resource type="PackedScene" uid="uid://donnsc8414dig" path="res://src/frame.tscn" id="4_5p1hd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7htxc"]
+size = Vector2(68, 68)
+
+[node name="big_tile" type="Node2D" unique_id=204014167]
+script = ExtResource("1_mmpil")
+
+[node name="grid_allocator" parent="." unique_id=552234998 instance=ExtResource("1_gr55r")]
+TiledScene = ExtResource("2_mmpil")
+cols = 2
+rows = 2
+
+[node name="Frame" parent="." unique_id=1241922743 instance=ExtResource("4_5p1hd")]
+color = Color(0.46666667, 0.46666667, 0.46666667, 0.46666667)
+polygon = PackedVector2Array(0, 0, 68, 0, 68, 68, 0, 68, 0, 0, 1, 1, 1, 67, 67, 67, 67, 1, 1, 1)
+thickness = 1
+
+[node name="Area2D" type="Area2D" parent="." unique_id=969554702]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=454472862]
+position = Vector2(34, 34)
+shape = SubResource("RectangleShape2D_7htxc")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
