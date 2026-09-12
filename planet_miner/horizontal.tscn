@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://flo73ayecepf"]
+
+[node name="Horizontal" type="HBoxContainer" unique_id=2139413227]
+custom_minimum_size = Vector2(1152, 648)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=860254704]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Controls" type="PanelContainer" parent="." unique_id=1593888125]
+layout_mode = 2
+size_flags_horizontal = 3

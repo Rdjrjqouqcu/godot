@@ -1,21 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://6gfwycv1j2my"]
+[gd_scene format=3 uid="uid://6gfwycv1j2my"]
 
 [sub_resource type="GDScript" id="GDScript_dlfbb"]
 script/source = "@tool
 extends StaticBody2D
 
-@export var width: int = 100
-@export var height: int = 100
+@export var width: int = 1152
+@export var height: int = 648
+
+@export var use_settings: bool = true
+
 @export_tool_button(\"Apply\") var apply_action = _move_border
 
 
 func _move_border():
+	if use_settings:
+		width = ProjectSettings.get_setting(\"display/window/size/viewport_width\")
+		height = ProjectSettings.get_setting(\"display/window/size/viewport_height\")
+		self.notify_property_list_changed()
 	$right.position.x = width
 	$right.notify_property_list_changed()
 	$bottom.position.y = height
 	$bottom.notify_property_list_changed()
 
 func _ready() -> void:
+	if use_settings:
+		width = ProjectSettings.get_setting(\"display/window/size/viewport_width\")
+		height = ProjectSettings.get_setting(\"display/window/size/viewport_height\")
 	$right.position.x = width
 	$bottom.position.y = height
 "
@@ -31,19 +41,19 @@ normal = Vector2(-1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lf28b"]
 
-[node name="border_tool" type="StaticBody2D"]
+[node name="border_tool" type="StaticBody2D" unique_id=176385442]
 script = SubResource("GDScript_dlfbb")
 
-[node name="left" type="CollisionShape2D" parent="."]
+[node name="left" type="CollisionShape2D" parent="." unique_id=726900185]
 shape = SubResource("WorldBoundaryShape2D_dlfbb")
 
-[node name="top" type="CollisionShape2D" parent="."]
+[node name="top" type="CollisionShape2D" parent="." unique_id=1103825852]
 shape = SubResource("WorldBoundaryShape2D_yv8ol")
 
-[node name="right" type="CollisionShape2D" parent="."]
-position = Vector2(100, 0)
+[node name="right" type="CollisionShape2D" parent="." unique_id=961374426]
+position = Vector2(1152, 0)
 shape = SubResource("WorldBoundaryShape2D_srnjo")
 
-[node name="bottom" type="CollisionShape2D" parent="."]
-position = Vector2(0, 100)
+[node name="bottom" type="CollisionShape2D" parent="." unique_id=154279906]
+position = Vector2(0, 648)
 shape = SubResource("WorldBoundaryShape2D_lf28b")
