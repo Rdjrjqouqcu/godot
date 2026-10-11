@@ -1,0 +1,839 @@
+[gd_scene format=3 uid="uid://bqvprjfcllepx"]
+
+[ext_resource type="Texture2D" uid="uid://c3joknb6pavbj" path="res://2026-10/2026-08_pixelArtChallenge3_pumpkin.png" id="1_lxain"]
+[ext_resource type="Script" uid="uid://yuyopagjiex4" path="res://2026-10/pumpkin.gd" id="2_a38uv"]
+[ext_resource type="LabelSettings" uid="uid://coces51xflor0" path="res://2026-10/title.tres" id="3_kh1sp"]
+[ext_resource type="Script" uid="uid://bn34mi15g1tey" path="res://common/build_calendar.gd" id="4_6vl4b"]
+[ext_resource type="LabelSettings" uid="uid://tc6gafu0qvf" path="res://2026-10/weekday.tres" id="4_wp4yx"]
+[ext_resource type="Texture2D" uid="uid://bg66fq6oumkop" path="res://2026-10/2026-10-01_apple.png" id="6_2riag"]
+[ext_resource type="Texture2D" uid="uid://d3xipajxju12j" path="res://2026-10/2026-10-02_relic.png" id="7_fv205"]
+[ext_resource type="Texture2D" uid="uid://c25nrchv80ko6" path="res://2026-10/2026-10-03_miniature.png" id="8_jphnx"]
+[ext_resource type="Texture2D" uid="uid://cuw77luu544et" path="res://2026-10/2026-10-04_cactus.png" id="9_63e1j"]
+[ext_resource type="Texture2D" uid="uid://vkk8lvt1w2dd" path="res://2026-10/2026-10-05_smack.png" id="10_roq56"]
+[ext_resource type="Texture2D" uid="uid://ialy1vdyb3uh" path="res://2026-10/2026-10-06_fox(ogre).png" id="11_3efbe"]
+[ext_resource type="Texture2D" uid="uid://b5v5gtya3o1ra" path="res://2026-10/2026-10-07_panic.png" id="12_q2t0p"]
+[ext_resource type="Texture2D" uid="uid://dl3x61ok3hpt8" path="res://2026-10/2026-10-08_stinky.png" id="13_jf1n8"]
+[ext_resource type="Texture2D" uid="uid://boxhv50m1f1fq" path="res://2026-10/2026-10-09_ram.png" id="14_6f2n4"]
+[ext_resource type="Script" uid="uid://bqtcicf65hea0" path="res://2026-10/image_display.gd" id="15_63e1j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2yge"]
+atlas = ExtResource("1_lxain")
+region = Rect2(320, 0, 32, 32)
+
+[node name="Control" type="Control" unique_id=1588027501]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1789525266]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=882459594]
+layout_mode = 2
+alignment = 1
+
+[node name="prevMonth" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=707319441]
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 2
+size_flags_horizontal = 2
+text = " September"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="HBoxCentered" type="HBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1254740335]
+layout_mode = 2
+
+[node name="pumpkin" type="TextureRect" parent="VBoxContainer/HBoxContainer/HBoxCentered" unique_id=709565661]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -4)
+texture = SubResource("AtlasTexture_h2yge")
+expand_mode = 2
+script = ExtResource("2_a38uv")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/HBoxCentered" unique_id=1890070804]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 12)
+text = "October"
+label_settings = ExtResource("3_kh1sp")
+horizontal_alignment = 1
+
+[node name="nextMonth" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1235035271]
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "November "
+label_settings = ExtResource("4_wp4yx")
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer" unique_id=489243967 node_paths=PackedStringArray("grid", "first_day")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 7
+script = ExtResource("4_6vl4b")
+grid = NodePath(".")
+first_day = NodePath("5")
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1891949140]
+custom_minimum_size = Vector2(128, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/PanelContainer" unique_id=1189494985]
+layout_mode = 2
+text = "Sunday"
+label_settings = ExtResource("4_wp4yx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1448733781]
+custom_minimum_size = Vector2(128, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/PanelContainer2" unique_id=1124999712]
+layout_mode = 2
+text = "Monday"
+label_settings = ExtResource("4_wp4yx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=661128772]
+custom_minimum_size = Vector2(128, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/PanelContainer3" unique_id=1878782113]
+layout_mode = 2
+text = "Tuesday"
+label_settings = ExtResource("4_wp4yx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer4" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=877133274]
+custom_minimum_size = Vector2(128, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/PanelContainer4" unique_id=1618280041]
+layout_mode = 2
+text = "Wednesday"
+label_settings = ExtResource("4_wp4yx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer5" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1809181265]
+custom_minimum_size = Vector2(128, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/PanelContainer5" unique_id=1821513655]
+layout_mode = 2
+text = "Thursday"
+label_settings = ExtResource("4_wp4yx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer6" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=812959074]
+custom_minimum_size = Vector2(128, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/PanelContainer6" unique_id=1041173797]
+layout_mode = 2
+text = "Friday"
+label_settings = ExtResource("4_wp4yx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer7" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1350411]
+custom_minimum_size = Vector2(128, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/PanelContainer7" unique_id=681286256]
+layout_mode = 2
+text = "Saturday"
+label_settings = ExtResource("4_wp4yx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="1" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=431555851]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/1" unique_id=1743727697]
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "27"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="2" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=479575828]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/2" unique_id=23717416]
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "28"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="3" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1427137063]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/3" unique_id=455628654]
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "29"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="4" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=937006736]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/4" unique_id=1239239862]
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "30"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="5" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=517353725]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/5" unique_id=2001246936]
+custom_minimum_size = Vector2(116, 116)
+custom_maximum_size = Vector2(116, 116)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_2riag")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/5" unique_id=576986869]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "01"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="6" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1558757504]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/6" unique_id=538817189]
+custom_minimum_size = Vector2(116, 116)
+custom_maximum_size = Vector2(116, 116)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_fv205")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/6" unique_id=1537144148]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "02"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="7" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1261953866]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/7" unique_id=1666167001]
+custom_minimum_size = Vector2(116, 116)
+custom_maximum_size = Vector2(116, 116)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_jphnx")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/7" unique_id=547478084]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "03"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="8" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=479816628]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/8" unique_id=315370597]
+custom_minimum_size = Vector2(116, 116)
+custom_maximum_size = Vector2(116, 116)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("9_63e1j")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/8" unique_id=123179035]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "04"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="9" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=2042471241]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/9" unique_id=100364130]
+custom_minimum_size = Vector2(116, 116)
+custom_maximum_size = Vector2(116, 116)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_roq56")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/9" unique_id=639715132]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "05"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="10" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1578054014]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/10" unique_id=817599563]
+custom_minimum_size = Vector2(116, 116)
+custom_maximum_size = Vector2(116, 116)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("11_3efbe")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/10" unique_id=1153606423]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "06"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="11" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=520436726]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/11" unique_id=1508423246]
+custom_minimum_size = Vector2(116, 116)
+custom_maximum_size = Vector2(116, 116)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("12_q2t0p")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/11" unique_id=266982377]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "07"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="12" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=282044711]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/12" unique_id=303634027]
+custom_minimum_size = Vector2(116, 116)
+custom_maximum_size = Vector2(116, 116)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("13_jf1n8")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/12" unique_id=28294655]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "08"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="13" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1440960697]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/13" unique_id=1245078780]
+custom_minimum_size = Vector2(116, 116)
+custom_maximum_size = Vector2(116, 116)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("14_6f2n4")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/13" unique_id=1088200706]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "09"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="14" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1496851341]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/14" unique_id=1410342108]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "10"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/14" unique_id=1129027237]
+layout_mode = 2
+text = "this menu"
+label_settings = ExtResource("4_wp4yx")
+horizontal_alignment = 1
+
+[node name="15" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=140881892]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/15" unique_id=756841206]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "11"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/15" unique_id=1950199512]
+layout_mode = 2
+text = "this menu"
+label_settings = ExtResource("4_wp4yx")
+horizontal_alignment = 1
+
+[node name="16" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=955576203]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/16" unique_id=146132036]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "12"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="17" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1650634587]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/17" unique_id=988815805]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "13"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="18" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=281750797]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/18" unique_id=606110420]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "14"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="19" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1120939613]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/19" unique_id=239089764]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "15"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="20" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1460708740]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/20" unique_id=71720492]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "16"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="21" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1175317485]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/21" unique_id=1712097595]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "17"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="22" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1244315920]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/22" unique_id=1011177485]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "18"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="23" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1777435097]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/23" unique_id=792279296]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "19"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="24" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=775517681]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/24" unique_id=1665152422]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "20"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="25" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=747092314]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/25" unique_id=912633648]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "21"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="26" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1672676924]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/26" unique_id=1464718882]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "22"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="27" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=2097176888]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/27" unique_id=1785850344]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "23"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="28" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1986681446]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/28" unique_id=517109539]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "24"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="29" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=955959064]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/29" unique_id=745438515]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "25"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="30" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1656902276]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/30" unique_id=2085680266]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "26"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="31" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1603626784]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/31" unique_id=849062933]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "27"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="32" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=93991318]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/32" unique_id=1138314691]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "28"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="33" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1594979516]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/33" unique_id=1424060201]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "29"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="34" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1311268225]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/34" unique_id=843737637]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "30"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="35" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=804410594]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/35" unique_id=151935778]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "31"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="36" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1013756865]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/36" unique_id=779017033]
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "01"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="37" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=2053891625]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/37" unique_id=1347368720]
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "02"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="38" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=73412028]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/38" unique_id=1907535702]
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "03"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="39" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=2140407045]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/39" unique_id=122577571]
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "04"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="40" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=922865393]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/40" unique_id=674294989]
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "05"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="41" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1666434792]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/41" unique_id=1466346319]
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "06"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="42" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=629034274]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/42" unique_id=1405303093]
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 4)
+text = "07"
+label_settings = ExtResource("4_wp4yx")
+
+[node name="ImageDisplay" type="TextureRect" parent="." unique_id=423927648]
+visible = false
+custom_minimum_size = Vector2(768, 768)
+custom_maximum_size = Vector2(768, 768)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_2riag")
+script = ExtResource("15_63e1j")
+
+[connection signal="gui_input" from="VBoxContainer/HBoxContainer/HBoxCentered/pumpkin" to="VBoxContainer/HBoxContainer/HBoxCentered/pumpkin" method="_on_gui_input"]
+[connection signal="gui_input" from="VBoxContainer/GridContainer/5" to="ImageDisplay" method="_on_day_select" binds= [1]]
+[connection signal="gui_input" from="VBoxContainer/GridContainer/6" to="ImageDisplay" method="_on_day_select" binds= [2]]
+[connection signal="gui_input" from="VBoxContainer/GridContainer/7" to="ImageDisplay" method="_on_day_select" binds= [3]]
+[connection signal="gui_input" from="VBoxContainer/GridContainer/8" to="ImageDisplay" method="_on_day_select" binds= [4]]
+[connection signal="gui_input" from="VBoxContainer/GridContainer/9" to="ImageDisplay" method="_on_day_select" binds= [5]]
+[connection signal="gui_input" from="VBoxContainer/GridContainer/10" to="ImageDisplay" method="_on_day_select" binds= [6]]
+[connection signal="gui_input" from="VBoxContainer/GridContainer/11" to="ImageDisplay" method="_on_day_select" binds= [7]]
+[connection signal="gui_input" from="VBoxContainer/GridContainer/12" to="ImageDisplay" method="_on_day_select" binds= [8]]
+[connection signal="gui_input" from="VBoxContainer/GridContainer/13" to="ImageDisplay" method="_on_day_select" binds= [9]]
+[connection signal="gui_input" from="ImageDisplay" to="ImageDisplay" method="_on_gui_input"]

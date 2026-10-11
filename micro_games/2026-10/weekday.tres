@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://tc6gafu0qvf"]
+
+[ext_resource type="FontFile" uid="uid://d3iewlg5ep4y8" path="res://common/FFFFORWA.TTF" id="1_2pmmw"]
+
+[resource]
+font = ExtResource("1_2pmmw")
+font_color = Color(0.89024615, 0.38077438, 5.7756904e-07, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
