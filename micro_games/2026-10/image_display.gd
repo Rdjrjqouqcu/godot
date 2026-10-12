@@ -25,7 +25,7 @@ const map = {
 }
 
 func show_img(id: int) -> void:
-	if id <= 0 or id >= 10:
+	if id not in map.keys():
 		return
 	self.texture = map[id]
 	self.visible = true

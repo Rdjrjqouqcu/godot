@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://yuyopagjiex4" path="res://2026-10/pumpkin.gd" id="2_a38uv"]
 [ext_resource type="LabelSettings" uid="uid://coces51xflor0" path="res://2026-10/title.tres" id="3_kh1sp"]
 [ext_resource type="Script" uid="uid://bn34mi15g1tey" path="res://common/build_calendar.gd" id="4_6vl4b"]
-[ext_resource type="LabelSettings" uid="uid://tc6gafu0qvf" path="res://2026-10/weekday.tres" id="4_wp4yx"]
+[ext_resource type="LabelSettings" uid="uid://tc6gafu0qvf" path="res://2026-10/standard.tres" id="4_wp4yx"]
 [ext_resource type="Texture2D" uid="uid://bg66fq6oumkop" path="res://2026-10/2026-10-01_apple.png" id="6_2riag"]
 [ext_resource type="Texture2D" uid="uid://d3xipajxju12j" path="res://2026-10/2026-10-02_relic.png" id="7_fv205"]
 [ext_resource type="Texture2D" uid="uid://c25nrchv80ko6" path="res://2026-10/2026-10-03_miniature.png" id="8_jphnx"]
@@ -14,7 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://b5v5gtya3o1ra" path="res://2026-10/2026-10-07_panic.png" id="12_q2t0p"]
 [ext_resource type="Texture2D" uid="uid://dl3x61ok3hpt8" path="res://2026-10/2026-10-08_stinky.png" id="13_jf1n8"]
 [ext_resource type="Texture2D" uid="uid://boxhv50m1f1fq" path="res://2026-10/2026-10-09_ram.png" id="14_6f2n4"]
+[ext_resource type="Texture2D" uid="uid://dg0gg8g2s3fe2" path="res://2026-10/2026-10-12_screenshot.png" id="15_3efbe"]
 [ext_resource type="Script" uid="uid://bqtcicf65hea0" path="res://2026-10/image_display.gd" id="15_63e1j"]
+[ext_resource type="Script" uid="uid://cb6q31pveuya3" path="res://2026-10/level_change.gd" id="16_roq56"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h2yge"]
 atlas = ExtResource("1_lxain")
@@ -80,77 +82,77 @@ script = ExtResource("4_6vl4b")
 grid = NodePath(".")
 first_day = NodePath("5")
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1891949140]
+[node name="Sunday" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1891949140]
 custom_minimum_size = Vector2(128, 48)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/GridContainer/PanelContainer" unique_id=1189494985]
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/Sunday" unique_id=1189494985]
 layout_mode = 2
 text = "Sunday"
 label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1448733781]
+[node name="Monday" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1448733781]
 custom_minimum_size = Vector2(128, 48)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/GridContainer/PanelContainer2" unique_id=1124999712]
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/Monday" unique_id=1124999712]
 layout_mode = 2
 text = "Monday"
 label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer3" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=661128772]
+[node name="Tuesday" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=661128772]
 custom_minimum_size = Vector2(128, 48)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/GridContainer/PanelContainer3" unique_id=1878782113]
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/Tuesday" unique_id=1878782113]
 layout_mode = 2
 text = "Tuesday"
 label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer4" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=877133274]
+[node name="Wednesday" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=877133274]
 custom_minimum_size = Vector2(128, 48)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/GridContainer/PanelContainer4" unique_id=1618280041]
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/Wednesday" unique_id=1618280041]
 layout_mode = 2
 text = "Wednesday"
 label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer5" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1809181265]
+[node name="Thursday" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1809181265]
 custom_minimum_size = Vector2(128, 48)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/GridContainer/PanelContainer5" unique_id=1821513655]
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/Thursday" unique_id=1821513655]
 layout_mode = 2
 text = "Thursday"
 label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer6" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=812959074]
+[node name="Friday" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=812959074]
 custom_minimum_size = Vector2(128, 48)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/GridContainer/PanelContainer6" unique_id=1041173797]
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/Friday" unique_id=1041173797]
 layout_mode = 2
 text = "Friday"
 label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer7" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1350411]
+[node name="Saturday" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1350411]
 custom_minimum_size = Vector2(128, 48)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/GridContainer/PanelContainer7" unique_id=681286256]
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/Saturday" unique_id=681286256]
 layout_mode = 2
 text = "Saturday"
 label_settings = ExtResource("4_wp4yx")
@@ -453,6 +455,15 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/16" unique_id=10756038]
+custom_minimum_size = Vector2(116, 116)
+custom_maximum_size = Vector2(116, 116)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("15_3efbe")
+expand_mode = 3
+
 [node name="Label" type="Label" parent="VBoxContainer/GridContainer/16" unique_id=146132036]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -461,6 +472,15 @@ offset_transform_enabled = true
 offset_transform_position = Vector2(2, 4)
 text = "12"
 label_settings = ExtResource("4_wp4yx")
+
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/16" unique_id=1716410303]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "toss
+"
+label_settings = ExtResource("4_wp4yx")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="17" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1650634587]
 custom_minimum_size = Vector2(128, 128)
@@ -475,6 +495,11 @@ offset_transform_position = Vector2(2, 4)
 text = "13"
 label_settings = ExtResource("4_wp4yx")
 
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/17" unique_id=2102850486]
+layout_mode = 2
+text = "flimsy"
+horizontal_alignment = 1
+
 [node name="18" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=281750797]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -487,6 +512,11 @@ offset_transform_enabled = true
 offset_transform_position = Vector2(2, 4)
 text = "14"
 label_settings = ExtResource("4_wp4yx")
+
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/18" unique_id=932473502]
+layout_mode = 2
+text = "lady"
+horizontal_alignment = 1
 
 [node name="19" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1120939613]
 custom_minimum_size = Vector2(128, 128)
@@ -501,6 +531,11 @@ offset_transform_position = Vector2(2, 4)
 text = "15"
 label_settings = ExtResource("4_wp4yx")
 
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/19" unique_id=1355551129]
+layout_mode = 2
+text = "hooray"
+horizontal_alignment = 1
+
 [node name="20" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1460708740]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -514,6 +549,11 @@ offset_transform_position = Vector2(2, 4)
 text = "16"
 label_settings = ExtResource("4_wp4yx")
 
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/20" unique_id=1625324145]
+layout_mode = 2
+text = "gangly"
+horizontal_alignment = 1
+
 [node name="21" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1175317485]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -526,6 +566,11 @@ offset_transform_enabled = true
 offset_transform_position = Vector2(2, 4)
 text = "17"
 label_settings = ExtResource("4_wp4yx")
+
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/21" unique_id=1285172501]
+layout_mode = 2
+text = "contraption"
+horizontal_alignment = 1
 
 [node name="22" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1244315920]
 custom_minimum_size = Vector2(128, 128)
@@ -809,8 +854,8 @@ label_settings = ExtResource("4_wp4yx")
 
 [node name="ImageDisplay" type="TextureRect" parent="." unique_id=423927648]
 visible = false
-custom_minimum_size = Vector2(768, 768)
-custom_maximum_size = Vector2(768, 768)
+custom_minimum_size = Vector2(896, 896)
+custom_maximum_size = Vector2(896, 896)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -826,6 +871,9 @@ grow_vertical = 2
 texture = ExtResource("6_2riag")
 script = ExtResource("15_63e1j")
 
+[node name="LevelChange" type="Node" parent="." unique_id=2020533490]
+script = ExtResource("16_roq56")
+
 [connection signal="gui_input" from="VBoxContainer/HBoxContainer/HBoxCentered/pumpkin" to="VBoxContainer/HBoxContainer/HBoxCentered/pumpkin" method="_on_gui_input"]
 [connection signal="gui_input" from="VBoxContainer/GridContainer/5" to="ImageDisplay" method="_on_day_select" binds= [1]]
 [connection signal="gui_input" from="VBoxContainer/GridContainer/6" to="ImageDisplay" method="_on_day_select" binds= [2]]
@@ -836,4 +884,5 @@ script = ExtResource("15_63e1j")
 [connection signal="gui_input" from="VBoxContainer/GridContainer/11" to="ImageDisplay" method="_on_day_select" binds= [7]]
 [connection signal="gui_input" from="VBoxContainer/GridContainer/12" to="ImageDisplay" method="_on_day_select" binds= [8]]
 [connection signal="gui_input" from="VBoxContainer/GridContainer/13" to="ImageDisplay" method="_on_day_select" binds= [9]]
+[connection signal="gui_input" from="VBoxContainer/GridContainer/16" to="LevelChange" method="_on_day_select" binds= [12]]
 [connection signal="gui_input" from="ImageDisplay" to="ImageDisplay" method="_on_gui_input"]

@@ -1,0 +1,196 @@
+[gd_scene format=3 uid="uid://dfscwhmgnf72r"]
+
+[ext_resource type="Script" uid="uid://bmaly8kbe77ps" path="res://2026-10/2026-10-12_tossable.gd" id="1_are0w"]
+[ext_resource type="PackedScene" uid="uid://cp5v264s6ytls" path="res://2026-10/main_menu_button.tscn" id="1_jns5r"]
+[ext_resource type="Script" uid="uid://msplj0d3q1h4" path="res://2026-10/2026-10-12_drag_arrow.gd" id="3_ih0f1"]
+[ext_resource type="LabelSettings" uid="uid://tc6gafu0qvf" path="res://2026-10/standard.tres" id="3_x4kar"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3qhgt"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3qhgt"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3qhgt"]
+size = Vector2(512, 512)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a62jk"]
+albedo_color = Color(0.17141607, 0.38435447, 0.06991112, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1h3is"]
+radius = 0.6
+
+[sub_resource type="SphereMesh" id="SphereMesh_3qhgt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1h3is"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x4kar"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_x4kar"]
+
+[sub_resource type="Curve" id="Curve_x4kar"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_3qhgt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3qhgt"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1h3is"]
+size = Vector3(0.25, 0.25, 0.25)
+
+[node name="Node3D" type="Node3D" unique_id=1704745513]
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1840011076]
+physics_material_override = SubResource("PhysicsMaterial_3qhgt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1682090980]
+shape = SubResource("WorldBoundaryShape3D_3qhgt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=39459385]
+mesh = SubResource("PlaneMesh_3qhgt")
+surface_material_override/0 = SubResource("StandardMaterial3D_a62jk")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=675121126]
+transform = Transform3D(1, 0, 0, 0, 0.92138207, 0.38865823, 0, -0.38865823, 0.92138207, 0, 3.9027452, 4.5716643)
+
+[node name="TargetAA" type="Marker3D" parent="." unique_id=415124178]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -12)
+
+[node name="TargetBB" type="Marker3D" parent="." unique_id=1706213747]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -24)
+
+[node name="Target" type="Node3D" parent="." unique_id=1964266024]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.14)
+
+[node name="Area3D" type="Area3D" parent="Target" unique_id=1168421977]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Target/Area3D" unique_id=1543111408]
+shape = SubResource("SphereShape3D_1h3is")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Target" unique_id=784701204]
+mesh = SubResource("SphereMesh_3qhgt")
+surface_material_override/0 = SubResource("StandardMaterial3D_1h3is")
+
+[node name="TargetParticles" type="CPUParticles3D" parent="Target" unique_id=212931951]
+unique_name_in_owner = true
+material_override = SubResource("StandardMaterial3D_x4kar")
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_x4kar")
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 4.0
+initial_velocity_max = 8.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_x4kar")
+color = Color(0, 1, 0, 1)
+
+[node name="Tossable" type="RigidBody3D" parent="." unique_id=2014165622]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.810986, 0)
+collision_mask = 3
+script = ExtResource("1_are0w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tossable" unique_id=279842779]
+mesh = SubResource("BoxMesh_3qhgt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tossable" unique_id=203024044]
+shape = SubResource("BoxShape3D_3qhgt")
+
+[node name="RespawnParticles" type="CPUParticles3D" parent="Tossable" unique_id=2043244292]
+emitting = false
+amount = 32
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("BoxMesh_1h3is")
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 4.0
+initial_velocity_max = 8.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_x4kar")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=968109347]
+transform = Transform3D(1, 0, 0, 0, 0.52998245, 0.84800863, 0, -0.84800863, 0.52998245, 9.807412, 35.489803, 22.44772)
+
+[node name="ui" type="CanvasLayer" parent="." unique_id=888149050]
+
+[node name="MarginContainer" type="MarginContainer" parent="ui" unique_id=2131966142]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ui/MarginContainer" unique_id=200742940]
+layout_mode = 2
+
+[node name="MainMenu" parent="ui/MarginContainer/HBoxContainer" unique_id=537363097 instance=ExtResource("1_jns5r")]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="ui/MarginContainer/HBoxContainer" unique_id=1725030475]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ui/MarginContainer/HBoxContainer/PanelContainer" unique_id=1293931826]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="ui/MarginContainer/HBoxContainer/PanelContainer/MarginContainer" unique_id=1153416515]
+layout_mode = 2
+text = "Reset"
+label_settings = ExtResource("3_x4kar")
+
+[node name="PanelContainer2" type="PanelContainer" parent="ui/MarginContainer/HBoxContainer" unique_id=1751508304]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ui/MarginContainer/HBoxContainer/PanelContainer2" unique_id=44658136]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ui/MarginContainer/HBoxContainer/PanelContainer2/MarginContainer" unique_id=547896358]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ui/MarginContainer/HBoxContainer/PanelContainer2/MarginContainer/HBoxContainer" unique_id=2145512347]
+layout_mode = 2
+text = "Score:"
+label_settings = ExtResource("3_x4kar")
+
+[node name="ScoreLabel" type="Label" parent="ui/MarginContainer/HBoxContainer/PanelContainer2/MarginContainer/HBoxContainer" unique_id=263995593]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("3_x4kar")
+
+[node name="DragArrow" type="Control" parent="ui" unique_id=539892820]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_ih0f1")
+
+[node name="BoxSpawn" type="Marker3D" parent="." unique_id=362263253]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.810986, 0)
+
+[connection signal="body_entered" from="Target/Area3D" to="Tossable" method="_on_target_entered"]
+[connection signal="input_event" from="Tossable" to="Tossable" method="_on_input_event"]
+[connection signal="gui_input" from="ui/MarginContainer/HBoxContainer/PanelContainer" to="Tossable" method="_reset_position"]
