@@ -1,11 +1,5 @@
 extends TextureRect
 
-
-
-
-func _ready() -> void:
-	pass # Replace with function body.
-
 const TIME_PER_FRAME: float = 0.05
 const MAXIMUM_FRAME: int = 10
 

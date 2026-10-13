@@ -497,7 +497,9 @@ label_settings = ExtResource("4_wp4yx")
 
 [node name="Label2" type="Label" parent="VBoxContainer/GridContainer/17" unique_id=2102850486]
 layout_mode = 2
-text = "flimsy"
+text = "Wicked
+Apothecary"
+label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
 
 [node name="18" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=281750797]
@@ -515,7 +517,9 @@ label_settings = ExtResource("4_wp4yx")
 
 [node name="Label2" type="Label" parent="VBoxContainer/GridContainer/18" unique_id=932473502]
 layout_mode = 2
-text = "lady"
+text = "Wicked
+Apothecary"
+label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
 
 [node name="19" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1120939613]
@@ -533,7 +537,9 @@ label_settings = ExtResource("4_wp4yx")
 
 [node name="Label2" type="Label" parent="VBoxContainer/GridContainer/19" unique_id=1355551129]
 layout_mode = 2
-text = "hooray"
+text = "Wicked
+Apothecary"
+label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
 
 [node name="20" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1460708740]
@@ -551,7 +557,8 @@ label_settings = ExtResource("4_wp4yx")
 
 [node name="Label2" type="Label" parent="VBoxContainer/GridContainer/20" unique_id=1625324145]
 layout_mode = 2
-text = "gangly"
+text = "Stiched
+Together"
 horizontal_alignment = 1
 
 [node name="21" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1175317485]
@@ -569,7 +576,8 @@ label_settings = ExtResource("4_wp4yx")
 
 [node name="Label2" type="Label" parent="VBoxContainer/GridContainer/21" unique_id=1285172501]
 layout_mode = 2
-text = "contraption"
+text = "Stiched
+Together"
 horizontal_alignment = 1
 
 [node name="22" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1244315920]
@@ -585,6 +593,12 @@ offset_transform_position = Vector2(2, 4)
 text = "18"
 label_settings = ExtResource("4_wp4yx")
 
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/22" unique_id=84079661]
+layout_mode = 2
+text = "Stiched
+Together"
+horizontal_alignment = 1
+
 [node name="23" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1777435097]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -597,6 +611,12 @@ offset_transform_enabled = true
 offset_transform_position = Vector2(2, 4)
 text = "19"
 label_settings = ExtResource("4_wp4yx")
+
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/23" unique_id=1330864878]
+layout_mode = 2
+text = "Stiched
+Together"
+horizontal_alignment = 1
 
 [node name="24" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=775517681]
 custom_minimum_size = Vector2(128, 128)
@@ -611,6 +631,12 @@ offset_transform_position = Vector2(2, 4)
 text = "20"
 label_settings = ExtResource("4_wp4yx")
 
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/24" unique_id=1778863589]
+layout_mode = 2
+text = "Stiched
+Together"
+horizontal_alignment = 1
+
 [node name="25" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=747092314]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -623,6 +649,12 @@ offset_transform_enabled = true
 offset_transform_position = Vector2(2, 4)
 text = "21"
 label_settings = ExtResource("4_wp4yx")
+
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/25" unique_id=5729329]
+layout_mode = 2
+text = "Fungus
+Collector"
+horizontal_alignment = 1
 
 [node name="26" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1672676924]
 custom_minimum_size = Vector2(128, 128)
@@ -637,6 +669,12 @@ offset_transform_position = Vector2(2, 4)
 text = "22"
 label_settings = ExtResource("4_wp4yx")
 
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/26" unique_id=1257346631]
+layout_mode = 2
+text = "Fungus
+Collector"
+horizontal_alignment = 1
+
 [node name="27" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=2097176888]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -649,6 +687,12 @@ offset_transform_enabled = true
 offset_transform_position = Vector2(2, 4)
 text = "23"
 label_settings = ExtResource("4_wp4yx")
+
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/27" unique_id=35955544]
+layout_mode = 2
+text = "Fungus
+Collector"
+horizontal_alignment = 1
 
 [node name="28" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1986681446]
 custom_minimum_size = Vector2(128, 128)
@@ -663,6 +707,12 @@ offset_transform_position = Vector2(2, 4)
 text = "24"
 label_settings = ExtResource("4_wp4yx")
 
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/28" unique_id=611612979]
+layout_mode = 2
+text = "Fungus
+Collector"
+horizontal_alignment = 1
+
 [node name="29" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=955959064]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -675,6 +725,12 @@ offset_transform_enabled = true
 offset_transform_position = Vector2(2, 4)
 text = "25"
 label_settings = ExtResource("4_wp4yx")
+
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/29" unique_id=47032410]
+layout_mode = 2
+text = "Fungus
+Collector"
+horizontal_alignment = 1
 
 [node name="30" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1656902276]
 custom_minimum_size = Vector2(128, 128)
@@ -689,6 +745,12 @@ offset_transform_position = Vector2(2, 4)
 text = "26"
 label_settings = ExtResource("4_wp4yx")
 
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/30" unique_id=1985469704]
+layout_mode = 2
+text = "Pumpkin
+Head"
+horizontal_alignment = 1
+
 [node name="31" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1603626784]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -701,6 +763,12 @@ offset_transform_enabled = true
 offset_transform_position = Vector2(2, 4)
 text = "27"
 label_settings = ExtResource("4_wp4yx")
+
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/31" unique_id=1226455517]
+layout_mode = 2
+text = "Pumpkin
+Head"
+horizontal_alignment = 1
 
 [node name="32" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=93991318]
 custom_minimum_size = Vector2(128, 128)
@@ -715,6 +783,12 @@ offset_transform_position = Vector2(2, 4)
 text = "28"
 label_settings = ExtResource("4_wp4yx")
 
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/32" unique_id=1159695120]
+layout_mode = 2
+text = "Pumpkin
+Head"
+horizontal_alignment = 1
+
 [node name="33" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1594979516]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -727,6 +801,12 @@ offset_transform_enabled = true
 offset_transform_position = Vector2(2, 4)
 text = "29"
 label_settings = ExtResource("4_wp4yx")
+
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/33" unique_id=1954957078]
+layout_mode = 2
+text = "Pumpkin
+Head"
+horizontal_alignment = 1
 
 [node name="34" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1311268225]
 custom_minimum_size = Vector2(128, 128)
@@ -741,6 +821,12 @@ offset_transform_position = Vector2(2, 4)
 text = "30"
 label_settings = ExtResource("4_wp4yx")
 
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/34" unique_id=427867721]
+layout_mode = 2
+text = "Pumpkin
+Head"
+horizontal_alignment = 1
+
 [node name="35" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=804410594]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -753,6 +839,12 @@ offset_transform_enabled = true
 offset_transform_position = Vector2(2, 4)
 text = "31"
 label_settings = ExtResource("4_wp4yx")
+
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/35" unique_id=1576619446]
+layout_mode = 2
+text = "Pumpkin
+Head"
+horizontal_alignment = 1
 
 [node name="36" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1013756865]
 custom_minimum_size = Vector2(128, 128)
@@ -885,4 +977,7 @@ script = ExtResource("16_roq56")
 [connection signal="gui_input" from="VBoxContainer/GridContainer/12" to="ImageDisplay" method="_on_day_select" binds= [8]]
 [connection signal="gui_input" from="VBoxContainer/GridContainer/13" to="ImageDisplay" method="_on_day_select" binds= [9]]
 [connection signal="gui_input" from="VBoxContainer/GridContainer/16" to="LevelChange" method="_on_day_select" binds= [12]]
+[connection signal="gui_input" from="VBoxContainer/GridContainer/17" to="LevelChange" method="_on_day_select" binds= [15]]
+[connection signal="gui_input" from="VBoxContainer/GridContainer/18" to="LevelChange" method="_on_day_select" binds= [15]]
+[connection signal="gui_input" from="VBoxContainer/GridContainer/19" to="LevelChange" method="_on_day_select" binds= [15]]
 [connection signal="gui_input" from="ImageDisplay" to="ImageDisplay" method="_on_gui_input"]

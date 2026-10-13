@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://bu2beq2qnykme"]
+
+[ext_resource type="Script" uid="uid://4fsgr0i34ll5" path="res://2026-10/2026-10-15_cauldron.gd" id="1_gj368"]
+[ext_resource type="PackedScene" uid="uid://cp5v264s6ytls" path="res://2026-10/main_menu_button.tscn" id="2_w2lrw"]
+[ext_resource type="LabelSettings" uid="uid://tc6gafu0qvf" path="res://2026-10/standard.tres" id="3_7vi67"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qrs8a"]
+size = Vector2(384, 384)
+
+[sub_resource type="Gradient" id="Gradient_jy7q5"]
+colors = PackedColorArray(0.3019608, 0.09803922, 0.09803922, 1, 0.3019608, 0.09803922, 0.09803922, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jqcdu"]
+gradient = SubResource("Gradient_jy7q5")
+width = 8
+height = 384
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1h3is"]
+size = Vector2(380, 380)
+
+[sub_resource type="Gradient" id="Gradient_4vfxx"]
+offsets = PackedFloat32Array(0, 0, 0.1, 0.3, 0.6, 0.9, 0.99)
+colors = PackedColorArray(0.3019608, 0.09803922, 0.09803922, 1, 0.8392157, 0.49803922, 0.29803923, 1, 0.47058824, 0.22745098, 0.22745098, 1, 0.7254902, 0.35686275, 0.23529412, 1, 0.7254902, 0.35686275, 0.23529412, 1, 0.47058824, 0.22745098, 0.22745098, 1, 0.3019608, 0.09803922, 0.09803922, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uu4r6"]
+gradient = SubResource("Gradient_4vfxx")
+width = 512
+height = 8
+fill = 1
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4vfxx"]
+gradient = SubResource("Gradient_4vfxx")
+width = 512
+height = 8
+fill = 1
+fill_from = Vector2(3, 1)
+fill_to = Vector2(0, 0)
+
+[node name="Node2D" type="Node2D" unique_id=1154526648]
+
+[node name="Cauldron" type="Sprite2D" parent="." unique_id=71116107]
+position = Vector2(512, 767)
+texture = SubResource("PlaceholderTexture2D_qrs8a")
+script = ExtResource("1_gj368")
+
+[node name="stick" type="Sprite2D" parent="Cauldron" unique_id=1742481537]
+show_behind_parent = true
+position = Vector2(35.999977, -101.99999)
+rotation = 0.34906584
+texture = SubResource("GradientTexture2D_jqcdu")
+
+[node name="StickArea" type="Area2D" parent="Cauldron" unique_id=454864145]
+position = Vector2(0, -192)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cauldron/StickArea" unique_id=164632565]
+polygon = PackedVector2Array(-114, 0, 188, 0, 130, 160, -114, 160)
+
+[node name="MouseArea" type="Area2D" parent="Cauldron" unique_id=1888655746]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cauldron/MouseArea" unique_id=1405013225]
+shape = SubResource("RectangleShape2D_1h3is")
+
+[node name="Shelves" type="Node2D" parent="." unique_id=1694751343]
+position = Vector2(64, 128)
+
+[node name="TopShelf" type="Sprite2D" parent="Shelves" unique_id=454815894]
+texture = SubResource("GradientTexture2D_uu4r6")
+centered = false
+
+[node name="BottomShelf" type="Sprite2D" parent="Shelves" unique_id=435327746]
+position = Vector2(0, 128)
+texture = SubResource("GradientTexture2D_4vfxx")
+centered = false
+
+[node name="ui" type="CanvasLayer" parent="." unique_id=1359083721]
+
+[node name="MarginContainer" type="MarginContainer" parent="ui" unique_id=19245774]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ui/MarginContainer" unique_id=1455630000]
+layout_mode = 2
+
+[node name="MainMenu" parent="ui/MarginContainer/HBoxContainer" unique_id=537363097 instance=ExtResource("2_w2lrw")]
+layout_mode = 2
+
+[node name="Reset" type="PanelContainer" parent="ui/MarginContainer/HBoxContainer" unique_id=1539405400]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ui/MarginContainer/HBoxContainer/Reset" unique_id=1288977626]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="ui/MarginContainer/HBoxContainer/Reset/MarginContainer" unique_id=1307885268]
+layout_mode = 2
+text = "Reset"
+label_settings = ExtResource("3_7vi67")
+
+[node name="Score" type="PanelContainer" parent="ui/MarginContainer/HBoxContainer" unique_id=1903301978]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ui/MarginContainer/HBoxContainer/Score" unique_id=1289666976]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ui/MarginContainer/HBoxContainer/Score/MarginContainer" unique_id=1530566011]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ui/MarginContainer/HBoxContainer/Score/MarginContainer/HBoxContainer" unique_id=1541174971]
+layout_mode = 2
+text = "Score:"
+label_settings = ExtResource("3_7vi67")
+
+[node name="ScoreLabel" type="Label" parent="ui/MarginContainer/HBoxContainer/Score/MarginContainer/HBoxContainer" unique_id=2100983426]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("3_7vi67")
+
+[connection signal="input_event" from="Cauldron/StickArea" to="Cauldron" method="_on_stick_area_input_event"]
+[connection signal="mouse_entered" from="Cauldron/StickArea" to="Cauldron" method="_on_stick_area_mouse_entered"]
+[connection signal="mouse_exited" from="Cauldron/StickArea" to="Cauldron" method="_on_stick_area_mouse_exited"]
