@@ -1,11 +1,20 @@
 [gd_scene format=3 uid="uid://bu2beq2qnykme"]
 
+[ext_resource type="Texture2D" uid="uid://cv6urf85nov1w" path="res://2026-10/2026-10-15_cauldron_front.png" id="1_fnlhl"]
 [ext_resource type="Script" uid="uid://4fsgr0i34ll5" path="res://2026-10/2026-10-15_cauldron.gd" id="1_gj368"]
 [ext_resource type="PackedScene" uid="uid://cp5v264s6ytls" path="res://2026-10/main_menu_button.tscn" id="2_w2lrw"]
+[ext_resource type="Shader" uid="uid://biad4owpdp2y3" path="res://2026-10/2026-10-15_fire.tres" id="3_5xf2v"]
 [ext_resource type="LabelSettings" uid="uid://tc6gafu0qvf" path="res://2026-10/standard.tres" id="3_7vi67"]
+[ext_resource type="Texture2D" uid="uid://3axjhv3ronqu" path="res://2026-10/2026-10-15_cauldron_back.png" id="3_25f3o"]
+[ext_resource type="Script" uid="uid://c6kr2e506lis6" path="res://2026-10/2026-10-15_smoke.gd" id="4_25f3o"]
+[ext_resource type="Texture2D" uid="uid://tgdi2fgpjuda" path="res://2026-10/2026-10-15_fire_effect_textures/T_VFX_Noise_465.png" id="4_lpvol"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qrs8a"]
-size = Vector2(384, 384)
+[sub_resource type="Gradient" id="Gradient_fnlhl"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.3010167, 0.43017474, 0.70387197, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3qhgt"]
+gradient = SubResource("Gradient_fnlhl")
 
 [sub_resource type="Gradient" id="Gradient_jy7q5"]
 colors = PackedColorArray(0.3019608, 0.09803922, 0.09803922, 1, 0.3019608, 0.09803922, 0.09803922, 1)
@@ -18,42 +27,76 @@ height = 384
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1h3is"]
 size = Vector2(380, 380)
 
-[sub_resource type="Gradient" id="Gradient_4vfxx"]
-offsets = PackedFloat32Array(0, 0, 0.1, 0.3, 0.6, 0.9, 0.99)
-colors = PackedColorArray(0.3019608, 0.09803922, 0.09803922, 1, 0.8392157, 0.49803922, 0.29803923, 1, 0.47058824, 0.22745098, 0.22745098, 1, 0.7254902, 0.35686275, 0.23529412, 1, 0.7254902, 0.35686275, 0.23529412, 1, 0.47058824, 0.22745098, 0.22745098, 1, 0.3019608, 0.09803922, 0.09803922, 1)
+[sub_resource type="Gradient" id="Gradient_0s3ks"]
+offsets = PackedFloat32Array(0.4, 0.6, 0.8, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 0.6666667, 0, 1, 1, 0.33333337, 0, 1, 1, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_uu4r6"]
-gradient = SubResource("Gradient_4vfxx")
-width = 512
-height = 8
-fill = 1
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ooube"]
+gradient = SubResource("Gradient_0s3ks")
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_4vfxx"]
-gradient = SubResource("Gradient_4vfxx")
-width = 512
-height = 8
-fill = 1
-fill_from = Vector2(3, 1)
-fill_to = Vector2(0, 0)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1h3is"]
+shader = ExtResource("3_5xf2v")
+shader_parameter/Scale = Vector2(2, 1)
+shader_parameter/Speed = Vector2(0, 1)
+shader_parameter/TextureBase = ExtResource("4_lpvol")
+shader_parameter/TextureColor1D = SubResource("GradientTexture1D_ooube")
+
+[sub_resource type="Gradient" id="Gradient_lpvol"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qeq32"]
+gradient = SubResource("Gradient_lpvol")
+width = 1
+
+[sub_resource type="Curve" id="Curve_7vi67"]
+_data = [Vector2(0, 0.75), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.0, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_1h3is"]
+curve = SubResource("Curve_7vi67")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3qhgt"]
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_box_extents = Vector3(160, 64, 0)
+gravity = Vector3(0, -19.6, 0)
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_1h3is")
+color = Color(1, 0, 0, 1)
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.14999998
+turbulence_enabled = true
 
 [node name="Node2D" type="Node2D" unique_id=1154526648]
 
+[node name="Bg" type="Sprite2D" parent="." unique_id=2024862811]
+position = Vector2(512, 512)
+scale = Vector2(16, 16)
+texture = SubResource("GradientTexture2D_3qhgt")
+
 [node name="Cauldron" type="Sprite2D" parent="." unique_id=71116107]
-position = Vector2(512, 767)
-texture = SubResource("PlaceholderTexture2D_qrs8a")
+position = Vector2(512, 639)
+texture = ExtResource("1_fnlhl")
 script = ExtResource("1_gj368")
+
+[node name="back" type="Sprite2D" parent="Cauldron" unique_id=2051936175]
+show_behind_parent = true
+texture = ExtResource("3_25f3o")
 
 [node name="stick" type="Sprite2D" parent="Cauldron" unique_id=1742481537]
 show_behind_parent = true
-position = Vector2(35.999977, -101.99999)
+position = Vector2(113.999985, -110.99999)
 rotation = 0.34906584
 texture = SubResource("GradientTexture2D_jqcdu")
 
 [node name="StickArea" type="Area2D" parent="Cauldron" unique_id=454864145]
-position = Vector2(0, -192)
+visible = false
+position = Vector2(-24, -192)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cauldron/StickArea" unique_id=164632565]
-polygon = PackedVector2Array(-114, 0, 188, 0, 130, 160, -114, 160)
+polygon = PackedVector2Array(-98, 0, 172, 0, 121, 140, -90, 120)
 
 [node name="MouseArea" type="Area2D" parent="Cauldron" unique_id=1888655746]
 visible = false
@@ -61,17 +104,27 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cauldron/MouseArea" unique_id=1405013225]
 shape = SubResource("RectangleShape2D_1h3is")
 
-[node name="Shelves" type="Node2D" parent="." unique_id=1694751343]
-position = Vector2(64, 128)
+[node name="Smoke" type="Node2D" parent="." unique_id=847900888]
+position = Vector2(381, 498)
+script = ExtResource("4_25f3o")
 
-[node name="TopShelf" type="Sprite2D" parent="Shelves" unique_id=454815894]
-texture = SubResource("GradientTexture2D_uu4r6")
-centered = false
+[node name="SmokeMarker" type="Marker2D" parent="Smoke" unique_id=1936744314]
+position = Vector2(267, -28)
 
-[node name="BottomShelf" type="Sprite2D" parent="Shelves" unique_id=435327746]
-position = Vector2(0, 128)
-texture = SubResource("GradientTexture2D_4vfxx")
-centered = false
+[node name="Fire" type="Node2D" parent="." unique_id=570928768]
+position = Vector2(512, 864)
+
+[node name="Static" type="Sprite2D" parent="Fire" unique_id=306150656]
+material = SubResource("ShaderMaterial_1h3is")
+scale = Vector2(512, 128)
+texture = SubResource("GradientTexture1D_qeq32")
+
+[node name="SparkBox" type="GPUParticles2D" parent="Fire" unique_id=1388639395]
+position = Vector2(1, -1)
+amount = 512
+lifetime = 3.0
+visibility_rect = Rect2(0, 0, 0, 0)
+process_material = SubResource("ParticleProcessMaterial_3qhgt")
 
 [node name="ui" type="CanvasLayer" parent="." unique_id=1359083721]
 
@@ -131,3 +184,4 @@ label_settings = ExtResource("3_7vi67")
 [connection signal="input_event" from="Cauldron/StickArea" to="Cauldron" method="_on_stick_area_input_event"]
 [connection signal="mouse_entered" from="Cauldron/StickArea" to="Cauldron" method="_on_stick_area_mouse_entered"]
 [connection signal="mouse_exited" from="Cauldron/StickArea" to="Cauldron" method="_on_stick_area_mouse_exited"]
+[connection signal="input_event" from="Cauldron/MouseArea" to="Cauldron" method="_on_mouse_area_input_event"]

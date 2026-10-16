@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://yq1k04xxnpji"]
+
+[ext_resource type="Shader" uid="uid://diqbosbwem52d" path="res://2026-10/2026-10-15_smoke.tres" id="1_tt770"]
+[ext_resource type="Script" uid="uid://dwcdaf54pwfi4" path="res://2026-10/2026_10_15_smoke_cloud.gd" id="2_pu300"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jqcdu"]
+shader = ExtResource("1_tt770")
+shader_parameter/Scale = Vector2(0.5, 0.5)
+shader_parameter/alpha = 1.0
+
+[sub_resource type="Gradient" id="Gradient_fnlhl"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l3q4n"]
+gradient = SubResource("Gradient_fnlhl")
+
+[node name="SmokeCloud" type="Sprite2D" unique_id=1192395824]
+material = SubResource("ShaderMaterial_jqcdu")
+texture = SubResource("GradientTexture2D_l3q4n")
+script = ExtResource("2_pu300")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1521431598]
+rect = Rect2(-32, -32, 64, 64)
+show_rect = false
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
