@@ -585,7 +585,7 @@ label_settings = ExtResource("4_wp4yx")
 
 [node name="Label2" type="Label" parent="VBoxContainer/GridContainer/20" unique_id=1625324145]
 layout_mode = 2
-text = "Stiched
+text = "Stitched
 Together"
 label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
@@ -605,7 +605,7 @@ label_settings = ExtResource("4_wp4yx")
 
 [node name="Label2" type="Label" parent="VBoxContainer/GridContainer/21" unique_id=1285172501]
 layout_mode = 2
-text = "Stiched
+text = "Stitched
 Together"
 label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
@@ -625,7 +625,7 @@ label_settings = ExtResource("4_wp4yx")
 
 [node name="Label2" type="Label" parent="VBoxContainer/GridContainer/22" unique_id=84079661]
 layout_mode = 2
-text = "Stiched
+text = "Stitched
 Together"
 label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
@@ -645,7 +645,7 @@ label_settings = ExtResource("4_wp4yx")
 
 [node name="Label2" type="Label" parent="VBoxContainer/GridContainer/23" unique_id=1330864878]
 layout_mode = 2
-text = "Stiched
+text = "Stitched
 Together"
 label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
@@ -665,7 +665,7 @@ label_settings = ExtResource("4_wp4yx")
 
 [node name="Label2" type="Label" parent="VBoxContainer/GridContainer/24" unique_id=1778863589]
 layout_mode = 2
-text = "Stiched
+text = "Stitched
 Together"
 label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://rvxktyyovxcm"]
+
+[ext_resource type="LabelSettings" uid="uid://tc6gafu0qvf" path="res://2026-10/standard.tres" id="1_4nmcp"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3qhgt"]
+size = Vector2(128, 192)
+
+[node name="BlankCard" type="MarginContainer" unique_id=1419167353]
+offset_right = 136.0
+offset_bottom = 200.0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=792718881]
+custom_minimum_size = Vector2(128, 192)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_3qhgt")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1117218156]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+
+[node name="Title" type="Label" parent="MarginContainer" unique_id=1341014965]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Blank Card"
+label_settings = ExtResource("1_4nmcp")
+horizontal_alignment = 1
