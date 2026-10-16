@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://boxhv50m1f1fq" path="res://2026-10/2026-10-09_ram.png" id="14_6f2n4"]
 [ext_resource type="Texture2D" uid="uid://dg0gg8g2s3fe2" path="res://2026-10/2026-10-12_screenshot.png" id="15_3efbe"]
 [ext_resource type="Script" uid="uid://bqtcicf65hea0" path="res://2026-10/image_display.gd" id="15_63e1j"]
+[ext_resource type="Texture2D" uid="uid://jdfm856bg4w2" path="res://2026-10/2026-10-15_cauldron.png" id="16_q2t0p"]
 [ext_resource type="Script" uid="uid://cb6q31pveuya3" path="res://2026-10/level_change.gd" id="16_roq56"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h2yge"]
@@ -486,6 +487,15 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/17" unique_id=484220099]
+custom_minimum_size = Vector2(116, 116)
+custom_maximum_size = Vector2(116, 116)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("16_q2t0p")
+expand_mode = 3
+
 [node name="Label" type="Label" parent="VBoxContainer/GridContainer/17" unique_id=988815805]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -506,6 +516,15 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/18" unique_id=255106393]
+custom_minimum_size = Vector2(116, 116)
+custom_maximum_size = Vector2(116, 116)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("16_q2t0p")
+expand_mode = 3
+
 [node name="Label" type="Label" parent="VBoxContainer/GridContainer/18" unique_id=606110420]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -525,6 +544,15 @@ horizontal_alignment = 1
 [node name="19" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1120939613]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/19" unique_id=266113037]
+custom_minimum_size = Vector2(116, 116)
+custom_maximum_size = Vector2(116, 116)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("16_q2t0p")
+expand_mode = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/GridContainer/19" unique_id=239089764]
 layout_mode = 2
@@ -559,6 +587,7 @@ label_settings = ExtResource("4_wp4yx")
 layout_mode = 2
 text = "Stiched
 Together"
+label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
 
 [node name="21" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1175317485]
@@ -578,6 +607,7 @@ label_settings = ExtResource("4_wp4yx")
 layout_mode = 2
 text = "Stiched
 Together"
+label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
 
 [node name="22" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1244315920]
@@ -597,6 +627,7 @@ label_settings = ExtResource("4_wp4yx")
 layout_mode = 2
 text = "Stiched
 Together"
+label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
 
 [node name="23" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1777435097]
@@ -616,6 +647,7 @@ label_settings = ExtResource("4_wp4yx")
 layout_mode = 2
 text = "Stiched
 Together"
+label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
 
 [node name="24" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=775517681]
@@ -635,6 +667,7 @@ label_settings = ExtResource("4_wp4yx")
 layout_mode = 2
 text = "Stiched
 Together"
+label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
 
 [node name="25" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=747092314]
@@ -980,4 +1013,9 @@ script = ExtResource("16_roq56")
 [connection signal="gui_input" from="VBoxContainer/GridContainer/17" to="LevelChange" method="_on_day_select" binds= [15]]
 [connection signal="gui_input" from="VBoxContainer/GridContainer/18" to="LevelChange" method="_on_day_select" binds= [15]]
 [connection signal="gui_input" from="VBoxContainer/GridContainer/19" to="LevelChange" method="_on_day_select" binds= [15]]
+[connection signal="gui_input" from="VBoxContainer/GridContainer/20" to="LevelChange" method="_on_day_select" binds= [20]]
+[connection signal="gui_input" from="VBoxContainer/GridContainer/21" to="LevelChange" method="_on_day_select" binds= [20]]
+[connection signal="gui_input" from="VBoxContainer/GridContainer/22" to="LevelChange" method="_on_day_select" binds= [20]]
+[connection signal="gui_input" from="VBoxContainer/GridContainer/23" to="LevelChange" method="_on_day_select" binds= [20]]
+[connection signal="gui_input" from="VBoxContainer/GridContainer/24" to="LevelChange" method="_on_day_select" binds= [20]]
 [connection signal="gui_input" from="ImageDisplay" to="ImageDisplay" method="_on_gui_input"]

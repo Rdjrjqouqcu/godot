@@ -31,7 +31,7 @@ size = Vector2(380, 380)
 offsets = PackedFloat32Array(0.4, 0.6, 0.8, 1)
 colors = PackedColorArray(0, 0, 0, 0, 1, 0.6666667, 0, 1, 1, 0.33333337, 0, 1, 1, 0, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ooube"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lpvol"]
 gradient = SubResource("Gradient_0s3ks")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1h3is"]
@@ -39,15 +39,15 @@ shader = ExtResource("3_5xf2v")
 shader_parameter/Scale = Vector2(2, 1)
 shader_parameter/Speed = Vector2(0, 1)
 shader_parameter/TextureBase = ExtResource("4_lpvol")
-shader_parameter/TextureColor1D = SubResource("GradientTexture1D_ooube")
+shader_parameter/TextureColor1D = SubResource("GradientTexture1D_lpvol")
 
-[sub_resource type="Gradient" id="Gradient_lpvol"]
+[sub_resource type="Gradient" id="Gradient_25f3o"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(1)
 colors = PackedColorArray(0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_qeq32"]
-gradient = SubResource("Gradient_lpvol")
+gradient = SubResource("Gradient_25f3o")
 width = 1
 
 [sub_resource type="Curve" id="Curve_7vi67"]
