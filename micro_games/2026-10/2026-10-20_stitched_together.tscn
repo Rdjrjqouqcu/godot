@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://4yw3045us0oi"]
 
-[ext_resource type="PackedScene" uid="uid://cp5v264s6ytls" path="res://2026-10/main_menu_button.tscn" id="1_o4sxx"]
-[ext_resource type="PackedScene" uid="uid://rvxktyyovxcm" path="res://2026-10/2026-10-20_card.tscn" id="2_qjw1o"]
-[ext_resource type="LabelSettings" uid="uid://tc6gafu0qvf" path="res://2026-10/standard.tres" id="2_ssm03"]
+[ext_resource type="PackedScene" uid="uid://xpu6acf64ked" path="res://2026-10/2026-10-20_card_dragged.tscn" id="1_v3w3x"]
+[ext_resource type="LabelSettings" uid="uid://tc6gafu0qvf" path="res://2026-10/standard.tres" id="1_wpgmx"]
+[ext_resource type="PackedScene" uid="uid://rvxktyyovxcm" path="res://2026-10/2026-10-20_card_slot.tscn" id="2_v3w3x"]
+[ext_resource type="PackedScene" uid="uid://cp5v264s6ytls" path="res://2026-10/main_menu_button.tscn" id="3_x2e52"]
 
 [sub_resource type="GDScript" id="GDScript_ssm03"]
 script/source = "extends Control
@@ -64,7 +65,7 @@ size_flags_vertical = 4
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer/Targets/MarginContainer/VBoxContainer" unique_id=734159195]
 layout_mode = 2
 text = "Targets"
-label_settings = ExtResource("2_ssm03")
+label_settings = ExtResource("1_wpgmx")
 horizontal_alignment = 1
 
 [node name="TargetList" type="HBoxContainer" parent="VBoxContainer/MarginContainer/Targets/MarginContainer/VBoxContainer" unique_id=537047033]
@@ -74,23 +75,29 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 
-[node name="TargetCard1" parent="VBoxContainer/MarginContainer/Targets/MarginContainer/VBoxContainer/TargetList" unique_id=1419167353 instance=ExtResource("2_qjw1o")]
+[node name="TargetCard1" parent="VBoxContainer/MarginContainer/Targets/MarginContainer/VBoxContainer/TargetList" unique_id=1917544837 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
+id = "T1"
 
-[node name="TargetCard2" parent="VBoxContainer/MarginContainer/Targets/MarginContainer/VBoxContainer/TargetList" unique_id=1015360162 instance=ExtResource("2_qjw1o")]
+[node name="TargetCard2" parent="VBoxContainer/MarginContainer/Targets/MarginContainer/VBoxContainer/TargetList" unique_id=1015360162 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
+id = "T2"
 
-[node name="TargetCard3" parent="VBoxContainer/MarginContainer/Targets/MarginContainer/VBoxContainer/TargetList" unique_id=925944259 instance=ExtResource("2_qjw1o")]
+[node name="TargetCard3" parent="VBoxContainer/MarginContainer/Targets/MarginContainer/VBoxContainer/TargetList" unique_id=925944259 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
+id = "T3"
 
-[node name="TargetCard4" parent="VBoxContainer/MarginContainer/Targets/MarginContainer/VBoxContainer/TargetList" unique_id=1625067241 instance=ExtResource("2_qjw1o")]
+[node name="TargetCard4" parent="VBoxContainer/MarginContainer/Targets/MarginContainer/VBoxContainer/TargetList" unique_id=1625067241 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
+id = "T4"
 
-[node name="TargetCard5" parent="VBoxContainer/MarginContainer/Targets/MarginContainer/VBoxContainer/TargetList" unique_id=91378869 instance=ExtResource("2_qjw1o")]
+[node name="TargetCard5" parent="VBoxContainer/MarginContainer/Targets/MarginContainer/VBoxContainer/TargetList" unique_id=91378869 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
+id = "T5"
 
-[node name="TargetCard6" parent="VBoxContainer/MarginContainer/Targets/MarginContainer/VBoxContainer/TargetList" unique_id=1762404909 instance=ExtResource("2_qjw1o")]
+[node name="TargetCard6" parent="VBoxContainer/MarginContainer/Targets/MarginContainer/VBoxContainer/TargetList" unique_id=1762404909 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
+id = "T6"
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer" unique_id=197145782]
 layout_mode = 2
@@ -121,7 +128,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1348045408]
 layout_mode = 2
 text = "Inventory"
-label_settings = ExtResource("2_ssm03")
+label_settings = ExtResource("1_wpgmx")
 horizontal_alignment = 1
 
 [node name="Inventory" type="GridContainer" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1967327420]
@@ -130,50 +137,65 @@ layout_mode = 2
 size_flags_vertical = 8
 columns = 5
 
-[node name="InvCard1" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=315495406 instance=ExtResource("2_qjw1o")]
+[node name="InvCard1" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=315495406 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
+id = "I01"
 
-[node name="InvCard2" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=335126027 instance=ExtResource("2_qjw1o")]
+[node name="InvCard2" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=335126027 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
+id = "I02"
 
-[node name="InvCard3" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=1638903250 instance=ExtResource("2_qjw1o")]
+[node name="InvCard3" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=1638903250 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
+id = "I03"
 
-[node name="InvCard4" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=1390254654 instance=ExtResource("2_qjw1o")]
+[node name="InvCard4" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=1390254654 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
+id = "I04"
 
-[node name="InvCard5" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=1610071065 instance=ExtResource("2_qjw1o")]
+[node name="InvCard5" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=1610071065 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
+id = "I05"
 
-[node name="InvCard6" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=1050287271 instance=ExtResource("2_qjw1o")]
+[node name="InvCard6" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=1050287271 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
+id = "I06"
 
-[node name="InvCard7" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=1091947986 instance=ExtResource("2_qjw1o")]
+[node name="InvCard7" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=1091947986 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
+id = "I07"
 
-[node name="InvCard8" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=371064759 instance=ExtResource("2_qjw1o")]
+[node name="InvCard8" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=371064759 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
+id = "I08"
 
-[node name="InvCard9" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=1457385481 instance=ExtResource("2_qjw1o")]
+[node name="InvCard9" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=1457385481 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
+id = "I09"
 
-[node name="InvCard10" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=2139834850 instance=ExtResource("2_qjw1o")]
+[node name="InvCard10" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=2139834850 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
+id = "I10"
 
-[node name="InvCard11" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=1333115863 instance=ExtResource("2_qjw1o")]
+[node name="InvCard11" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=1333115863 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
+id = "I11"
 
-[node name="InvCard12" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=1145914528 instance=ExtResource("2_qjw1o")]
+[node name="InvCard12" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=1145914528 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
+id = "I12"
 
-[node name="InvCard13" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=767535430 instance=ExtResource("2_qjw1o")]
+[node name="InvCard13" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=767535430 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
+id = "I13"
 
-[node name="InvCard14" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=548124291 instance=ExtResource("2_qjw1o")]
+[node name="InvCard14" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=548124291 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
+id = "I14"
 
-[node name="InvCard15" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=413933551 instance=ExtResource("2_qjw1o")]
+[node name="InvCard15" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Inventory" unique_id=413933551 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
+id = "I15"
 
 [node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer2/HBoxContainer" unique_id=207908862]
 layout_mode = 2
@@ -191,23 +213,26 @@ layout_mode = 2
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer" unique_id=1632598545]
 layout_mode = 2
 text = "Assemble"
-label_settings = ExtResource("2_ssm03")
+label_settings = ExtResource("1_wpgmx")
 horizontal_alignment = 1
 
 [node name="AssembleList" type="GridContainer" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer" unique_id=1450636093]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="AssembleCard1" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/AssembleList" unique_id=1661009922 instance=ExtResource("2_qjw1o")]
+[node name="AssembleCard1" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/AssembleList" unique_id=1661009922 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
+id = "A1"
 
-[node name="AssembleCard2" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/AssembleList" unique_id=1467732076 instance=ExtResource("2_qjw1o")]
+[node name="AssembleCard2" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/AssembleList" unique_id=1467732076 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
+id = "A2"
 
-[node name="AssembleCard3" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/AssembleList" unique_id=1232785006 instance=ExtResource("2_qjw1o")]
+[node name="AssembleCard3" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/AssembleList" unique_id=1232785006 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
+id = "A3"
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1287199726]
+[node name="MenuContainer" type="MarginContainer" parent="." unique_id=1287199726]
 layout_mode = 0
 offset_right = 158.0
 offset_bottom = 50.0
@@ -216,23 +241,26 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1669934425]
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuContainer" unique_id=1669934425]
 layout_mode = 2
 
-[node name="MainMenu" parent="MarginContainer/HBoxContainer" unique_id=537363097 instance=ExtResource("1_o4sxx")]
+[node name="MainMenu" parent="MenuContainer/HBoxContainer" unique_id=537363097 instance=ExtResource("3_x2e52")]
 layout_mode = 2
 
-[node name="Reset" type="PanelContainer" parent="MarginContainer/HBoxContainer" unique_id=290051806]
+[node name="Reset" type="PanelContainer" parent="MenuContainer/HBoxContainer" unique_id=290051806]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Reset" unique_id=923346889]
+[node name="MarginContainer" type="MarginContainer" parent="MenuContainer/HBoxContainer/Reset" unique_id=923346889]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Reset/MarginContainer" unique_id=1259394406]
+[node name="Label" type="Label" parent="MenuContainer/HBoxContainer/Reset/MarginContainer" unique_id=1259394406]
 layout_mode = 2
 text = "Reset"
-label_settings = ExtResource("2_ssm03")
+label_settings = ExtResource("1_wpgmx")
+
+[node name="BlankCard" parent="." unique_id=1419167353 instance=ExtResource("1_v3w3x")]
+layout_mode = 0

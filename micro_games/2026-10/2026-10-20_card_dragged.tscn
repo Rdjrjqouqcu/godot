@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://xpu6acf64ked"]
+
+[ext_resource type="Script" uid="uid://b2s64qqpc4nls" path="res://2026-10/2026_10_20_card_dragged.gd" id="1_cw7h8"]
+[ext_resource type="LabelSettings" uid="uid://tc6gafu0qvf" path="res://2026-10/standard.tres" id="1_h76ni"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3qhgt"]
+size = Vector2(128, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h76ni"]
+size = Vector2(128, 192)
+
+[node name="BlankCard" type="MarginContainer" unique_id=1419167353]
+offset_right = 136.0
+offset_bottom = 200.0
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+script = ExtResource("1_cw7h8")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=792718881]
+custom_minimum_size = Vector2(128, 192)
+custom_maximum_size = Vector2(128, 192)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_3qhgt")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1117218156]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1740642355]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1062100914]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Card Drag"
+label_settings = ExtResource("1_h76ni")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="." unique_id=647468179]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=140816101]
+position = Vector2(68, 100)
+shape = SubResource("RectangleShape2D_h76ni")
+
+[node name="debug" type="Label" parent="." unique_id=1968501483]
+layout_mode = 2
+size_flags_vertical = 8
+text = "debug"
+horizontal_alignment = 1
