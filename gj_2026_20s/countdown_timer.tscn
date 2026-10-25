@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b3hy6fhpiraer"]
+
+[ext_resource type="Script" uid="uid://cik5pixtvoqwy" path="res://countdown_timer.gd" id="1_r0a3g"]
+[ext_resource type="FontFile" uid="uid://g10s5wr1t1dy" path="res://kongtext.regular.ttf" id="2_r0a3g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3qhgt"]
+font = ExtResource("2_r0a3g")
+font_size = 32
+
+[node name="CountdownTimer" type="PanelContainer" unique_id=1413832110]
+script = ExtResource("1_r0a3g")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=421308389]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=461319350]
+layout_mode = 2
+offset_transform_enabled = true
+text = "21.000"
+label_settings = SubResource("LabelSettings_3qhgt")

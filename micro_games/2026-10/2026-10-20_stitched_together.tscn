@@ -24,6 +24,36 @@ grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_ssm03")
 
+[node name="MenuContainer" type="MarginContainer" parent="." unique_id=1287199726]
+layout_mode = 0
+offset_right = 158.0
+offset_bottom = 50.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuContainer" unique_id=1669934425]
+layout_mode = 2
+
+[node name="MainMenu" parent="MenuContainer/HBoxContainer" unique_id=537363097 instance=ExtResource("3_x2e52")]
+layout_mode = 2
+
+[node name="Reset" type="PanelContainer" parent="MenuContainer/HBoxContainer" unique_id=290051806]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuContainer/HBoxContainer/Reset" unique_id=923346889]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="MenuContainer/HBoxContainer/Reset/MarginContainer" unique_id=1259394406]
+layout_mode = 2
+text = "Reset"
+label_settings = ExtResource("1_wpgmx")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1000240319]
 layout_mode = 1
 anchors_preset = 7
@@ -231,36 +261,6 @@ id = "A2"
 [node name="AssembleCard3" parent="VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/AssembleList" unique_id=1232785006 instance=ExtResource("2_v3w3x")]
 layout_mode = 2
 id = "A3"
-
-[node name="MenuContainer" type="MarginContainer" parent="." unique_id=1287199726]
-layout_mode = 0
-offset_right = 158.0
-offset_bottom = 50.0
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MenuContainer" unique_id=1669934425]
-layout_mode = 2
-
-[node name="MainMenu" parent="MenuContainer/HBoxContainer" unique_id=537363097 instance=ExtResource("3_x2e52")]
-layout_mode = 2
-
-[node name="Reset" type="PanelContainer" parent="MenuContainer/HBoxContainer" unique_id=290051806]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="MenuContainer/HBoxContainer/Reset" unique_id=923346889]
-layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
-
-[node name="Label" type="Label" parent="MenuContainer/HBoxContainer/Reset/MarginContainer" unique_id=1259394406]
-layout_mode = 2
-text = "Reset"
-label_settings = ExtResource("1_wpgmx")
 
 [node name="BlankCard" parent="." unique_id=1419167353 instance=ExtResource("1_v3w3x")]
 layout_mode = 0

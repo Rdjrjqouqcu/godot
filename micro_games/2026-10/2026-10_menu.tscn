@@ -685,8 +685,9 @@ label_settings = ExtResource("4_wp4yx")
 
 [node name="Label2" type="Label" parent="VBoxContainer/GridContainer/25" unique_id=5729329]
 layout_mode = 2
-text = "Fungus
-Collector"
+text = "Stitched
+Together"
+label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
 
 [node name="26" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1672676924]
@@ -704,8 +705,9 @@ label_settings = ExtResource("4_wp4yx")
 
 [node name="Label2" type="Label" parent="VBoxContainer/GridContainer/26" unique_id=1257346631]
 layout_mode = 2
-text = "Fungus
-Collector"
+text = "Stitched
+Together"
+label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
 
 [node name="27" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=2097176888]
@@ -723,8 +725,9 @@ label_settings = ExtResource("4_wp4yx")
 
 [node name="Label2" type="Label" parent="VBoxContainer/GridContainer/27" unique_id=35955544]
 layout_mode = 2
-text = "Fungus
-Collector"
+text = "Stitched
+Together"
+label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
 
 [node name="28" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1986681446]
@@ -742,8 +745,9 @@ label_settings = ExtResource("4_wp4yx")
 
 [node name="Label2" type="Label" parent="VBoxContainer/GridContainer/28" unique_id=611612979]
 layout_mode = 2
-text = "Fungus
-Collector"
+text = "Stitched
+Together"
+label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
 
 [node name="29" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=955959064]
@@ -761,8 +765,9 @@ label_settings = ExtResource("4_wp4yx")
 
 [node name="Label2" type="Label" parent="VBoxContainer/GridContainer/29" unique_id=47032410]
 layout_mode = 2
-text = "Fungus
-Collector"
+text = "Stitched
+Together"
+label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
 
 [node name="30" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1656902276]

@@ -15,8 +15,17 @@ func _process(delta: float) -> void:
 			print("drag time")
 			CardDragged.inst().pick(id)
 
-func _on_gui_input(event: InputEvent) -> void:
-	#print(event)
+var hovered: bool = false
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_MOUSE_ENTER:
+		hovered = true
+	elif what == NOTIFICATION_MOUSE_EXIT:
+		hovered = false
+func _input(event: InputEvent) -> void:
+	if not hovered:
+		return
+	print(id+ " B " + str(event))
+	CardDragged.inst().hover(id)
 	if not CardDragged.inst().can_pick():
 		return
 	if event is InputEventMouseMotion:

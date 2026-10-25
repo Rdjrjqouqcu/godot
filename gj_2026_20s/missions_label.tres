@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://dr5calv0d0vge"]
+
+[ext_resource type="FontFile" uid="uid://g10s5wr1t1dy" path="res://kongtext.regular.ttf" id="1_ydeax"]
+
+[resource]
+font = ExtResource("1_ydeax")
+font_size = 12

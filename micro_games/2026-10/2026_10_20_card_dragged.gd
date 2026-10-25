@@ -4,6 +4,9 @@ class_name CardDragged
 static var instance: CardDragged
 static func inst() -> CardDragged: return instance
 
+func _update_debug() -> void:
+	$debug.text = "id=" + selected_id + " hid=" + hovering_id
+
 func _ready() -> void:
 	instance = self
 	visible = false
@@ -11,11 +14,21 @@ func _ready() -> void:
 func is_picked() -> bool:
 	return visible
 
+var hovering_id: String = ""
+func hover(id: String) -> void:
+	hovering_id = id
+	_update_debug()
+
+func unhover() -> void:
+	hovering_id = ""
+	_update_debug()
+	
+
 var selected_id: String = ""
 func pick(id: String) -> void:
 	visible = true
 	selected_id = id
-	$debug.text = "id=" + id
+	_update_debug()
 
 func drop() -> void:
 	drop_cooldown = drop_cooldown_max
