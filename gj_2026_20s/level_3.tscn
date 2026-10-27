@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bthg3fwq73qrs"]
+
+[ext_resource type="PackedScene" uid="uid://udwpgvak4apd" path="res://main.tscn" id="1_ayd5w"]
+
+[node name="Level3" type="Control" unique_id=1124363322]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main" parent="." unique_id=849067652 instance=ExtResource("1_ayd5w")]
+layout_mode = 1

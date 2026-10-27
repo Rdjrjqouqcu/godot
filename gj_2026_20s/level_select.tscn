@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://7oaovoj8fubd"]
+
+[ext_resource type="FontFile" uid="uid://g10s5wr1t1dy" path="res://kongtext.regular.ttf" id="1_il3u1"]
+[ext_resource type="Script" uid="uid://dhsmv7dinh78d" path="res://level_select.gd" id="1_vomi7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3qhgt"]
+font = ExtResource("1_il3u1")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_1h3is"]
+font = ExtResource("1_il3u1")
+
+[node name="LevelSelect" type="Control" unique_id=1657380617]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vomi7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2119586620]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=488193541]
+layout_mode = 2
+text = "TITLE"
+label_settings = SubResource("LabelSettings_3qhgt")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=949781744]
+layout_mode = 2
+text = "by Rdjrjqouqcu"
+label_settings = SubResource("LabelSettings_1h3is")
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer" unique_id=2147260177]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 3
+
+[node name="Button1" type="Button" parent="VBoxContainer/GridContainer" unique_id=686471385]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_il3u1")
+theme_override_font_sizes/font_size = 24
+text = "lvl 1"
+
+[node name="Button2" type="Button" parent="VBoxContainer/GridContainer" unique_id=1958158700]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_il3u1")
+theme_override_font_sizes/font_size = 24
+disabled = true
+text = "lvl 2"
+
+[node name="Button3" type="Button" parent="VBoxContainer/GridContainer" unique_id=180541714]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_il3u1")
+theme_override_font_sizes/font_size = 24
+disabled = true
+text = "lvl 3"
+
+[node name="Button4" type="Button" parent="VBoxContainer/GridContainer" unique_id=270822722]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_il3u1")
+theme_override_font_sizes/font_size = 24
+disabled = true
+text = "lvl 4"
+
+[node name="Button5" type="Button" parent="VBoxContainer/GridContainer" unique_id=1461019260]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_il3u1")
+theme_override_font_sizes/font_size = 24
+disabled = true
+text = "lvl 5"
+
+[node name="Button6" type="Button" parent="VBoxContainer/GridContainer" unique_id=521869278]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_il3u1")
+theme_override_font_sizes/font_size = 24
+disabled = true
+text = "FIN"
+
+[connection signal="pressed" from="VBoxContainer/GridContainer/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/Button6" to="." method="_on_button_6_pressed"]
