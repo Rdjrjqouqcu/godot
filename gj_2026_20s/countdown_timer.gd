@@ -1,4 +1,5 @@
 extends PanelContainer
+class_name CountdownTimerPanel
 
 @export var wait_time: float = 20.0
 @export var auto_start: bool = false
@@ -56,17 +57,14 @@ func _trigger_warning_effect() -> void:
 	_warning_effects_tween.tween_property(label, "modulate", Color.WHITE, warning_effects_ease_time)
 
 func _handle_warning_effect(delta:float) -> void:
-	if not warning_effects_enabled:
-		return
-	if not warning_effects_trigger_on_zero and _time_remaining <= 0:
-		return
+	if not warning_effects_enabled: return
+	if not warning_effects_trigger_on_zero and _time_remaining <= 0: return
 	var prev_time = _time_remaining + delta
 	var cur_time = _time_remaining
 	if warning_effects_offset_by_attack_time:
 		prev_time -= warning_effects_attack_time
 		cur_time -= warning_effects_attack_time
-	if warning_effects_seconds <= cur_time:
-		return
+	if warning_effects_seconds <= cur_time: return
 	var prev_remainder = prev_time - floorf(prev_time)
 	var cur_remainder = cur_time - floorf(cur_time)
 	if prev_remainder < cur_remainder:
@@ -86,6 +84,3 @@ func _process(delta: float) -> void:
 				_time_remaining += wait_time
 			else:
 				_running = false
-			return
-		
-		

@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://cc71m7ydug6n6"]
+
+[ext_resource type="Script" uid="uid://dj8i1q1habpy" path="res://mission_panel.gd" id="1_1n6us"]
+[ext_resource type="FontFile" uid="uid://g10s5wr1t1dy" path="res://kongtext.regular.ttf" id="1_tpc1g"]
+[ext_resource type="LabelSettings" uid="uid://dr5calv0d0vge" path="res://missions_label.tres" id="2_1n6us"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0xm2m"]
+font = ExtResource("1_tpc1g")
+
+[node name="MissionPanel" type="PanelContainer" unique_id=1387857251]
+script = ExtResource("1_1n6us")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1576177302]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2065001664]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=593593217]
+layout_mode = 2
+text = "Missions:"
+label_settings = SubResource("LabelSettings_0xm2m")
+horizontal_alignment = 1
+
+[node name="Mission1" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=594533136]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/Mission1" unique_id=786634988]
+custom_minimum_size = Vector2(10, 10)
+custom_maximum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Mission1" unique_id=121891377]
+layout_mode = 2
+text = "Stack on left pin"
+label_settings = ExtResource("2_1n6us")
+
+[node name="Mission2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=243831091]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/Mission2" unique_id=1013473363]
+custom_minimum_size = Vector2(10, 10)
+custom_maximum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Mission2" unique_id=1879579811]
+layout_mode = 2
+text = "Stack on middle pin"
+label_settings = ExtResource("2_1n6us")
+
+[node name="Mission3" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=29616605]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/Mission3" unique_id=289445291]
+custom_minimum_size = Vector2(10, 10)
+custom_maximum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Mission3" unique_id=1045306798]
+layout_mode = 2
+text = "Stack on right pin"
+label_settings = ExtResource("2_1n6us")
+
+[node name="Strikethrough" type="VBoxContainer" parent="MarginContainer" unique_id=1959375147]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 2
+
+[node name="Mission1s" type="HSeparator" parent="MarginContainer/Strikethrough" unique_id=631915807]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Control" type="Control" parent="MarginContainer/Strikethrough" unique_id=1447141498]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Mission2s" type="HSeparator" parent="MarginContainer/Strikethrough" unique_id=451087519]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Control2" type="Control" parent="MarginContainer/Strikethrough" unique_id=1883244968]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Mission3s" type="HSeparator" parent="MarginContainer/Strikethrough" unique_id=1958234989]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Control3" type="Control" parent="MarginContainer/Strikethrough" unique_id=940040182]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
