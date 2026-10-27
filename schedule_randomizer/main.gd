@@ -34,6 +34,7 @@ class DataSourceUtil:
 		return offsets[seed_offset]
 
 @abstract class DataSource extends DataSourceUtil:
+	## Returns an array of data
 	@abstract func _get_data(dt: DateTime, row_offset: int) -> Array[Node]
 	@abstract func get_column_count(show_roll: bool) -> int
 	func add_row(container: GridContainer, dt: DateTime, row_offset: int, show_roll: bool) -> void:
@@ -50,15 +51,15 @@ class TimeDataSource extends DataSource:
 		["Anytime", CHECK_MARK, Color.GREEN],
 	]
 	const entries = [
-		["Not Today", CANCEL, Color.RED],  # 4 tasks
-		["Night(7pm)", STOPWATCH, Color.ORANGE], # 3 tasks
-		["Night(7pm)", STOPWATCH, Color.ORANGE], # 3 tasks
-		["Afternoon(3pm)", STOPWATCH, Color.YELLOW], # 2 tasks
-		["Afternoon(3pm)", STOPWATCH, Color.YELLOW], # 2 tasks
-		["Morning(11am)", STOPWATCH, Color.GREEN_YELLOW], # 1 task
-		["Morning(11am)", STOPWATCH, Color.GREEN_YELLOW], # 1 task
-		["Anytime", CHECK_MARK, Color.GREEN], # 0 tasks
-		["Anytime", CHECK_MARK, Color.GREEN], # 0 tasks
+		["+16h", CANCEL, Color.RED],  # 4 tasks | Not Today
+		["+12h", STOPWATCH, Color.ORANGE], # 3 tasks | Night(7pm)
+		["+12h", STOPWATCH, Color.ORANGE], # 3 tasks | Night(7pm)
+		["+08h", STOPWATCH, Color.YELLOW], # 2 tasks | Afternoon(3pm)
+		["+08h", STOPWATCH, Color.YELLOW], # 2 tasks | Afternoon(3pm)
+		["+04h", STOPWATCH, Color.GREEN_YELLOW], # 1 task | Morning(11am)
+		["+04h", STOPWATCH, Color.GREEN_YELLOW], # 1 task | Morning(11am)
+		["+00h", CHECK_MARK, Color.GREEN], # 0 tasks | Anytime
+		["+00h", CHECK_MARK, Color.GREEN], # 0 tasks | Anytime
 	]
 
 	func get_column_count(show_roll: bool) -> int:
@@ -109,7 +110,7 @@ class RestrictionDataSource extends DataSource:
 		var second_monthly = randi_range(15,28)
 		if dt.day == first_monthly or dt.day == second_monthly:
 			var binfo = Label.new()
-			binfo.text = "BORED"
+			binfo.text = "VARIETY"
 			binfo.modulate = Color.PURPLE
 			hbox.add_child(binfo)
 
@@ -119,7 +120,8 @@ class RestrictionDataSource extends DataSource:
 			var info = Label.new()
 			info.text = entries[roll][0]
 			info.modulate = entries[roll][1]
-			hbox.add_child(info)
+			info.queue_free()
+			#hbox.add_child(info)
 
 		return [_get_roll_node([roll, first_monthly, second_monthly]), hbox]
 
@@ -174,4 +176,8 @@ func _ready() -> void:
 		int(Time.get_unix_time_from_system() - SECONDS_PER_DAY),
 		Time.get_datetime_dict_from_system()["dst"])
 	%dateEntry.text = dt.strftime(DATE_FORMAT)
+	_update()
+
+
+func _on_date_entry_text_submitted(new_text: String) -> void:
 	_update()

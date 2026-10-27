@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfpsxxhbjv0rs"]
+[gd_scene format=3 uid="uid://bfpsxxhbjv0rs"]
 
 [ext_resource type="Script" uid="uid://c151s31xwj044" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://blofrd6egb61n" path="res://gameicons/stopwatch.png" id="2_h2yge"]
@@ -10,7 +10,7 @@ allow_system_fallback = false
 [sub_resource type="Theme" id="Theme_0xm2m"]
 default_font = SubResource("SystemFont_ig7tw")
 
-[node name="main" type="MarginContainer"]
+[node name="main" type="MarginContainer" unique_id=2096600160]
 offset_right = 512.0
 offset_bottom = 512.0
 theme = SubResource("Theme_0xm2m")
@@ -20,49 +20,51 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 script = ExtResource("1_ig7tw")
 
-[node name="cols" type="VBoxContainer" parent="."]
+[node name="cols" type="VBoxContainer" parent="." unique_id=1351601079]
 custom_minimum_size = Vector2(496, 496)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="header" type="HBoxContainer" parent="cols"]
+[node name="header" type="HBoxContainer" parent="cols" unique_id=26319303]
 layout_mode = 2
 
-[node name="dateEntry" type="TextEdit" parent="cols/header"]
+[node name="dateEntry" type="LineEdit" parent="cols/header" unique_id=1332808646]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 placeholder_text = "2025-01-01"
 
-[node name="update" type="Button" parent="cols/header"]
+[node name="update" type="Button" parent="cols/header" unique_id=1853348328]
 layout_mode = 2
 text = "Update"
 
-[node name="show" type="CheckButton" parent="cols/header"]
+[node name="show" type="CheckButton" parent="cols/header" unique_id=1203649205]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Show Rolls"
 
-[node name="err" type="Label" parent="cols/header"]
+[node name="err" type="Label" parent="cols/header" unique_id=1259945890]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(150, -1)
 layout_mode = 2
 text = "error string"
+autowrap_mode = 3
 
-[node name="container" type="GridContainer" parent="cols"]
+[node name="container" type="GridContainer" parent="cols" unique_id=1784324756]
 unique_name_in_owner = true
 layout_mode = 2
 columns = 4
 
-[node name="date" type="Label" parent="cols/container"]
+[node name="date" type="Label" parent="cols/container" unique_id=677042724]
 layout_mode = 2
 text = "2025-01-01"
 
-[node name="roll" type="Label" parent="cols/container"]
+[node name="roll" type="Label" parent="cols/container" unique_id=1568862255]
 layout_mode = 2
 text = "3"
 
-[node name="icon" type="TextureRect" parent="cols/container"]
+[node name="icon" type="TextureRect" parent="cols/container" unique_id=1509857448]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -70,19 +72,19 @@ size_flags_vertical = 4
 texture = ExtResource("2_h2yge")
 expand_mode = 1
 
-[node name="info" type="Label" parent="cols/container"]
+[node name="info" type="Label" parent="cols/container" unique_id=657244938]
 layout_mode = 2
 text = "After 3:00 PM"
 
-[node name="date2" type="Label" parent="cols/container"]
+[node name="date2" type="Label" parent="cols/container" unique_id=887442741]
 layout_mode = 2
 text = "2025-01-01"
 
-[node name="roll2" type="Label" parent="cols/container"]
+[node name="roll2" type="Label" parent="cols/container" unique_id=1346398918]
 layout_mode = 2
 text = "3"
 
-[node name="icon2" type="TextureRect" parent="cols/container"]
+[node name="icon2" type="TextureRect" parent="cols/container" unique_id=985699841]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -90,19 +92,19 @@ size_flags_vertical = 4
 texture = ExtResource("3_1bvp3")
 expand_mode = 1
 
-[node name="info2" type="Label" parent="cols/container"]
+[node name="info2" type="Label" parent="cols/container" unique_id=1288196195]
 layout_mode = 2
 text = "Anytime"
 
-[node name="date3" type="Label" parent="cols/container"]
+[node name="date3" type="Label" parent="cols/container" unique_id=293033344]
 layout_mode = 2
 text = "2025-01-01"
 
-[node name="roll3" type="Label" parent="cols/container"]
+[node name="roll3" type="Label" parent="cols/container" unique_id=43974280]
 layout_mode = 2
 text = "3"
 
-[node name="icon3" type="TextureRect" parent="cols/container"]
+[node name="icon3" type="TextureRect" parent="cols/container" unique_id=89202376]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -110,9 +112,10 @@ size_flags_vertical = 4
 texture = ExtResource("2_h2yge")
 expand_mode = 1
 
-[node name="info3" type="Label" parent="cols/container"]
+[node name="info3" type="Label" parent="cols/container" unique_id=567107955]
 layout_mode = 2
 text = "After 7:00 PM"
 
+[connection signal="text_submitted" from="cols/header/dateEntry" to="." method="_on_date_entry_text_submitted"]
 [connection signal="pressed" from="cols/header/update" to="." method="_update"]
 [connection signal="pressed" from="cols/header/show" to="." method="_update"]
