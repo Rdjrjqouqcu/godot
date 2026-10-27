@@ -15,6 +15,9 @@ const map = {
 	18: _20_STICHED_TOGETHER,
 	19: _20_STICHED_TOGETHER,
 	20: _20_STICHED_TOGETHER,
+	21: _20_STICHED_TOGETHER,
+	22: _20_STICHED_TOGETHER,
+	23: _20_STICHED_TOGETHER,
 }
 
 func load_level(id: int) -> void:

@@ -745,8 +745,8 @@ label_settings = ExtResource("4_wp4yx")
 
 [node name="Label2" type="Label" parent="VBoxContainer/GridContainer/28" unique_id=611612979]
 layout_mode = 2
-text = "Stitched
-Together"
+text = "20 Second
+Game Jam"
 label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
 
@@ -765,8 +765,8 @@ label_settings = ExtResource("4_wp4yx")
 
 [node name="Label2" type="Label" parent="VBoxContainer/GridContainer/29" unique_id=47032410]
 layout_mode = 2
-text = "Stitched
-Together"
+text = "20 Second
+Game Jam"
 label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
 
@@ -785,8 +785,9 @@ label_settings = ExtResource("4_wp4yx")
 
 [node name="Label2" type="Label" parent="VBoxContainer/GridContainer/30" unique_id=1985469704]
 layout_mode = 2
-text = "Pumpkin
-Head"
+text = "20 Second
+Game Jam"
+label_settings = ExtResource("4_wp4yx")
 horizontal_alignment = 1
 
 [node name="31" type="PanelContainer" parent="VBoxContainer/GridContainer" unique_id=1603626784]
@@ -1023,4 +1024,7 @@ script = ExtResource("16_roq56")
 [connection signal="gui_input" from="VBoxContainer/GridContainer/22" to="LevelChange" method="_on_day_select" binds= [20]]
 [connection signal="gui_input" from="VBoxContainer/GridContainer/23" to="LevelChange" method="_on_day_select" binds= [20]]
 [connection signal="gui_input" from="VBoxContainer/GridContainer/24" to="LevelChange" method="_on_day_select" binds= [20]]
+[connection signal="gui_input" from="VBoxContainer/GridContainer/25" to="LevelChange" method="_on_day_select" binds= [20]]
+[connection signal="gui_input" from="VBoxContainer/GridContainer/26" to="LevelChange" method="_on_day_select" binds= [20]]
+[connection signal="gui_input" from="VBoxContainer/GridContainer/27" to="LevelChange" method="_on_day_select" binds= [20]]
 [connection signal="gui_input" from="ImageDisplay" to="ImageDisplay" method="_on_gui_input"]
